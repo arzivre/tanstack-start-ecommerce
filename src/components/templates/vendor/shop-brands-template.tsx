@@ -1,29 +1,44 @@
-import { BrandHeader } from '@/components/containers/vendors/brands/brand-header'
-import { BrandTable } from '@/components/containers/vendors/brands/brand-table'
-import type React from 'react'
-
-interface Brand {
-  id: string
-  name: string
-  slug: string
-  website?: string
-  logo?: string
-  description?: string
-}
+import type {
+    DataTableFetchParams,
+    DataTableFetchResult,
+} from "@/components/base/data-table/types";
+import BrandHeader from "@/components/containers/shared/brands/brand-header";
+import { VendorBrandTable } from "@/components/containers/shared/brands/brand-table";
+import type { BrandMutationState } from "@/components/containers/shared/brands/brand-table-columns";
+import type { NormalizedBrand } from "@/types/brands";
 
 interface ShopBrandsTemplateProps {
-  brands: Brand[]
-  onAddBrand: () => void
+    fetcher: (
+        params: DataTableFetchParams,
+    ) => Promise<DataTableFetchResult<NormalizedBrand>>;
+    onAddBrand: () => void;
+    onEditBrand?: (brand: NormalizedBrand) => void;
+    onDeleteBrand?: (brand: NormalizedBrand) => void;
+    onToggleActive?: (brand: NormalizedBrand) => void;
+    mutationState?: BrandMutationState;
+    isBrandMutating?: (id: string) => boolean;
 }
 
-export const ShopBrandsTemplate: React.FC<ShopBrandsTemplateProps> = ({
-  brands,
-  onAddBrand,
-}) => {
-  return (
-    <div className="space-y-6">
-      <BrandHeader onAddBrand={onAddBrand} />
-      <BrandTable brands={brands} />
-    </div>
-  )
+export function ShopBrandsTemplate({
+    fetcher,
+    onAddBrand,
+    onEditBrand,
+    onDeleteBrand,
+    onToggleActive,
+    mutationState,
+    isBrandMutating,
+}: ShopBrandsTemplateProps) {
+    return (
+        <div className="space-y-6">
+            <BrandHeader onAddBrand={onAddBrand} />
+            <VendorBrandTable
+                fetcher={fetcher}
+                onEdit={onEditBrand}
+                onDelete={onDeleteBrand}
+                onToggleActive={onToggleActive}
+                mutationState={mutationState}
+                isBrandMutating={isBrandMutating}
+            />
+        </div>
+    );
 }

@@ -2,8 +2,8 @@ import { defineRelations } from "drizzle-orm";
 import * as auth from "./auth-schema";
 import * as shop from "./shop-schema";
 import { categories } from "./category-schema";
-
-const schema = { ...auth, ...shop, categories };
+import { brands } from "./brand-schema";
+const schema = { ...auth, ...shop, categories, brands };
 
 export const relations = defineRelations(schema, (r) => ({
     user: {
@@ -65,13 +65,13 @@ export const relations = defineRelations(schema, (r) => ({
             optional: false,
         }),
         categories: r.many.categories(),
+        brands: r.many.brands(),
     },
 
     categories: {
         shop: r.one.shops({
             from: r.categories.shopId,
             to: r.shops.id,
-            optional: false,
         }),
         parent: r.one.categories({
             from: r.categories.parentId,
@@ -80,6 +80,14 @@ export const relations = defineRelations(schema, (r) => ({
         }),
         children: r.many.categories({
             alias: "categoryHierarchy",
+        }),
+    },
+
+    brands: {
+        shop: r.one.shops({
+            from: r.brands.shopId,
+            to: r.shops.id,
+            optional: false,
         }),
     },
 }));
