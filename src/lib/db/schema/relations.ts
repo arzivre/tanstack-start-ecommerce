@@ -3,7 +3,9 @@ import * as auth from "./auth-schema";
 import * as shop from "./shop-schema";
 import { categories } from "./category-schema";
 import { brands } from "./brand-schema";
-const schema = { ...auth, ...shop, categories, brands };
+import * as attribute from "./attribute-schema";
+
+const schema = { ...auth, ...shop, ...attribute, categories, brands };
 
 export const relations = defineRelations(schema, (r) => ({
     user: {
@@ -66,6 +68,7 @@ export const relations = defineRelations(schema, (r) => ({
         }),
         categories: r.many.categories(),
         brands: r.many.brands(),
+        attributes: r.many.attributes(),
     },
 
     categories: {
@@ -87,6 +90,23 @@ export const relations = defineRelations(schema, (r) => ({
         shop: r.one.shops({
             from: r.brands.shopId,
             to: r.shops.id,
+            optional: false,
+        }),
+    },
+
+    attributes: {
+        shop: r.one.shops({
+            from: r.attributes.shopId,
+            to: r.shops.id,
+            optional: false,
+        }),
+        values: r.many.attributeValues(),
+    },
+
+    attributeValues: {
+        attribute: r.one.attributes({
+            from: r.attributeValues.attributeId,
+            to: r.attributes.id,
             optional: false,
         }),
     },
