@@ -11,9 +11,9 @@ import {
 } from "drizzle-orm";
 import type {
     BatchedBrandRelations,
+    BrandItem,
     BrandQueryOptions,
     BrandQueryResult,
-    NormalizedBrand,
 } from "@/types/brands";
 import { db } from "../db";
 import { brands } from "../db/schema/brand-schema";
@@ -39,42 +39,19 @@ export async function batchFetchBrandRelations(
 
     const shopIds = [...new Set(brandList.map((b) => b.shopId))];
 
-    // FIXME: After Product API Implement
-    const queries: Promise<any>[] = [
-        // db
-        //   .select({
-        //     brandId: products.brandId,
-        //     count: count(),
-        //   })
-        //   .from(products)
-        //   .where(inArray(products.brandId, brandIds))
-        //   .groupBy(products.brandId),
-        Promise.resolve([]),
-    ];
-
-    if (options.includeShopInfo && shopIds.length > 0) {
-        queries.push(
-            db
-                .select({
-                    id: shops.id,
-                    name: shops.name,
-                    slug: shops.slug,
-                })
-                .from(shops)
-                .where(inArray(shops.id, shopIds)),
-        );
-    } else {
-        queries.push(Promise.resolve([]));
-    }
-
-    const [productCountRecords, shopRecords] = await Promise.all(queries);
+    const shopRecords =
+        options.includeShopInfo && shopIds.length > 0
+            ? await db
+                  .select({
+                      id: shops.id,
+                      name: shops.name,
+                      slug: shops.slug,
+                  })
+                  .from(shops)
+                  .where(inArray(shops.id, shopIds))
+            : [];
 
     const productCountsMap = new Map<string, number>();
-    for (const pc of productCountRecords) {
-        if (pc.brandId) {
-            productCountsMap.set(pc.brandId, pc.count);
-        }
-    }
 
     const shopsMap = new Map<
         string,
@@ -99,7 +76,7 @@ export function normalizeBrand(
     options: {
         includeShopInfo?: boolean;
     } = {},
-): NormalizedBrand {
+): BrandItem {
     const productCount = relations.productCountsMap.get(brand.id) ?? 0;
 
     let shopName: string | null = null;
@@ -147,11 +124,12 @@ export function buildBrandFilterConditions(
     }
 
     if (options.search) {
+        const searchTerm = `%${options.search}%`;
         conditions.push(
             or(
-                ilike(brands.name, `%${options.search}%`),
-                ilike(brands.slug, `%${options.search}%`),
-                ilike(brands.description, `%${options.search}%`),
+                ilike(brands.name, searchTerm),
+                ilike(brands.slug, searchTerm),
+                ilike(brands.description, searchTerm),
             ) as any,
         );
     }
@@ -241,7 +219,7 @@ export async function fetchBrandWithRelations(
     options: {
         includeShopInfo?: boolean;
     } = {},
-): Promise<NormalizedBrand> {
+): Promise<BrandItem> {
     const relations = await batchFetchBrandRelations([brand.id], [brand], {
         includeShopInfo: options.includeShopInfo,
     });

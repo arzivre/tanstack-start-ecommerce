@@ -13,12 +13,12 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import type { NormalizedBrand } from "@/types/brands";
+import type { BrandItem } from "@/types/brands";
 
 export interface BrandTableActions {
-    onEdit?: (brand: NormalizedBrand) => void;
-    onDelete?: (brand: NormalizedBrand) => void;
-    onToggleActive?: (brand: NormalizedBrand) => void;
+    onEdit?: (brand: BrandItem) => void;
+    onDelete?: (brand: BrandItem) => void;
+    onToggleActive?: (brand: BrandItem) => void;
 }
 
 export interface BrandMutationState {
@@ -40,25 +40,24 @@ export const BRAND_STATUS_OPTIONS = [
     { label: "Inactive", value: "false" },
 ];
 
-export const getSharedBrandFilters =
-    (): FilterableColumn<NormalizedBrand>[] => {
-        return [
-            {
-                id: "isActive",
-                label: "Status",
-                type: "select",
-                options: BRAND_STATUS_OPTIONS,
-                placeholder: "Filter by status",
-            },
-        ];
-    };
+export const getSharedBrandFilters = (): FilterableColumn<BrandItem>[] => {
+    return [
+        {
+            id: "isActive",
+            label: "Status",
+            type: "select",
+            options: BRAND_STATUS_OPTIONS,
+            placeholder: "Filter by status",
+        },
+    ];
+};
 
 export const createBrandColumns = ({
     mode,
     actions,
     mutationState,
     isBrandMutating,
-}: BrandColumnConfig): ColumnDef<NormalizedBrand>[] => {
+}: BrandColumnConfig): ColumnDef<BrandItem>[] => {
     const isAdmin = mode === "admin";
 
     return [
@@ -145,11 +144,7 @@ export const createBrandColumns = ({
                   {
                       accessorKey: "shopName",
                       header: "Shop",
-                      cell: ({
-                          row,
-                      }: {
-                          row: { original: NormalizedBrand };
-                      }) => (
+                      cell: ({ row }: { row: { original: BrandItem } }) => (
                           <div className="text-muted-foreground text-sm">
                               {row.original.shopName || "-"}
                           </div>

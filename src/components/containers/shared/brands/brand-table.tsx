@@ -4,7 +4,7 @@ import type {
     DataTableFetchParams,
     DataTableFetchResult,
 } from "@/components/base/data-table/types";
-import type { NormalizedBrand } from "@/types/brands";
+import type { BrandItem } from "@/types/brands";
 import {
     type BrandMutationState,
     type BrandTableActions,
@@ -15,7 +15,7 @@ import {
 interface VendorBrandTableProps extends BrandTableActions {
     fetcher: (
         params: DataTableFetchParams,
-    ) => Promise<DataTableFetchResult<NormalizedBrand>>;
+    ) => Promise<DataTableFetchResult<BrandItem>>;
     className?: string;
     mutationState?: BrandMutationState;
     isBrandMutating?: (id: string) => boolean;
