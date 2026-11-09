@@ -1,6 +1,6 @@
+import { Plus } from "lucide-react";
 import { PageHeader } from "@/components/base/common/page-header";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 
 export interface AttributeHeaderProps {
     onAddAttribute?: () => void;
@@ -19,19 +19,19 @@ export default function AttributeHeader({
 }: AttributeHeaderProps) {
     return (
         <PageHeader
-            title="Attributes"
+            title="Attribute"
             description={
                 role === "admin"
-                    ? "Manage product attributes across the platform"
-                    : "Manage product attributes and variations for your shop"
+                    ? "Manage product Attribute across the platform"
+                    : "Manage your product Attribute and organization"
             }
             className={className}
         >
             {children}
             {showAddButton && onAddAttribute && (
-                <Button onClick={onAddAttribute}>
+                <Button onClick={onAddAttribute} size="lg">
                     <Plus className="mr-2 h-4 w-4" />
-                    Add Brand
+                    Add Attribute
                 </Button>
             )}
         </PageHeader>
