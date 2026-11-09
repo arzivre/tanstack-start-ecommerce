@@ -6,6 +6,7 @@ import { brands } from "./brand-schema";
 import * as attribute from "./attribute-schema";
 import { tags } from "./tags-schema";
 import { taxRates } from "./tax-schema";
+import * as products from "./products-schema";
 
 const schema = {
     ...auth,
@@ -15,6 +16,7 @@ const schema = {
     brands,
     tags,
     taxRates,
+    ...products,
 };
 
 export const relations = defineRelations(schema, (r) => ({
@@ -81,6 +83,7 @@ export const relations = defineRelations(schema, (r) => ({
         attributes: r.many.attributes(),
         tags: r.many.tags(),
         taxRates: r.many.taxRates(),
+        products: r.many.products(),
     },
 
     categories: {
@@ -96,6 +99,7 @@ export const relations = defineRelations(schema, (r) => ({
         children: r.many.categories({
             alias: "categoryHierarchy",
         }),
+        products: r.many.products(),
     },
 
     brands: {
@@ -104,6 +108,7 @@ export const relations = defineRelations(schema, (r) => ({
             to: r.shops.id,
             optional: false,
         }),
+        products: r.many.products(),
     },
 
     attributes: {
@@ -113,6 +118,11 @@ export const relations = defineRelations(schema, (r) => ({
             optional: false,
         }),
         values: r.many.attributeValues(),
+        products: r.many.products({
+            from: r.attributes.id.through(r.productAttributes.attributeId),
+            to: r.products.id.through(r.productAttributes.productId),
+        }),
+        productAttributes: r.many.productAttributes(),
     },
 
     attributeValues: {
@@ -129,12 +139,84 @@ export const relations = defineRelations(schema, (r) => ({
             to: r.shops.id,
             optional: false,
         }),
+        products: r.many.products({
+            from: r.tags.id.through(r.productTags.tagId),
+            to: r.products.id.through(r.productTags.productId),
+        }),
     },
 
     taxRates: {
         shop: r.one.shops({
             from: r.taxRates.shopId,
             to: r.shops.id,
+            optional: false,
+        }),
+    },
+
+    products: {
+        shop: r.one.shops({
+            from: r.products.shopId,
+            to: r.shops.id,
+            optional: false,
+        }),
+        category: r.one.categories({
+            from: r.products.categoryId,
+            to: r.categories.id,
+        }),
+        brand: r.one.brands({
+            from: r.products.brandId,
+            to: r.brands.id,
+        }),
+        taxRate: r.one.taxRates({
+            from: r.products.taxId,
+            to: r.taxRates.id,
+        }),
+        images: r.many.productImages(),
+
+        // Many-to-many through the junction tables
+        tags: r.many.tags({
+            from: r.products.id.through(r.productTags.productId),
+            to: r.tags.id.through(r.productTags.tagId),
+        }),
+        attributes: r.many.attributes({
+            from: r.products.id.through(r.productAttributes.productId),
+            to: r.attributes.id.through(r.productAttributes.attributeId),
+        }),
+
+        // Direct access to the junction rows (needed to read `value`)
+        productAttributes: r.many.productAttributes(),
+    },
+
+    productImages: {
+        product: r.one.products({
+            from: r.productImages.productId,
+            to: r.products.id,
+            optional: false,
+        }),
+    },
+
+    productTags: {
+        product: r.one.products({
+            from: r.productTags.productId,
+            to: r.products.id,
+            optional: false,
+        }),
+        tag: r.one.tags({
+            from: r.productTags.tagId,
+            to: r.tags.id,
+            optional: false,
+        }),
+    },
+
+    productAttributes: {
+        product: r.one.products({
+            from: r.productAttributes.productId,
+            to: r.products.id,
+            optional: false,
+        }),
+        attribute: r.one.attributes({
+            from: r.productAttributes.attributeId,
+            to: r.attributes.id,
             optional: false,
         }),
     },
