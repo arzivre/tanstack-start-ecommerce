@@ -30,7 +30,7 @@ export function ShopBrandsTemplate({
 }: ShopBrandsTemplateProps) {
     return (
         <div className="space-y-6">
-            <BrandHeader onAddBrand={onAddBrand} />
+            <BrandHeader onAdd={onAddBrand} />
             <VendorBrandTable
                 fetcher={fetcher}
                 onEdit={onEditBrand}

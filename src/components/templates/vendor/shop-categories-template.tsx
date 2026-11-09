@@ -28,7 +28,7 @@ export default function ShopCategoriesTemplate({
 }: ShopCategoriesTemplateProps) {
     return (
         <div className="space-y-6">
-            <CategoryHeader onAddCategory={onAddCategory} />
+            <CategoryHeader onAdd={onAddCategory} />
             <VendorCategoryTable
                 fetcher={fetcher}
                 onEdit={onEditCategory}

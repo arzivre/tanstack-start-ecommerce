@@ -33,7 +33,7 @@ export function ShopTagsTemplate({
     return (
         <div className="space-y-6">
             <TagHeader
-                onAddTag={onAddTag}
+                onAdd={onAddTag}
                 role="vendor"
                 showAddButton={showAddButton}
             />

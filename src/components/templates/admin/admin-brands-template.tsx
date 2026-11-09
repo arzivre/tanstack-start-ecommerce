@@ -20,7 +20,7 @@ export default function AdminBrandsTemplate({
     return (
         <div className="space-y-6">
             <BrandHeader
-                onAddBrand={() => setIsAddDialogOpen(true)}
+                onAdd={() => setIsAddDialogOpen(true)}
                 role="admin"
             />
             <AddBrandDialog

@@ -33,7 +33,7 @@ export function ShopTaxesTemplate({
     return (
         <div className="space-y-6">
             <TaxHeader
-                onAddTax={onAddTax}
+                onAdd={onAddTax}
                 role="vendor"
                 showAddButton={showAddButton}
             />
