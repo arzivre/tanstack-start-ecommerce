@@ -5,10 +5,6 @@
  * Uses TanStack Start's createServerFn with Zod validation.
  */
 
-import { createServerFn } from "@tanstack/react-start";
-import { and, eq } from "drizzle-orm";
-import { v4 as uuidv4 } from "uuid";
-import { z as zod } from "zod";
 import { db } from "@/lib/db";
 import { taxRates } from "@/lib/db/schema/tax-schema";
 import {
@@ -23,6 +19,10 @@ import {
     vendorTaxRatesQuerySchema,
 } from "@/lib/validators/shared/tax-rate-query";
 import type { TaxRateItem } from "@/types/taxes";
+import { createServerFn } from "@tanstack/react-start";
+import { eq } from "drizzle-orm";
+import { v4 as uuidv4 } from "uuid";
+import { z as zod } from "zod";
 
 // ============================================================================
 // Get Tax Rates (List with Pagination)
@@ -81,7 +81,7 @@ export const getTaxRateById = createServerFn({ method: "GET" })
 
         // Get tax rate
         const taxRate = await db.query.taxRates.findFirst({
-            where: and(eq(taxRates.id, id), eq(taxRates.shopId, shopId)),
+            where: { id, shopId },
         });
 
         if (!taxRate) {
@@ -128,7 +128,7 @@ export const createTaxRate = createServerFn({ method: "POST" })
 
         // Fetch the created tax rate
         const newTaxRate = await db.query.taxRates.findFirst({
-            where: eq(taxRates.id, taxRateId),
+            where: { id: taxRateId },
         });
 
         if (!newTaxRate) {
@@ -161,7 +161,7 @@ export const updateTaxRate = createServerFn({ method: "POST" })
 
         // Check if tax rate exists
         const existingTaxRate = await db.query.taxRates.findFirst({
-            where: and(eq(taxRates.id, id), eq(taxRates.shopId, shopId)),
+            where: { id, shopId },
         });
 
         if (!existingTaxRate) {
@@ -195,7 +195,7 @@ export const updateTaxRate = createServerFn({ method: "POST" })
 
         // Fetch updated tax rate
         const updatedTaxRate = await db.query.taxRates.findFirst({
-            where: eq(taxRates.id, id),
+            where: { id },
         });
 
         if (!updatedTaxRate) {
@@ -235,7 +235,7 @@ export const deleteTaxRate = createServerFn({ method: "POST" })
 
         // Check if tax rate exists
         const existingTaxRate = await db.query.taxRates.findFirst({
-            where: and(eq(taxRates.id, id), eq(taxRates.shopId, shopId)),
+            where: { id, shopId },
         });
 
         if (!existingTaxRate) {
@@ -271,7 +271,7 @@ export const toggleTaxRateActive = createServerFn({ method: "POST" })
 
         // Check if tax rate exists
         const existingTaxRate = await db.query.taxRates.findFirst({
-            where: and(eq(taxRates.id, id), eq(taxRates.shopId, shopId)),
+            where: { id, shopId },
         });
 
         if (!existingTaxRate) {

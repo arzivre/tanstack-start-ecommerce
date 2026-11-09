@@ -1,26 +1,43 @@
-import { ProductBreadcrumb } from '@/components/base/products/details/product-breadcrum'
-import { ProductDetailsTabs } from '@/components/containers/store/product-details/details-tabs'
-import { ProductMainSection } from '@/components/containers/store/product-details/main-section'
-import { SimilarProductsSection } from '@/components/containers/store/product-details/similar-products-section'
-import type { Product } from '@/data/products'
+import { ProductBreadcrumb } from "@/components/base/products/details/product-breadcrum";
+import ProductDetailsTabs from "@/components/containers/store/product-details/details-tabs";
+import ProductMainSection from "@/components/containers/store/product-details/main-section";
+import { SimilarProductsSection } from "@/components/containers/store/product-details/similar-products-section";
+import type { StoreProduct } from "@/types/store-types";
 
 interface ProductDetailsTemplateProps {
-  product: Product
+    product: StoreProduct;
+    similarProducts?: StoreProduct[];
 }
-export function ProductDetailsTemplate({
-  product,
+
+export default function ProductDetailsTemplate({
+    product,
+    similarProducts = [],
 }: ProductDetailsTemplateProps) {
-  return (
-    <div className="@container container mx-auto px-4 py-8 @4xl:px-6 @5xl:py-12">
-      <ProductBreadcrumb items={product.breadcrumbs} />
+    const breadcrumbs = [
+        { label: "Home", href: "/" },
+        { label: "Store", href: "/store" },
+        {
+            label: product.categoryName || "Product",
+            href: product.categoryId
+                ? `/store?category=${product.categoryId}`
+                : "#",
+        },
+        { label: product.name, href: `/store/product/${product.slug}` },
+    ];
 
-      <div className="space-y-16">
-        <ProductMainSection product={product} />
+    return (
+        <div className="@container container mx-auto @4xl:px-6 px-4 @5xl:py-12 py-8">
+            <ProductBreadcrumb items={breadcrumbs} />
 
-        <ProductDetailsTabs product={product} />
+            <div className="space-y-16">
+                <ProductMainSection product={product} />
 
-        <SimilarProductsSection products={product.similarProducts} />
-      </div>
-    </div>
-  )
+                <ProductDetailsTabs product={product} />
+
+                {similarProducts.length > 0 && (
+                    <SimilarProductsSection products={similarProducts} />
+                )}
+            </div>
+        </div>
+    );
 }

@@ -1,6 +1,3 @@
-// ============================================================================
-// Get Products (List with Pagination)
-
 import { createServerFn } from "@tanstack/react-start";
 import { and, eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
@@ -30,6 +27,9 @@ import { createSuccessResponse } from "@/types/api-response";
 import type { ProductListResponse } from "@/types/products";
 
 // ============================================================================
+// Get Products (List with Pagination)
+// ============================================================================
+//
 export const getProducts = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
     .inputValidator(vendorProductsQuerySchema)
