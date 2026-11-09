@@ -1,3 +1,4 @@
+// TODO: fix required input for select components still submit when empty
 import { useForm } from "@tanstack/react-form";
 import { FileUploaderRegular } from "@uploadcare/react-uploader";
 import type { z } from "zod";

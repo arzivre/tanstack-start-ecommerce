@@ -124,10 +124,90 @@ export const toggleBrandActiveSchema = createToggleActiveSchema("Brand");
 export const deleteBrandSchema = createDeleteSchema("Brand");
 
 // ============================================================================
+// Entity Schemas
+// ============================================================================
+
+/**
+ * Full Brand Entity Schema (Response)
+ */
+export const brandSchema = zod.object({
+    id: zod.string(),
+    shopId: zod.string(),
+    name: zod.string(),
+    slug: zod.string(),
+    description: zod.string().optional().nullable(),
+    logo: zod.string().optional().nullable(),
+    website: zod.string().optional().nullable(),
+    sortOrder: zod.number().default(0),
+    isActive: zod.boolean().default(true),
+    productCount: zod.number().default(0),
+    createdAt: zod.string(),
+    updatedAt: zod.string(),
+});
+
+/**
+ * Schema for creating a new brand
+ */
+export const createBrandSchema = zod.object({
+    shopId: zod.string().min(1, "Shop ID is required"),
+    name: zod
+        .string()
+        .min(2, "Brand name must be at least 2 characters")
+        .max(100, "Brand name must be at most 100 characters"),
+    slug: zod
+        .string()
+        .min(2, "Slug must be at least 2 characters")
+        .max(100, "Slug must be at most 100 characters")
+        .regex(
+            /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+            "Slug must be lowercase with hyphens only",
+        )
+        .optional(),
+    description: zod
+        .string()
+        .max(500, "Description must be at most 500 characters")
+        .optional(),
+    logo: zod.string().optional(),
+    website: zod.string().optional(),
+    sortOrder: zod.coerce.number().min(0).optional().default(0),
+    isActive: zod.boolean().optional().default(true),
+});
+
+/**
+ * Schema for updating an existing brand
+ */
+export const updateBrandSchema = zod.object({
+    id: zod.string().min(1, "Brand ID is required"),
+    shopId: zod.string().min(1, "Shop ID is required"),
+    name: zod
+        .string()
+        .min(2, "Brand name must be at least 2 characters")
+        .max(100, "Brand name must be at most 100 characters")
+        .optional(),
+    slug: zod
+        .string()
+        .min(2, "Slug must be at least 2 characters")
+        .max(100, "Slug must be at most 100 characters")
+        .regex(
+            /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+            "Slug must be lowercase with hyphens only",
+        )
+        .optional(),
+    description: zod.string().max(500).optional().nullable(),
+    logo: zod.string().optional().nullable(),
+    website: zod.string().optional().nullable(),
+    sortOrder: zod.coerce.number().min(0).optional(),
+    isActive: zod.boolean().optional(),
+});
+
+// ============================================================================
 // Type Exports
 // ============================================================================
 
 export type BrandSortBy = zod.infer<typeof brandSortByEnum>;
+export type Brand = zod.infer<typeof brandSchema>;
+export type CreateBrandInput = zod.infer<typeof createBrandSchema>;
+export type UpdateBrandInput = zod.infer<typeof updateBrandSchema>;
 
 export type StoreBrandsQuery = zod.infer<typeof storeBrandsQuerySchema>;
 export type AdminBrandsQuery = zod.infer<typeof adminBrandsQuerySchema>;
