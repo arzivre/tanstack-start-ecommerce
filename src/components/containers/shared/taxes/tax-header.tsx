@@ -1,47 +1,39 @@
-import { useState } from 'react'
-import { PageHeader } from '@/components/base/common/page-header'
-import type { TaxFormValues } from '@/types/taxes'
-import { AddTaxDialog } from './add-tax-dialog'
+import { Plus } from "lucide-react";
+import { PageHeader } from "@/components/base/common/page-header";
+import { Button } from "@/components/ui/button";
 
 export interface TaxHeaderProps {
-  onAddTax?: (data: TaxFormValues) => void
-  role?: 'admin' | 'vendor'
-  showAddButton?: boolean
-  children?: React.ReactNode
-  className?: string
+    onAddTax?: () => void;
+    role?: "admin" | "vendor";
+    showAddButton?: boolean;
+    children?: React.ReactNode;
+    className?: string;
 }
 
 export default function TaxHeader({
-  onAddTax,
-  role = 'vendor',
-  showAddButton = true,
-  children,
-  className,
+    onAddTax,
+    role,
+    showAddButton,
+    children,
+    className,
 }: TaxHeaderProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
-
-  const handleAddTax = (data: TaxFormValues) => {
-    onAddTax?.(data)
-  }
-
-  return (
-    <PageHeader
-      title="Taxes"
-      description={
-        role === 'admin'
-          ? 'Manage platform-wide tax rates and configurations'
-          : 'Manage your tax rates and configurations'
-      }
-      className={className}
-    >
-      {children}
-      {showAddButton && (
-        <AddTaxDialog
-          open={isAddDialogOpen}
-          onOpenChange={setIsAddDialogOpen}
-          onSubmit={handleAddTax}
-        />
-      )}
-    </PageHeader>
-  )
+    return (
+        <PageHeader
+            title="Tax Rates"
+            description={
+                role === "admin"
+                    ? "Manage tax rates across the platform"
+                    : "Manage your tax rates"
+            }
+            className={className}
+        >
+            {children}
+            {showAddButton && onAddTax && (
+                <Button onClick={onAddTax}>
+                    <Plus className="mr-2 h-4 w-4" />
+                    Add Tax Rate
+                </Button>
+            )}
+        </PageHeader>
+    );
 }

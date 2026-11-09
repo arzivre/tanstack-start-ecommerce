@@ -1,20 +1,55 @@
-import { TaxesHeader } from '#/components/containers/vendors/taxes/taxes-header'
-import { TaxesTable } from '#/components/containers/vendors/taxes/taxes-table'
-import type { Taxes as Tax } from '@/types/taxes'
+import type {
+    DataTableFetchParams,
+    DataTableFetchResult,
+} from "@/components/base/data-table/types";
+import TaxHeader from "@/components/containers/shared/taxes/tax-header";
+import { TaxTable } from "@/components/containers/shared/taxes/tax-table";
+import type { TaxMutationState } from "@/components/containers/shared/taxes/tax-table-columns";
+import type { TaxRateItem } from "@/types/taxes";
 
 interface ShopTaxesTemplateProps {
-  taxes: Tax[]
-  onAddTax: () => void
+    fetcher: (
+        params: DataTableFetchParams,
+    ) => Promise<DataTableFetchResult<TaxRateItem>>;
+    onAddTax?: () => void;
+    onEdit?: (taxRate: TaxRateItem) => void;
+    onDelete?: (taxRate: TaxRateItem) => void;
+    onToggleActive?: (id: string) => void;
+    mutationState?: TaxMutationState;
+    isTaxMutating?: (id: string) => boolean;
+    showAddButton?: boolean;
 }
 
-export default function ShopTaxesTemplate({
-  taxes,
-  onAddTax,
+export function ShopTaxesTemplate({
+    fetcher,
+    onAddTax,
+    onEdit,
+    onDelete,
+    onToggleActive,
+    mutationState,
+    isTaxMutating,
+    showAddButton = true,
 }: ShopTaxesTemplateProps) {
-  return (
-    <div className="space-y-6">
-      <TaxesHeader onAddTax={onAddTax} />
-      <TaxesTable taxes={taxes} />
-    </div>
-  )
+    return (
+        <div className="space-y-6">
+            <TaxHeader
+                onAddTax={onAddTax}
+                role="vendor"
+                showAddButton={showAddButton}
+            />
+            <TaxTable
+                fetcher={fetcher}
+                onEdit={onEdit}
+                onDelete={onDelete}
+                onToggleActive={
+                    onToggleActive
+                        ? (taxRate) => onToggleActive(taxRate.id)
+                        : undefined
+                }
+                mutationState={mutationState}
+                isMutating={isTaxMutating}
+                mode="vendor"
+            />
+        </div>
+    );
 }
