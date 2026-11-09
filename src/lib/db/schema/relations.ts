@@ -7,6 +7,7 @@ import * as attribute from "./attribute-schema";
 import { tags } from "./tags-schema";
 import { taxRates } from "./tax-schema";
 import * as products from "./products-schema";
+import * as coupons from "./coupon-schema";
 
 const schema = {
     ...auth,
@@ -17,6 +18,7 @@ const schema = {
     tags,
     taxRates,
     ...products,
+    ...coupons,
 };
 
 export const relations = defineRelations(schema, (r) => ({
@@ -34,6 +36,7 @@ export const relations = defineRelations(schema, (r) => ({
         approvedVendors: r.many.vendors({
             alias: "vendor_approver",
         }),
+        couponUsages: r.many.couponUsage(),
     },
 
     session: {
@@ -84,6 +87,7 @@ export const relations = defineRelations(schema, (r) => ({
         tags: r.many.tags(),
         taxRates: r.many.taxRates(),
         products: r.many.products(),
+        coupons: r.many.coupons(),
     },
 
     categories: {
@@ -100,6 +104,10 @@ export const relations = defineRelations(schema, (r) => ({
             alias: "categoryHierarchy",
         }),
         products: r.many.products(),
+        coupons: r.many.coupons({
+            from: r.categories.id.through(r.couponCategories.categoryId),
+            to: r.coupons.id.through(r.couponCategories.couponId),
+        }),
     },
 
     brands: {
@@ -185,6 +193,10 @@ export const relations = defineRelations(schema, (r) => ({
 
         // Direct access to the junction rows (needed to read `value`)
         productAttributes: r.many.productAttributes(),
+        coupons: r.many.coupons({
+            from: r.products.id.through(r.couponProducts.productId),
+            to: r.coupons.id.through(r.couponProducts.couponId),
+        }),
     },
 
     productImages: {
@@ -217,6 +229,63 @@ export const relations = defineRelations(schema, (r) => ({
         attribute: r.one.attributes({
             from: r.productAttributes.attributeId,
             to: r.attributes.id,
+            optional: false,
+        }),
+    },
+
+    coupons: {
+        shop: r.one.shops({
+            from: r.coupons.shopId,
+            to: r.shops.id,
+            optional: false,
+        }),
+        // Many-to-many through the junction tables
+        products: r.many.products({
+            from: r.coupons.id.through(r.couponProducts.couponId),
+            to: r.products.id.through(r.couponProducts.productId),
+        }),
+        categories: r.many.categories({
+            from: r.coupons.id.through(r.couponCategories.couponId),
+            to: r.categories.id.through(r.couponCategories.categoryId),
+        }),
+        usages: r.many.couponUsage(),
+    },
+
+    couponProducts: {
+        coupon: r.one.coupons({
+            from: r.couponProducts.couponId,
+            to: r.coupons.id,
+            optional: false,
+        }),
+        product: r.one.products({
+            from: r.couponProducts.productId,
+            to: r.products.id,
+            optional: false,
+        }),
+    },
+
+    couponCategories: {
+        coupon: r.one.coupons({
+            from: r.couponCategories.couponId,
+            to: r.coupons.id,
+            optional: false,
+        }),
+        category: r.one.categories({
+            from: r.couponCategories.categoryId,
+            to: r.categories.id,
+            optional: false,
+        }),
+    },
+
+    couponUsage: {
+        coupon: r.one.coupons({
+            from: r.couponUsage.couponId,
+            to: r.coupons.id,
+            optional: false,
+        }),
+        user: r.one.user({
+            from: r.couponUsage.userId,
+            to: r.user.id,
             optional: false,
         }),
     },
