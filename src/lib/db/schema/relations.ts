@@ -11,6 +11,7 @@ import * as shop from "./shop-schema";
 import { tags } from "./tags-schema";
 import { taxRates } from "./tax-schema";
 import { wishlistItems } from "./wishlist-schema";
+import { shippingMethods } from "./shipping-schema";
 
 const schema = {
     ...auth,
@@ -25,6 +26,7 @@ const schema = {
     ...cart,
     customerAddresses,
     wishlistItems,
+    shippingMethods,
 };
 
 export const relations = defineRelations(schema, (r) => ({
@@ -97,6 +99,7 @@ export const relations = defineRelations(schema, (r) => ({
         taxRates: r.many.taxRates(),
         products: r.many.products(),
         coupons: r.many.coupons(),
+        shippingMethods: r.many.shippingMethods(),
     },
 
     customerAddresses: {
@@ -327,6 +330,14 @@ export const relations = defineRelations(schema, (r) => ({
         product: r.one.products({
             from: r.cartItems.productId,
             to: r.products.id,
+            optional: false,
+        }),
+    },
+
+    shippingMethods: {
+        shop: r.one.shops({
+            from: r.shippingMethods.shopId,
+            to: r.shops.id,
             optional: false,
         }),
     },
