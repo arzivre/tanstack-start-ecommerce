@@ -1,14 +1,28 @@
-import { NotFound } from "@/components/base/empty/not-found";
-import { WishlistItemCard } from "@/components/base/store/accounts/wishlist-item-card";
-import { Button } from "@/components/ui/button";
-import { wishlistQueryOptions } from "@/hooks/store/use-wishlist";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { Loader2, ShoppingBag } from "lucide-react";
+import { NotFound } from "@/components/base/empty/not-found";
+import WishlistItemCard from "@/components/base/store/accounts/wishlist-item-card";
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/hooks/store/use-cart";
+import {
+    useWishlistMutations,
+    wishlistQueryOptions,
+} from "@/hooks/store/use-wishlist";
 
 export default function WishlistList() {
     const { data, isPending } = useQuery(wishlistQueryOptions());
+    const { addItem, isAdding } = useCart();
+    const { toggleWishlist, isToggling } = useWishlistMutations();
     const items = data?.items ?? [];
+
+    const handleAddToCart = async (productId: string) => {
+        await addItem({ productId, quantity: 1 });
+    };
+
+    const handleRemove = async (productId: string) => {
+        await toggleWishlist({ productId });
+    };
 
     if (isPending) {
         return (
@@ -65,6 +79,10 @@ export default function WishlistList() {
                             rating: Number(item.product.averageRating || 0),
                             inStock: (item.product.stock ?? 0) > 0,
                         }}
+                        onAddToCart={handleAddToCart}
+                        onRemove={handleRemove}
+                        isAdding={isAdding}
+                        isRemoving={isToggling}
                     />
                 );
             })}

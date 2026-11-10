@@ -1,19 +1,15 @@
 # Stripe Connect Architecture Diagrams
 
-Use these diagrams in your video presentation or convert them to slides.
-
----
-
 ## 🔄 Payment Flow Diagram
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════════════╗
-║                       STRIPE CONNECT PAYMENT FLOW                              ║
+║                       STRIPE CONNECT PAYMENT FLOW                             ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
 
     ┌─────────────┐                                              ┌─────────────┐
     │             │                                              │             │
-    │  👤 CUSTOMER │                                              │  🏪 VENDOR  │
+    │ 👤 CUSTOMER │                                              │  🏪 VENDOR  │
     │             │                                              │             │
     └──────┬──────┘                                              └──────▲──────┘
            │                                                            │
@@ -73,22 +69,22 @@ Use these diagrams in your video presentation or convert them to slides.
 
     ┌─────────────────────────────────────────────────────────────────────┐
     │                                                                     │
-    │   👤 VENDOR DASHBOARD                                                │
+    │   👤 VENDOR DASHBOARD                                               │
     │                                                                     │
     │   ┌─────────────────────────────────────────────────────────────┐   │
-    │   │  Settings  →  Payment Settings                               │   │
-    │   │                                                              │   │
-    │   │  ╔═══════════════════════════════════════════════════════╗   │   │
-    │   │  ║                                                       ║   │   │
-    │   │  ║   🔗 Connect with Stripe                               ║   │   │
-    │   │  ║                                                       ║   │   │
-    │   │  ║   Connect your Stripe account to receive payments     ║   │   │
-    │   │  ║   from customers.                                     ║   │   │
-    │   │  ║                                                       ║   │   │
-    │   │  ║   [ 🔗 Connect with Stripe ]  ←── Click this button    ║   │   │
-    │   │  ║                                                       ║   │   │
-    │   │  ╚═══════════════════════════════════════════════════════╝   │   │
-    │   │                                                              │   │
+    │   │  Settings  →  Payment Settings                              │   │
+    │   │                                                             │   │
+    │   │  ╔═══════════════════════════════════════════════════════╗  │   │
+    │   │  ║                                                       ║  │   │
+    │   │  ║   🔗 Connect with Stripe                              ║  │   │
+    │   │  ║                                                       ║  │   │
+    │   │  ║   Connect your Stripe account to receive payments     ║  │   │
+    │   │  ║   from customers.                                     ║  │   │
+    │   │  ║                                                       ║  │   │
+    │   │  ║   [ 🔗 Connect with Stripe ]  ←── Click this button   ║  │   │
+    │   │  ║                                                       ║  │   │
+    │   │  ╚═══════════════════════════════════════════════════════╝  │   │
+    │   │                                                             │   │
     │   └─────────────────────────────────────────────────────────────┘   │
     │                                                                     │
     └───────────────────────────────────┬─────────────────────────────────┘
@@ -99,30 +95,30 @@ Use these diagrams in your video presentation or convert them to slides.
                                         ▼
     ┌─────────────────────────────────────────────────────────────────────┐
     │                                                                     │
-    │   💳 STRIPE HOSTED ONBOARDING                                        │
+    │   💳 STRIPE HOSTED ONBOARDING                                       │
     │                                                                     │
     │   ┌─────────────────────────────────────────────────────────────┐   │
-    │   │                                                              │   │
-    │   │   Step 1: Business Details                                   │   │
+    │   │                                                             │   │
+    │   │   Step 1: Business Details                                  │   │
     │   │   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━    │   │
-    │   │   • Business name                                            │   │
-    │   │   • Business address                                         │   │
-    │   │   • Tax information                                          │   │
-    │   │                                                              │   │
-    │   │   Step 2: Personal Information                               │   │
+    │   │   • Business name                                           │   │
+    │   │   • Business address                                        │   │
+    │   │   • Tax information                                         │   │
+    │   │                                                             │   │
+    │   │   Step 2: Personal Information                              │   │
     │   │   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━    │   │
-    │   │   • Name, DOB, SSN (last 4)                                  │   │
-    │   │   • Home address                                             │   │
-    │   │                                                              │   │
-    │   │   Step 3: Bank Account                                       │   │
+    │   │   • Name, DOB, SSN (last 4)                                 │   │
+    │   │   • Home address                                            │   │
+    │   │                                                             │   │
+    │   │   Step 3: Bank Account                                      │   │
     │   │   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━    │   │
-    │   │   • Routing number                                           │   │
-    │   │   • Account number                                           │   │
-    │   │                                                              │   │
-    │   │   Step 4: Identity Verification                              │   │
+    │   │   • Routing number                                          │   │
+    │   │   • Account number                                          │   │
+    │   │                                                             │   │
+    │   │   Step 4: Identity Verification                             │   │
     │   │   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━    │   │
-    │   │   • Upload ID document                                       │   │
-    │   │                                                              │   │
+    │   │   • Upload ID document                                      │   │
+    │   │                                                             │   │
     │   └─────────────────────────────────────────────────────────────┘   │
     │                                                                     │
     │                    [ Submit and Continue ]                          │
@@ -135,24 +131,24 @@ Use these diagrams in your video presentation or convert them to slides.
                                         ▼
     ┌─────────────────────────────────────────────────────────────────────┐
     │                                                                     │
-    │   ✅ CONNECTED VENDOR DASHBOARD                                      │
+    │   ✅ CONNECTED VENDOR DASHBOARD                                     │
     │                                                                     │
     │   ┌─────────────────────────────────────────────────────────────┐   │
-    │   │  Settings  →  Payment Settings                               │   │
-    │   │                                                              │   │
-    │   │  ╔═══════════════════════════════════════════════════════╗   │   │
-    │   │  ║                                                       ║   │   │
-    │   │  ║   Stripe Connect  [ Connected ✓ ]                     ║   │   │
-    │   │  ║                                                       ║   │   │
-    │   │  ║   ┌─────────────┐ ┌─────────────┐ ┌─────────────┐     ║   │   │
-    │   │  ║   │ ✓ Onboarding│ │ ✓ Charges   │ │ ✓ Payouts   │     ║   │   │
-    │   │  ║   │   Complete  │ │   Enabled   │ │   Enabled   │     ║   │   │
-    │   │  ║   └─────────────┘ └─────────────┘ └─────────────┘     ║   │   │
-    │   │  ║                                                       ║   │   │
-    │   │  ║   [ 📊 Open Stripe Dashboard ]                        ║   │   │
-    │   │  ║                                                       ║   │   │
-    │   │  ╚═══════════════════════════════════════════════════════╝   │   │
-    │   │                                                              │   │
+    │   │  Settings  →  Payment Settings                              │   │
+    │   │                                                             │   │
+    │   │  ╔═══════════════════════════════════════════════════════╗  │   │
+    │   │  ║                                                       ║  │   │
+    │   │  ║   Stripe Connect  [ Connected ✓ ]                     ║  │   │
+    │   │  ║                                                       ║  │   │
+    │   │  ║   ┌─────────────┐ ┌─────────────┐ ┌─────────────┐     ║  │   │
+    │   │  ║   │ ✓ Onboarding│ │ ✓ Charges   │ │ ✓ Payouts   │     ║  │   │
+    │   │  ║   │   Complete  │ │   Enabled   │ │   Enabled   │     ║  │   │
+    │   │  ║   └─────────────┘ └─────────────┘ └─────────────┘     ║  │   │
+    │   │  ║                                                       ║  │   │
+    │   │  ║   [ 📊 Open Stripe Dashboard ]                        ║  │   │
+    │   │  ║                                                       ║  │   │
+    │   │  ╚═══════════════════════════════════════════════════════╝  │   │
+    │   │                                                             │   │
     │   └─────────────────────────────────────────────────────────────┘   │
     │                                                                     │
     └─────────────────────────────────────────────────────────────────────┘
@@ -164,7 +160,7 @@ Use these diagrams in your video presentation or convert them to slides.
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════════════╗
-║                           FILE STRUCTURE                                       ║
+║                           FILE STRUCTURE                                      ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
 
 src/
@@ -265,7 +261,7 @@ src/
                     ▼                   ▼                   ▼
    ┌─────────────────────┐  ┌─────────────────────┐  ┌─────────────────────┐
    │                     │  │                     │  │                     │
-   │  🏢 Platform:        │  │  🏪 Vendor:          │  │  💳 Stripe:          │
+   │  🏢 Platform:       │  │  🏪 Vendor:         │  │  💳 Stripe:         │
    │     $10.00          │  │     $86.80          │  │     $3.20           │
    │  (application_fee)  │  │  (transfer_data)    │  │  (processing fee)   │
    │                     │  │                     │  │                     │
@@ -310,7 +306,7 @@ src/
 │                                                                             │   │
 │      const event = constructWebhookEvent(body, signature, webhookSecret);   │   │
 │                                                                             │   │
-│   2. Handle event ─────────────────────────────────────────────────────────┘   │
+│   2. Handle event ─────────────────────────────────────────────────────────┘    │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
                                     │
@@ -349,7 +345,7 @@ src/
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════════════╗
-║                           STRIPE TEST CARDS                                    ║
+║                           STRIPE TEST CARDS                                   ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
 
 ┌───────────────────────────┬──────────────────────────────────────────────────┐
@@ -392,20 +388,20 @@ For all test cards use:
 │   # ==========================================                                  │
 │                                                                                 │
 │   # Server-side secret key (starts with sk_)                                    │
-│   STRIPE_SECRET_KEY=sk_test_51xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                 │
+│   STRIPE_SECRET_KEY=sk_test_51xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                │
 │                                                                                 │
 │   # Client-side publishable key (starts with pk_)                               │
-│   VITE_STRIPE_PUBLISHABLE_KEY=pk_test_51xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx       │
+│   VITE_STRIPE_PUBLISHABLE_KEY=pk_test_51xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx      │
 │                                                                                 │
 │   # Webhook signing secret (starts with whsec_)                                 │
-│   STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                  │
+│   STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                 │
 │                                                                                 │
 │   # ==========================================                                  │
 │   # Application URLs                                                            │
 │   # ==========================================                                  │
 │                                                                                 │
 │   # Base URL for redirects after Stripe onboarding                              │
-│   VITE_APP_URL=http://localhost:3000                                            │
+│   VITE_APP_URL=http://localhost:3000                                           │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 
