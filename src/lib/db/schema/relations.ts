@@ -1,13 +1,14 @@
 import { defineRelations } from "drizzle-orm";
-import * as auth from "./auth-schema";
-import * as shop from "./shop-schema";
-import { categories } from "./category-schema";
-import { brands } from "./brand-schema";
 import * as attribute from "./attribute-schema";
+import * as auth from "./auth-schema";
+import { brands } from "./brand-schema";
+import * as cart from "./cart-schema";
+import { categories } from "./category-schema";
+import * as coupons from "./coupon-schema";
+import * as products from "./products-schema";
+import * as shop from "./shop-schema";
 import { tags } from "./tags-schema";
 import { taxRates } from "./tax-schema";
-import * as products from "./products-schema";
-import * as coupons from "./coupon-schema";
 
 const schema = {
     ...auth,
@@ -19,6 +20,7 @@ const schema = {
     taxRates,
     ...products,
     ...coupons,
+    ...cart,
 };
 
 export const relations = defineRelations(schema, (r) => ({
@@ -37,6 +39,7 @@ export const relations = defineRelations(schema, (r) => ({
             alias: "vendor_approver",
         }),
         couponUsages: r.many.couponUsage(),
+        cartSessions: r.many.cartSessions(),
     },
 
     session: {
@@ -197,6 +200,7 @@ export const relations = defineRelations(schema, (r) => ({
             from: r.products.id.through(r.couponProducts.productId),
             to: r.coupons.id.through(r.couponProducts.couponId),
         }),
+        cartItems: r.many.cartItems(),
     },
 
     productImages: {
@@ -286,6 +290,28 @@ export const relations = defineRelations(schema, (r) => ({
         user: r.one.user({
             from: r.couponUsage.userId,
             to: r.user.id,
+            optional: false,
+        }),
+    },
+
+    cartSessions: {
+        // Nullable: guest carts have no userId (identified by sessionId)
+        user: r.one.user({
+            from: r.cartSessions.userId,
+            to: r.user.id,
+        }),
+        items: r.many.cartItems(),
+    },
+
+    cartItems: {
+        cartSession: r.one.cartSessions({
+            from: r.cartItems.cartSessionId,
+            to: r.cartSessions.id,
+            optional: false,
+        }),
+        product: r.one.products({
+            from: r.cartItems.productId,
+            to: r.products.id,
             optional: false,
         }),
     },

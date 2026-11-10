@@ -4,7 +4,7 @@ import { StoreHeaderSkeleton } from "@/components/base/store/storefront/store-he
 import { StoreProductsSkeleton } from "@/components/base/store/storefront/store-products-skeleton";
 import { StoreAbout } from "@/components/containers/store/storefront/store-about";
 import { StoreHeader } from "@/components/containers/store/storefront/store-header";
-import { StoreProducts } from "@/components/containers/store/storefront/store-product";
+import StoreProducts from "@/components/containers/store/storefront/store-product";
 import { StoreReviews } from "@/components/containers/store/storefront/store-reviews";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
