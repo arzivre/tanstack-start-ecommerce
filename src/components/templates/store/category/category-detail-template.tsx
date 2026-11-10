@@ -4,7 +4,7 @@ import { ArrowLeft, Grid3x3, List, Loader2, ShoppingBag } from "lucide-react";
 import { useMemo, useState } from "react";
 import { NotFound } from "@/components/base/empty/not-found";
 import { CategoryGrid } from "@/components/containers/store/category/category-grid";
-import { ProductGrid } from "@/components/containers/store/product-list/product-grid";
+import ProductGrid from "@/components/containers/store/product-list/product-grid";
 import {
     Breadcrumb,
     BreadcrumbItem,

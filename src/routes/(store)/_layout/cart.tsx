@@ -1,4 +1,4 @@
-import { CartTemplate } from '#/components/templates/store/cart/cart-template'
+import CartTemplate from '#/components/templates/store/cart/cart-template'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/(store)/_layout/cart')({

@@ -1,4 +1,4 @@
-import type { SortOption } from '@/components/base/products/sort-dropdown'
+import type { SortOption } from "@/types/products";
 import { mockProducts } from '@/data/products'
 import { useMemo, useState } from 'react'
 

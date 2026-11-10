@@ -1,6 +1,4 @@
-import type { ShippingMethod } from '@/types/shipping'
-
-export const mockShippingMethods: ShippingMethod[] = [
+export const mockShippingMethods = [
   {
     id: '1',
     name: 'Standard Shipping',

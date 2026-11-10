@@ -76,13 +76,13 @@ export const getSharedCouponFilters = (options: {
  * Shared column definitions for coupon tables (Admin & Vendor)
  */
 export const createCouponColumns = ({
-    mode,
+    // mode,
     actions,
     permissions,
     mutationState,
     isCouponMutating,
 }: CouponColumnConfig): ColumnDef<CouponItem>[] => {
-    const isAdmin = mode === "admin";
+    // const isAdmin = mode === "admin";
 
     return [
         // 1. Code Column
