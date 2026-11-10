@@ -4,10 +4,14 @@ import {
     createGetByIdSchema,
     createGetBySlugSchema,
     isActiveField,
+    optionalShopIdField,
     paginationFields,
+    STORE_DEFAULT_LIMIT,
     searchFields,
     shopScopeFields,
+    shopSlugFields,
     sortDirectionEnum,
+    storeIsActiveField,
     VENDOR_DEFAULT_LIMIT,
 } from "./base-query";
 
@@ -133,6 +137,23 @@ export const updateCategorySchema = z.object({
     featured: z.boolean().optional(),
 });
 
+/**
+ * Store Front Query Schema
+ * - Public access (no auth)
+ * - Limited filters (customer-facing only)
+ * - Only active categories
+ */
+export const storeCategoriesQuerySchema = z.object({
+    ...paginationFields,
+    limit: paginationFields.limit.default(STORE_DEFAULT_LIMIT),
+    ...sortFields,
+    ...searchFields,
+    ...categoryFilterFields,
+    ...storeIsActiveField,
+    ...shopSlugFields,
+    ...optionalShopIdField,
+});
+
 // ============================================================================
 // Type Exports
 // ============================================================================
@@ -142,3 +163,4 @@ export type VendorCategoriesQuery = z.infer<typeof vendorCategoriesQuerySchema>;
 export type Category = z.infer<typeof categorySchema>;
 export type CreateCategoryInput = z.infer<typeof createCategorySchema>;
 export type UpdateCategoryInput = z.infer<typeof updateCategorySchema>;
+export type StoreCategoriesQuery = z.infer<typeof storeCategoriesQuerySchema>;

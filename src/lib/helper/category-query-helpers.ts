@@ -13,6 +13,7 @@ import type {
     BatchedCategoryRelations,
     CategoryQueryOptions,
     CategoryQueryResult,
+    CategoryTreeNode,
     NormalizedCategory,
 } from "@/types/category-types";
 import { db } from "../db";
@@ -270,4 +271,49 @@ export async function fetchCategoryWithRelations(
     );
 
     return normalizeCategory(category, relations, options);
+}
+
+// ============================================================================
+// Get Categories Tree (Hierarchical)
+// ============================================================================
+
+/**
+ * Build a hierarchical category tree from a flat list
+ */
+
+export function buildCategoryTree(
+    flatCategories: NormalizedCategory[],
+): CategoryTreeNode[] {
+    const categoryMap = new Map<string, CategoryTreeNode>();
+
+    // First pass: create tree nodes
+    for (const category of flatCategories) {
+        categoryMap.set(category.id, { ...category, children: [] });
+    }
+
+    // Second pass: build the tree structure
+    const roots: CategoryTreeNode[] = [];
+    for (const category of flatCategories) {
+        const node = categoryMap.get(category.id)!;
+        if (category.parentId && categoryMap.has(category.parentId)) {
+            const parent = categoryMap.get(category.parentId)!;
+            parent.children.push(node);
+        } else {
+            roots.push(node);
+        }
+    }
+
+    // Sort roots and children by sortOrder
+    const sortByOrder = (a: CategoryTreeNode, b: CategoryTreeNode) =>
+        a.sortOrder - b.sortOrder;
+
+    const sortChildren = (nodes: CategoryTreeNode[]) => {
+        nodes.sort(sortByOrder);
+        for (const node of nodes) {
+            sortChildren(node.children);
+        }
+    };
+
+    sortChildren(roots);
+    return roots;
 }

@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { db } from "../db";
 import { user } from "../db/schema/auth-schema";
-import { shops, vendors } from "../db/schema/shop-schema";
+import type { shops, vendors } from "../db/schema/shop-schema";
 
 export const getVendorForUser = async (userId: string) => {
     const vendor = await db.query.vendors.findFirst({
