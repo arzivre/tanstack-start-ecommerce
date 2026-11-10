@@ -1,4 +1,5 @@
 import { defineRelations } from "drizzle-orm";
+import { customerAddresses } from "./address-schema";
 import * as attribute from "./attribute-schema";
 import * as auth from "./auth-schema";
 import { brands } from "./brand-schema";
@@ -21,6 +22,7 @@ const schema = {
     ...products,
     ...coupons,
     ...cart,
+    customerAddresses,
 };
 
 export const relations = defineRelations(schema, (r) => ({
@@ -60,6 +62,15 @@ export const relations = defineRelations(schema, (r) => ({
         user: r.one.user({
             from: r.twoFactor.userId,
             to: r.user.id,
+        }),
+        addresses: r.many.customerAddresses(),
+    },
+
+    customerAddresses: {
+        user: r.one.user({
+            from: r.customerAddresses.userId,
+            to: r.user.id,
+            optional: false,
         }),
     },
 

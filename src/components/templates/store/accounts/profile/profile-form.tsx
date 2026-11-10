@@ -1,88 +1,166 @@
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { AddressBook } from './address-book'
+/**
+ * Customer Addresses Hook
+ *
+ * React hook for address management in the customer account area.
+ * Uses TanStack Query with server functions for SSR-compatible data fetching.
+ */
 
-export function ProfileForm() {
-  //   const { data } = useSession();
-  //   const user = data?.user;
+import {
+    createAddress,
+    deleteAddress,
+    getUserAddresses,
+    setDefaultAddress,
+    updateAddress,
+} from "@/lib/functions/store/address";
+import {
+    queryOptions,
+    useMutation,
+    useQueryClient,
+} from "@tanstack/react-query";
+import { toast } from "sonner";
 
-  //   if (!user) return null;
+import type {
+    CreateAddressInput,
+    DeleteAddressInput,
+    UpdateAddressInput,
+} from "@/lib/validators/address";
 
-  return (
-    <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
-      <div className="space-y-6 p-6">
-        <div className="flex items-center gap-4">
-          {/* <Avatar className="h-20 w-20">
-            <AvatarImage src={user.image || ''} alt={user.name} />
-            <AvatarFallback className="text-lg">
-              {user.name
-                .split(' ')
-                .map((n) => n[0])
-                .join('')
-                .toUpperCase()}
-            </AvatarFallback>
-          </Avatar> */}
-          <div className="space-y-1">
-            <h3 className="text-lg font-semibold">Profile Name</h3>
-            <p className="text-sm text-muted-foreground">Member since Date</p>
-          </div>
-        </div>
+// ============================================================================
+// Query Keys
+// ============================================================================
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="space-y-2">
-            <Label htmlFor="name">Full Name</Label>
-            <Input
-              id="name"
-              placeholder="Enter your name"
-              defaultValue="Name"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <div className="relative">
-              <Input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                defaultValue="Email@email.com"
-                disabled
-                className="pr-10"
-              />
-              <div className="absolute top-1/2 right-3 -translate-y-1/2">
-                {/* {user.emailVerified ? (
-                  <CheckCircle2 className="size-4 text-emerald-500" />
-                ) : (
-                  <XCircle className="size-4 text-destructive" />
-                )} */}
-                Check Icon
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">
-                {/* {user.emailVerified ? 'Email verified' : 'Email not verified'} */}
-                Email not verified
-              </span>
-            </div>
-          </div>
-          <div className="space-y-2 md:col-span-2">
-            <Label htmlFor="image">Profile Image URL</Label>
-            <Input
-              id="image"
-              placeholder="https://example.com/avatar.jpg"
-              defaultValue={''}
-            />
-          </div>
-        </div>
+export const addressKeys = {
+    all: ["account", "addresses"] as const,
+    lists: () => [...addressKeys.all, "list"] as const,
+    details: () => [...addressKeys.all, "detail"] as const,
+};
 
-        <div className="flex justify-end">
-          <Button>Save Changes</Button>
-        </div>
-      </div>
+// ============================================================================
+// Default Query Params
+// ============================================================================
 
-      <div className="border-t p-6">
-        <AddressBook />
-      </div>
-    </div>
-  )
-}
+const defaultParams = {};
+
+// ============================================================================
+// Query Options
+// ============================================================================
+
+/**
+ * Query options for fetching user addresses
+ */
+export const addressesQueryOptions = (_params = defaultParams) =>
+    queryOptions({
+        queryKey: addressKeys.lists(),
+        queryFn: () => getUserAddresses(),
+    });
+
+// ============================================================================
+// Combined Hook
+// ============================================================================
+
+/**
+ * Combined hook for address queries and mutations
+ * Provides a unified interface for all address operations
+ */
+export const useAddress = () => {
+    const queryClient = useQueryClient();
+
+    const invalidateAddresses = () => {
+        queryClient.invalidateQueries({
+            queryKey: addressKeys.lists(),
+        });
+    };
+
+    return {
+        addressesQueryOptions,
+        invalidateAddresses,
+    };
+};
+
+// ============================================================================
+// Mutations Hook
+// ============================================================================
+
+/**
+ * Hook providing mutations for address management
+ */
+export const useAddressMutations = () => {
+    const queryClient = useQueryClient();
+
+    const invalidateAddresses = () => {
+        queryClient.invalidateQueries({
+            queryKey: addressKeys.lists(),
+        });
+    };
+
+    // Create address mutation
+    const createAddressMutation = useMutation({
+        mutationFn: async (data: CreateAddressInput) => {
+            const result = await createAddress({ data });
+            return result;
+        },
+        onSuccess: () => {
+            toast.success("Address added successfully");
+            invalidateAddresses();
+        },
+        onError: (error: Error) => {
+            toast.error(error.message || "Failed to add address");
+        },
+    });
+
+    // Update address mutation
+    const updateAddressMutation = useMutation({
+        mutationFn: async (data: UpdateAddressInput) => {
+            const result = await updateAddress({ data });
+            return result;
+        },
+        onSuccess: () => {
+            toast.success("Address updated successfully");
+            invalidateAddresses();
+        },
+        onError: (error: Error) => {
+            toast.error(error.message || "Failed to update address");
+        },
+    });
+
+    // Delete address mutation
+    const deleteAddressMutation = useMutation({
+        mutationFn: async (data: DeleteAddressInput) => {
+            const result = await deleteAddress({ data });
+            return result;
+        },
+        onSuccess: () => {
+            toast.success("Address deleted successfully");
+            invalidateAddresses();
+        },
+        onError: (error: Error) => {
+            toast.error(error.message || "Failed to delete address");
+        },
+    });
+
+    // Set default address mutation
+    const setDefaultAddressMutation = useMutation({
+        mutationFn: async (data: DeleteAddressInput) => {
+            const result = await setDefaultAddress({ data });
+            return result;
+        },
+        onSuccess: () => {
+            toast.success("Default address updated");
+            invalidateAddresses();
+        },
+        onError: (_error: Error) => {
+            toast.error("Failed to set default address");
+        },
+    });
+
+    return {
+        createAddress: createAddressMutation.mutateAsync,
+        updateAddress: updateAddressMutation.mutateAsync,
+        deleteAddress: deleteAddressMutation.mutateAsync,
+        setDefaultAddress: setDefaultAddressMutation.mutateAsync,
+        isCreating: createAddressMutation.isPending,
+        isUpdating: updateAddressMutation.isPending,
+        isDeleting: deleteAddressMutation.isPending,
+        isSettingDefault: setDefaultAddressMutation.isPending,
+    };
+};
