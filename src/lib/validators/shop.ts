@@ -78,8 +78,26 @@ export const deleteShopSchema = z.object({
     id: z.string().min(1, "Shop ID is required"),
 });
 
+export const storeShopsQuerySchema = z.object({
+    limit: z.coerce.number().min(1).max(100).optional().default(20),
+    offset: z.coerce.number().min(0).optional().default(0),
+    search: z.string().optional(),
+    category: z.string().optional(),
+    sortBy: z
+        .enum(["name", "rating", "createdAt", "totalProducts"])
+        .optional()
+        .default("rating"),
+    sortDirection: z.enum(["asc", "desc"]).optional().default("desc"),
+});
+
+export const storeShopBySlugSchema = z.object({
+    slug: z.string().min(1, "Shop slug is required"),
+});
+
 // Type exports
 export type CreateShopInput = z.infer<typeof createShopSchema>;
 export type UpdateShopInput = z.infer<typeof updateShopSchema>;
 export type GetShopBySlugInput = z.infer<typeof getShopBySlugSchema>;
 export type DeleteShopInput = z.infer<typeof deleteShopSchema>;
+export type StoreShopsQueryInput = z.infer<typeof storeShopsQuerySchema>;
+export type StoreShopBySlugInput = z.infer<typeof storeShopBySlugSchema>;

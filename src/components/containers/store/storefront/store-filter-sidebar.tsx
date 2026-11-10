@@ -1,171 +1,196 @@
-import StoreSearch from '@/components/base/store/storefront/store-search'
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Label } from '@/components/ui/label'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-import { useStoreFront } from '@/lib/store/store'
-import { SlidersHorizontal, Star, X } from 'lucide-react'
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import { Search, SlidersHorizontal, Star, X } from "lucide-react";
+
+import type { StoreFilters } from "@/types/store-types";
 
 const categories = [
-  'All Categories',
-  'Groceries',
-  'Electronics',
-  'Fashion',
-  'Home & Garden',
-  'Sports',
-  'Books',
-]
+    "All Categories",
+    "Groceries",
+    "Electronics",
+    "Fashion",
+    "Home & Garden",
+    "Sports",
+    "Books",
+];
 
 const ratingOptions = [
-  { value: 0, label: 'All Ratings' },
-  { value: 4, label: '4+ Stars' },
-  { value: 4.5, label: '4.5+ Stars' },
-]
+    { value: 0, label: "All Ratings" },
+    { value: 4, label: "4+ Stars" },
+    { value: 4.5, label: "4.5+ Stars" },
+];
 
 const sortOptions = [
-  { value: 'rating', label: 'Highest Rated' },
-  { value: 'popular', label: 'Most Popular' },
-  { value: 'newest', label: 'Newest' },
-  { value: 'name', label: 'Name (A-Z)' },
-]
+    { value: "rating", label: "Highest Rated" },
+    { value: "popular", label: "Most Popular" },
+    { value: "newest", label: "Newest" },
+    { value: "name", label: "Name (A-Z)" },
+];
 
-export function StoreFilterSidebar() {
-  const { filters, setFilters, resetFilters } = useStoreFront()
-  const hasActiveFilters =
-    filters.search ||
-    filters.category ||
-    filters.minRating > 0 ||
-    filters.verifiedOnly
+interface StoreFilterSidebarProps {
+    filters: StoreFilters;
+    onFilterChange: (filters: Partial<StoreFilters>) => void;
+    onReset: () => void;
+}
 
-  const handleSearchChange = (search: string) => {
-    setFilters({ search })
-  }
+export default function StoreFilterSidebar({
+    filters,
+    onFilterChange,
+    onReset,
+}: StoreFilterSidebarProps) {
+    const hasActiveFilters =
+        filters.search ||
+        filters.category ||
+        filters.minRating > 0 ||
+        filters.verifiedOnly;
 
-  const handleCategoryChange = (value: string) => {
-    setFilters({ category: value === 'All Categories' ? '' : value })
-  }
+    const handleSearchChange = (search: string) => {
+        onFilterChange({ search });
+    };
 
-  const handleRatingChange = (value: string) => {
-    setFilters({ minRating: Number(value) })
-  }
+    const handleCategoryChange = (value: string) => {
+        onFilterChange({ category: value === "All Categories" ? "" : value });
+    };
 
-  const handleVerifiedChange = (checked: boolean) => {
-    setFilters({ verifiedOnly: checked })
-  }
+    const handleRatingChange = (value: string) => {
+        onFilterChange({ minRating: Number(value) });
+    };
 
-  const handleSortChange = (value: string) => {
-    setFilters({ sortBy: value as any })
-  }
+    const handleVerifiedChange = (checked: boolean) => {
+        onFilterChange({ verifiedOnly: checked });
+    };
 
-  return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <SlidersHorizontal className="size-5" />
-          <h2 className="text-lg font-semibold">Filters</h2>
-        </div>
-        {hasActiveFilters && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={resetFilters}
-            className="h-8 gap-1 text-xs"
-          >
-            <X className="size-3" />
-            Clear
-          </Button>
-        )}
-      </div>
+    const handleSortChange = (value: string) => {
+        onFilterChange({ sortBy: value as any });
+    };
 
-      {/* Search */}
-      <StoreSearch filters={filters} onSearchChange={handleSearchChange} />
-
-      {/* Category */}
-      <div className="space-y-2">
-        <Label>Category</Label>
-        <Select
-          value={filters.category || 'All Categories'}
-          onValueChange={handleCategoryChange}
-        >
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {categories.map((category) => (
-              <SelectItem key={category} value={category}>
-                {category}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      {/* Rating */}
-      <div className="space-y-3">
-        <Label>Minimum Rating</Label>
-        <RadioGroup
-          value={filters.minRating.toString()}
-          onValueChange={handleRatingChange}
-        >
-          {ratingOptions.map((option) => (
-            <div key={option.value} className="flex items-center space-x-2">
-              <RadioGroupItem
-                value={option.value.toString()}
-                id={`rating-${option.value}`}
-              />
-              <Label
-                htmlFor={`rating-${option.value}`}
-                className="flex cursor-pointer items-center gap-1 font-normal"
-              >
-                {option.value > 0 && (
-                  <Star className="size-3.5 fill-yellow-400 text-yellow-400" />
+    return (
+        <div className="space-y-6">
+            {/* Header */}
+            <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                    <SlidersHorizontal className="size-5" />
+                    <h2 className="font-semibold text-lg">Filters</h2>
+                </div>
+                {hasActiveFilters && (
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={onReset}
+                        className="h-8 gap-1 text-xs"
+                    >
+                        <X className="size-3" />
+                        Clear
+                    </Button>
                 )}
-                {option.label}
-              </Label>
             </div>
-          ))}
-        </RadioGroup>
-      </div>
 
-      {/* Verified Only */}
-      <div className="flex items-center space-x-2">
-        <Checkbox
-          id="verified"
-          checked={filters.verifiedOnly}
-          onCheckedChange={handleVerifiedChange}
-        />
-        <Label
-          htmlFor="verified"
-          className="cursor-pointer text-sm leading-none font-normal peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Verified stores only
-        </Label>
-      </div>
+            {/* Search */}
+            <div className="space-y-2">
+                <Label htmlFor="search">Search Stores</Label>
+                <div className="relative">
+                    <Search className="-translate-y-1/2 absolute top-1/2 left-3 size-4 text-muted-foreground" />
+                    <Input
+                        id="search"
+                        placeholder="Search by name..."
+                        value={filters.search}
+                        onChange={(e) => handleSearchChange(e.target.value)}
+                        className="pl-9"
+                    />
+                </div>
+            </div>
 
-      {/* Sort By */}
-      <div className="space-y-2">
-        <Label>Sort By</Label>
-        <Select value={filters.sortBy} onValueChange={handleSortChange}>
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {sortOptions.map((option) => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-    </div>
-  )
+            {/* Category */}
+            <div className="space-y-2">
+                <Label>Category</Label>
+                <Select
+                    value={filters.category || "All Categories"}
+                    onValueChange={handleCategoryChange}
+                >
+                    <SelectTrigger>
+                        <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {categories.map((category) => (
+                            <SelectItem key={category} value={category}>
+                                {category}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
+
+            {/* Rating */}
+            <div className="space-y-3">
+                <Label>Minimum Rating</Label>
+                <RadioGroup
+                    value={filters.minRating.toString()}
+                    onValueChange={handleRatingChange}
+                >
+                    {ratingOptions.map((option) => (
+                        <div
+                            key={option.value}
+                            className="flex items-center space-x-2"
+                        >
+                            <RadioGroupItem
+                                value={option.value.toString()}
+                                id={`rating-${option.value}`}
+                            />
+                            <Label
+                                htmlFor={`rating-${option.value}`}
+                                className="flex cursor-pointer items-center gap-1 font-normal"
+                            >
+                                {option.value > 0 && (
+                                    <Star className="size-3.5 fill-yellow-400 text-yellow-400" />
+                                )}
+                                {option.label}
+                            </Label>
+                        </div>
+                    ))}
+                </RadioGroup>
+            </div>
+
+            {/* Verified Only */}
+            <div className="flex items-center space-x-2">
+                <Checkbox
+                    id="verified"
+                    checked={filters.verifiedOnly}
+                    onCheckedChange={handleVerifiedChange}
+                />
+                <Label
+                    htmlFor="verified"
+                    className="cursor-pointer font-normal text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                    Verified stores only
+                </Label>
+            </div>
+
+            {/* Sort By */}
+            <div className="space-y-2">
+                <Label>Sort By</Label>
+                <Select value={filters.sortBy} onValueChange={handleSortChange}>
+                    <SelectTrigger>
+                        <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {sortOptions.map((option) => (
+                            <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
+        </div>
+    );
 }
