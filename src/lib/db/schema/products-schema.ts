@@ -18,6 +18,7 @@ import {
 import { attributes } from "./attribute-schema";
 import { brands } from "./brand-schema";
 import { categories } from "./category-schema";
+import { shippingMethods } from "./shipping-schema";
 import { shops } from "./shop-schema";
 import { tags } from "./tags-schema";
 import { taxRates } from "./tax-schema";
@@ -151,9 +152,24 @@ export const productAttributes = pgTable(
         attributeId: text("attribute_id")
             .notNull()
             .references(() => attributes.id, { onDelete: "cascade" }),
-        value: text("value"), // Optional: specific value for this product-attribute
+        value: text("value"), // Selected value (e.g., "#FF0000" or "XL")
     },
     (table) => [primaryKey({ columns: [table.productId, table.attributeId] })],
+);
+
+export const productShippingMethods = pgTable(
+    "product_shipping_methods",
+    {
+        productId: text("product_id")
+            .notNull()
+            .references(() => products.id, { onDelete: "cascade" }),
+        shippingMethodId: text("shipping_method_id")
+            .notNull()
+            .references(() => shippingMethods.id, { onDelete: "cascade" }),
+    },
+    (table) => [
+        primaryKey({ columns: [table.productId, table.shippingMethodId] }),
+    ],
 );
 
 // ============================================================================
@@ -168,3 +184,6 @@ export type ProductTag = typeof productTags.$inferSelect;
 export type NewProductTag = typeof productTags.$inferInsert;
 export type ProductAttribute = typeof productAttributes.$inferSelect;
 export type NewProductAttribute = typeof productAttributes.$inferInsert;
+export type ProductShippingMethod = typeof productShippingMethods.$inferSelect;
+export type NewProductShippingMethod =
+    typeof productShippingMethods.$inferInsert;

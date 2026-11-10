@@ -29,7 +29,7 @@ export interface ShippingMutationState {
 export interface ShippingColumnConfig {
     actions: ShippingTableActions;
     mutationState?: ShippingMutationState;
-    isShippingMutating?: (id: string) => boolean;
+    isMutating?: (id: string) => boolean;
     mode?: "vendor" | "admin";
 }
 
@@ -63,7 +63,8 @@ export const SHIPPING_STATUS_OPTIONS = [
 export const createShippingColumns = ({
     actions,
     mutationState,
-    isShippingMutating,
+    isMutating,
+    mode = "vendor",
 }: ShippingColumnConfig): ColumnDef<ShippingMethodItem>[] => {
     return [
         {
@@ -131,7 +132,7 @@ export const createShippingColumns = ({
                 const shippingMethod = row.original;
                 const isDeleting =
                     mutationState?.deletingId === shippingMethod.id ||
-                    isShippingMutating?.(shippingMethod.id);
+                    isMutating?.(shippingMethod.id);
 
                 return (
                     <DropdownMenu>

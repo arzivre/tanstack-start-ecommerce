@@ -210,15 +210,36 @@ export const relations = defineRelations(schema, (r) => ({
             from: r.products.id.through(r.productAttributes.productId),
             to: r.attributes.id.through(r.productAttributes.attributeId),
         }),
+        shippingMethods: r.many.shippingMethods({
+            from: r.products.id.through(r.productShippingMethods.productId),
+            to: r.shippingMethods.id.through(
+                r.productShippingMethods.shippingMethodId,
+            ),
+        }),
 
-        // Direct access to the junction rows (needed to read `value`)
-        productAttributes: r.many.productAttributes(),
+        // Direct access to junction rows
+        productAttributes: r.many.productAttributes(), // needed to read `value`
+        productShippingMethods: r.many.productShippingMethods(),
+
         coupons: r.many.coupons({
             from: r.products.id.through(r.couponProducts.productId),
             to: r.coupons.id.through(r.couponProducts.couponId),
         }),
         cartItems: r.many.cartItems(),
         wishlistItems: r.many.wishlistItems(),
+    },
+
+    productShippingMethods: {
+        product: r.one.products({
+            from: r.productShippingMethods.productId,
+            to: r.products.id,
+            optional: false,
+        }),
+        shippingMethod: r.one.shippingMethods({
+            from: r.productShippingMethods.shippingMethodId,
+            to: r.shippingMethods.id,
+            optional: false,
+        }),
     },
 
     productImages: {
@@ -339,6 +360,12 @@ export const relations = defineRelations(schema, (r) => ({
             from: r.shippingMethods.shopId,
             to: r.shops.id,
             optional: false,
+        }),
+        products: r.many.products({
+            from: r.shippingMethods.id.through(
+                r.productShippingMethods.shippingMethodId,
+            ),
+            to: r.products.id.through(r.productShippingMethods.productId),
         }),
     },
 
