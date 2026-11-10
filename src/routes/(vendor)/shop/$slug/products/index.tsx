@@ -322,6 +322,7 @@ function ProductsPage() {
                         ? {
                               name: editingProduct.name,
                               sku: editingProduct.sku || "",
+                              slug: editingProduct.slug || "",
                               sellingPrice: editingProduct.sellingPrice,
                               regularPrice: editingProduct.regularPrice || "",
                               costPrice: editingProduct.costPrice || "",

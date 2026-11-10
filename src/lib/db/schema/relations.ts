@@ -6,12 +6,15 @@ import { brands } from "./brand-schema";
 import * as cart from "./cart-schema";
 import { categories } from "./category-schema";
 import * as coupons from "./coupon-schema";
+import { emailDeliveries } from "./email-schema";
+import { notifications } from "./notification-schema";
+import * as order from "./order-schema";
 import * as products from "./products-schema";
+import { shippingMethods } from "./shipping-schema";
 import * as shop from "./shop-schema";
 import { tags } from "./tags-schema";
 import { taxRates } from "./tax-schema";
 import { wishlistItems } from "./wishlist-schema";
-import { shippingMethods } from "./shipping-schema";
 
 const schema = {
     ...auth,
@@ -27,6 +30,9 @@ const schema = {
     customerAddresses,
     wishlistItems,
     shippingMethods,
+    ...order,
+    notifications,
+    emailDeliveries,
 };
 
 export const relations = defineRelations(schema, (r) => ({
@@ -48,6 +54,7 @@ export const relations = defineRelations(schema, (r) => ({
         cartSessions: r.many.cartSessions(),
         addresses: r.many.customerAddresses(),
         wishlistItems: r.many.wishlistItems(),
+        orders: r.many.orders(),
     },
 
     session: {
@@ -100,6 +107,16 @@ export const relations = defineRelations(schema, (r) => ({
         products: r.many.products(),
         coupons: r.many.coupons(),
         shippingMethods: r.many.shippingMethods(),
+        orders: r.many.orders(),
+        notifications: r.many.notifications(),
+    },
+
+    notifications: {
+        shop: r.one.shops({
+            from: r.notifications.shopId,
+            to: r.shops.id,
+            optional: false,
+        }),
     },
 
     customerAddresses: {
@@ -227,6 +244,7 @@ export const relations = defineRelations(schema, (r) => ({
         }),
         cartItems: r.many.cartItems(),
         wishlistItems: r.many.wishlistItems(),
+        orderItems: r.many.orderItems(),
     },
 
     productShippingMethods: {
@@ -379,6 +397,51 @@ export const relations = defineRelations(schema, (r) => ({
             from: r.wishlistItems.productId,
             to: r.products.id,
             optional: false,
+        }),
+    },
+
+    orders: {
+        // Nullable: userId is nullable (guest checkout, or user deleted)
+        user: r.one.user({
+            from: r.orders.userId,
+            to: r.user.id,
+        }),
+        shop: r.one.shops({
+            from: r.orders.shopId,
+            to: r.shops.id,
+            optional: false,
+        }),
+        items: r.many.orderItems(),
+        payments: r.many.payments(),
+        emailDeliveries: r.many.emailDeliveries(),
+    },
+
+    orderItems: {
+        order: r.one.orders({
+            from: r.orderItems.orderId,
+            to: r.orders.id,
+            optional: false,
+        }),
+        // Nullable: the product may be deleted later (snapshot fields remain)
+        product: r.one.products({
+            from: r.orderItems.productId,
+            to: r.products.id,
+        }),
+    },
+
+    payments: {
+        order: r.one.orders({
+            from: r.payments.orderId,
+            to: r.orders.id,
+            optional: false,
+        }),
+    },
+
+    emailDeliveries: {
+        // Nullable: orderId is nullable (future email types may not be order-related)
+        order: r.one.orders({
+            from: r.emailDeliveries.orderId,
+            to: r.orders.id,
         }),
     },
 }));

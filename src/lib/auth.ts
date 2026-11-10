@@ -20,6 +20,21 @@ export const auth = betterAuth({
     // App name for TOTP issuer
     appName: "Shop Stack",
 
+    user: {
+        additionalFields: {
+            role: {
+                type: "string",
+                required: false,
+                defaultValue: "customer",
+            },
+            orderEmailsEnabled: {
+                type: "boolean",
+                required: false,
+                defaultValue: true,
+            },
+        },
+    },
+
     // Security-related configuration
     // Use a deterministic dev secret if env is missing to prevent runtime errors
     secret: process.env.BETTER_AUTH_SECRET ?? "dev-secret",

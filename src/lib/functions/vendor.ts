@@ -1,8 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
-import { eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
+import { v4 as uuidv4 } from "uuid";
 import { auth } from "../auth";
 import { db } from "../db";
 import { user } from "../db/schema/auth-schema";
+import { notifications } from "../db/schema/notification-schema";
 import { shops, vendors } from "../db/schema/shop-schema";
 import { generateSlug } from "../utils/slug";
 import { vendorRegisterSchema } from "../validators/auth";
@@ -134,3 +136,47 @@ export const registerVendor = createServerFn({ method: "POST" })
             }
         }
     });
+
+export async function createOrderNotification(params: {
+    shopId: string;
+    orderNumber: string;
+    orderId: string;
+    customerName: string;
+    totalAmount: number;
+    itemCount: number;
+}) {
+    const [existing] = await db
+        .select({ id: notifications.id })
+        .from(notifications)
+        .where(
+            and(
+                eq(notifications.shopId, params.shopId),
+                eq(notifications.type, "new_order"),
+                sql`(${notifications.data} ->> 'orderId') = ${params.orderId}`,
+            ),
+        )
+        .limit(1);
+
+    if (existing?.id) {
+        return { id: existing.id };
+    }
+
+    const id = uuidv4();
+
+    await db.insert(notifications).values({
+        id,
+        shopId: params.shopId,
+        type: "new_order",
+        title: "New Order Received! 🎉",
+        message: `${params.customerName} placed an order for ${params.itemCount} item(s) - $${params.totalAmount.toFixed(2)}`,
+        data: {
+            orderId: params.orderId,
+            orderNumber: params.orderNumber,
+            amount: params.totalAmount,
+            link: `/shop/orders/${params.orderId}`,
+        },
+        isRead: false,
+    });
+
+    return { id };
+}
