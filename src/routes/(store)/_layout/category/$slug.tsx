@@ -1,4 +1,4 @@
-import { CategoryDetailTemplate } from "@/components/templates/store/category/category-detail-template";
+import CategoryDetailTemplate from "@/components/templates/store/category/category-detail-template";
 import { createFileRoute } from "@tanstack/react-router";
 import { storeCategoryBySlugQueryOptions } from "@/hooks/store/use-store-categories";
 
