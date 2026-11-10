@@ -6,7 +6,12 @@ import { QuantitySelector } from "@/components/base/products/details/quantity-se
 import { ShippingInfoSection } from "@/components/base/products/details/shipping-info-section";
 import StoreInfoCard from "@/components/base/products/details/store-info-card";
 import { useCart } from "@/hooks/store/use-cart";
+import {
+    useWishlistMutations,
+    wishlistStatusQueryOptions,
+} from "@/hooks/store/use-wishlist";
 import { useCartStore } from "@/lib/store/cart-store";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -19,11 +24,15 @@ export default function ProductMainSection({
     product,
 }: ProductMainSectionProps) {
     const [quantity, setQuantity] = useState(1);
-    const [isWishlisted, setIsWishlisted] = useState(false);
     const [isCompareListed, setIsCompareListed] = useState(false);
 
     const { addItem } = useCart();
     const { setIsOpen } = useCartStore();
+    const { toggleWishlist, isToggling } = useWishlistMutations();
+    const { data: wishlistStatus } = useQuery(
+        wishlistStatusQueryOptions(product.id),
+    );
+    const isWishlisted = wishlistStatus?.isInWishlist ?? false;
 
     const handleAddToCart = async () => {
         try {
@@ -41,6 +50,10 @@ export default function ProductMainSection({
 
     const handleBuyNow = () => {
         console.log("Buy now:", product.id, quantity);
+    };
+
+    const handleToggleWishlist = async () => {
+        await toggleWishlist({ productId: product.id });
     };
 
     const regularPrice = parseFloat(product.regularPrice || "0");
@@ -118,14 +131,13 @@ export default function ProductMainSection({
                         <ProductActions
                             onAddToCart={handleAddToCart}
                             onBuyNow={handleBuyNow}
-                            onToggleWishlist={() =>
-                                setIsWishlisted(!isWishlisted)
-                            }
+                            onToggleWishlist={handleToggleWishlist}
                             onToggleCompare={() =>
                                 setIsCompareListed(!isCompareListed)
                             }
                             isWishlisted={isWishlisted}
                             isCompareListed={isCompareListed}
+                            isLoading={isToggling}
                             disabled={product.stock <= 0}
                         />
                     </div>

@@ -96,7 +96,7 @@ export function EntityFormDialog<T extends Record<string, any>>({
             },
             {} as Record<string, any>,
         ),
-        ...(initialValues || {}),
+        ...initialValues,
     };
 
     const form = useForm({

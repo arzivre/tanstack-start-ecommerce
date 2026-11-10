@@ -10,6 +10,7 @@ import * as products from "./products-schema";
 import * as shop from "./shop-schema";
 import { tags } from "./tags-schema";
 import { taxRates } from "./tax-schema";
+import { wishlistItems } from "./wishlist-schema";
 
 const schema = {
     ...auth,
@@ -23,6 +24,7 @@ const schema = {
     ...coupons,
     ...cart,
     customerAddresses,
+    wishlistItems,
 };
 
 export const relations = defineRelations(schema, (r) => ({
@@ -42,6 +44,8 @@ export const relations = defineRelations(schema, (r) => ({
         }),
         couponUsages: r.many.couponUsage(),
         cartSessions: r.many.cartSessions(),
+        addresses: r.many.customerAddresses(),
+        wishlistItems: r.many.wishlistItems(),
     },
 
     session: {
@@ -62,15 +66,6 @@ export const relations = defineRelations(schema, (r) => ({
         user: r.one.user({
             from: r.twoFactor.userId,
             to: r.user.id,
-        }),
-        addresses: r.many.customerAddresses(),
-    },
-
-    customerAddresses: {
-        user: r.one.user({
-            from: r.customerAddresses.userId,
-            to: r.user.id,
-            optional: false,
         }),
     },
 
@@ -102,6 +97,14 @@ export const relations = defineRelations(schema, (r) => ({
         taxRates: r.many.taxRates(),
         products: r.many.products(),
         coupons: r.many.coupons(),
+    },
+
+    customerAddresses: {
+        user: r.one.user({
+            from: r.customerAddresses.userId,
+            to: r.user.id,
+            optional: false,
+        }),
     },
 
     categories: {
@@ -212,6 +215,7 @@ export const relations = defineRelations(schema, (r) => ({
             to: r.coupons.id.through(r.couponProducts.couponId),
         }),
         cartItems: r.many.cartItems(),
+        wishlistItems: r.many.wishlistItems(),
     },
 
     productImages: {
@@ -322,6 +326,19 @@ export const relations = defineRelations(schema, (r) => ({
         }),
         product: r.one.products({
             from: r.cartItems.productId,
+            to: r.products.id,
+            optional: false,
+        }),
+    },
+
+    wishlistItems: {
+        user: r.one.user({
+            from: r.wishlistItems.userId,
+            to: r.user.id,
+            optional: false,
+        }),
+        product: r.one.products({
+            from: r.wishlistItems.productId,
             to: r.products.id,
             optional: false,
         }),
