@@ -20,7 +20,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const getBrands = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(vendorBrandsQuerySchema)
+    .validator(vendorBrandsQuerySchema)
     .handler(async ({ context, data }): Promise<BrandListResponse> => {
         const userId = context.session.user.id;
         const {
@@ -55,7 +55,7 @@ export const getBrands = createServerFn({ method: "GET" })
 
 export const getBrandById = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorBrandsQuerySchema
             .pick({ shopId: true })
             .extend({ id: vendorBrandsQuerySchema.shape.shopId }),
@@ -91,7 +91,7 @@ export const getBrandById = createServerFn({ method: "GET" })
 
 export const createBrand = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createBrandSchema)
+    .validator(createBrandSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { shopId, ...brandData } = data;
@@ -158,7 +158,7 @@ export const createBrand = createServerFn({ method: "POST" })
 
 export const updateBrand = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateBrandSchema)
+    .validator(updateBrandSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { id, shopId, ...updateData } = data;
@@ -232,7 +232,7 @@ export const updateBrand = createServerFn({ method: "POST" })
 
 export const deleteBrand = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorBrandsQuerySchema
             .pick({ shopId: true })
             .extend({ id: vendorBrandsQuerySchema.shape.shopId }),

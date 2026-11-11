@@ -26,7 +26,7 @@ import type { CategoryListResponse } from "@/types/category-types";
 // ============================================================================
 export const getCategories = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(vendorCategoriesQuerySchema)
+    .validator(vendorCategoriesQuerySchema)
     .handler(async ({ context, data }): Promise<CategoryListResponse> => {
         const userId = context.session.user.id;
         const {
@@ -65,7 +65,7 @@ export const getCategories = createServerFn({ method: "GET" })
 
 export const getCategoryById = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorCategoriesQuerySchema
             .pick({ shopId: true })
             .extend({ id: vendorCategoriesQuerySchema.shape.shopId }),
@@ -101,7 +101,7 @@ export const getCategoryById = createServerFn({ method: "GET" })
 
 export const createCategory = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createCategorySchema)
+    .validator(createCategorySchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { shopId, ...categoryData } = data;
@@ -184,7 +184,7 @@ export const createCategory = createServerFn({ method: "POST" })
 
 export const updateCategory = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateCategorySchema)
+    .validator(updateCategorySchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { id, shopId, ...updateData } = data;
@@ -297,7 +297,7 @@ export const updateCategory = createServerFn({ method: "POST" })
 
 export const deleteCategory = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorCategoriesQuerySchema
             .pick({ shopId: true })
             .extend({ id: vendorCategoriesQuerySchema.shape.shopId }),

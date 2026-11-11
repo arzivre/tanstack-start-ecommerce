@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index, integer } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
     id: text("id").primaryKey(),
@@ -88,6 +88,11 @@ export const twoFactor = pgTable(
         userId: text("user_id")
             .notNull()
             .references(() => user.id, { onDelete: "cascade" }),
+        verified: boolean("verified").default(true),
+        failedVerificationCount: integer("failed_verification_count").default(
+            0,
+        ),
+        lockedUntil: timestamp("locked_until"),
     },
     (table) => [
         index("twoFactor_secret_idx").on(table.secret),

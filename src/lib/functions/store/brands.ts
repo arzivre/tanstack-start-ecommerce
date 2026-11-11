@@ -37,7 +37,7 @@ import type { BrandItem, BrandListResponse } from "@/types/brands";
  * No authentication required
  */
 export const getStoreBrands = createServerFn({ method: "GET" })
-    .inputValidator(storeBrandsQuerySchema)
+    .validator(storeBrandsQuerySchema)
     .handler(async ({ data }): Promise<BrandListResponse> => {
         const {
             limit,
@@ -101,7 +101,7 @@ export const getStoreBrands = createServerFn({ method: "GET" })
  * Only returns if the brand is active
  */
 export const getStoreBrandBySlug = createServerFn({ method: "GET" })
-    .inputValidator(getBrandBySlugSchema)
+    .validator(getBrandBySlugSchema)
     .handler(async ({ data }) => {
         const { slug, shopSlug } = data;
 
@@ -152,7 +152,7 @@ export const getStoreBrandBySlug = createServerFn({ method: "GET" })
  * Only returns if the brand is active
  */
 export const getStoreBrandById = createServerFn({ method: "GET" })
-    .inputValidator(getBrandByIdSchema)
+    .validator(getBrandByIdSchema)
     .handler(async ({ data }) => {
         const { id } = data;
 
@@ -184,7 +184,7 @@ export const getStoreBrandById = createServerFn({ method: "GET" })
  * Get popular brands based on product count for homepage sections
  */
 export const getPopularBrands = createServerFn({ method: "GET" })
-    .inputValidator(
+    .validator(
         z.object({
             limit: z.coerce.number().min(1).max(20).optional().default(10),
             shopSlug: z.string().optional(),

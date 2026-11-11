@@ -30,7 +30,7 @@ import { z as zod } from "zod";
 
 export const getTaxRates = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(vendorTaxRatesQuerySchema)
+    .validator(vendorTaxRatesQuerySchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const {
@@ -67,7 +67,7 @@ export const getTaxRates = createServerFn({ method: "GET" })
 
 export const getTaxRateById = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorTaxRatesQuerySchema
             .pick({ shopId: true })
             .extend({ id: zod.string().min(1, "Tax rate ID is required") }),
@@ -102,7 +102,7 @@ export const getTaxRateById = createServerFn({ method: "GET" })
 
 export const createTaxRate = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createTaxRateSchema)
+    .validator(createTaxRateSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { shopId, ...taxRateData } = data;
@@ -151,7 +151,7 @@ export const createTaxRate = createServerFn({ method: "POST" })
 
 export const updateTaxRate = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateTaxRateSchema)
+    .validator(updateTaxRateSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { id, shopId, ...updateData } = data;
@@ -221,7 +221,7 @@ export const updateTaxRate = createServerFn({ method: "POST" })
 
 export const deleteTaxRate = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorTaxRatesQuerySchema
             .pick({ shopId: true })
             .extend({ id: zod.string().min(1, "Tax rate ID is required") }),
@@ -257,7 +257,7 @@ export const deleteTaxRate = createServerFn({ method: "POST" })
 
 export const toggleTaxRateActive = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorTaxRatesQuerySchema
             .pick({ shopId: true })
             .extend({ id: zod.string().min(1, "Tax rate ID is required") }),

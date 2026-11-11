@@ -25,7 +25,7 @@ export type { NormalizedShop };
 
 export const getAdminShops = createServerFn({ method: "GET" })
     .middleware([adminMiddleware])
-    .inputValidator(adminShopsQuerySchema)
+    .validator(adminShopsQuerySchema)
     .handler(async ({ data }): Promise<AdminShopListResponse> => {
         const {
             limit = 10,

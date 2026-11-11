@@ -49,7 +49,7 @@ import type {
 
 export const getCoupons = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(vendorCouponsQuerySchema)
+    .validator(vendorCouponsQuerySchema)
     .handler(async ({ context, data }): Promise<CouponListResponse> => {
         const userId = context.session.user.id;
         const {
@@ -91,7 +91,7 @@ export const getCoupons = createServerFn({ method: "GET" })
 
 export const getCouponById = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         getCouponByIdSchema.extend({
             shopId: z.string().min(1, "Shop ID is required"),
         }),
@@ -127,7 +127,7 @@ export const getCouponById = createServerFn({ method: "GET" })
 
 export const getCouponByCode = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(getCouponByCodeSchema)
+    .validator(getCouponByCodeSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { code, shopId } = data;
@@ -162,7 +162,7 @@ export const getCouponByCode = createServerFn({ method: "GET" })
 
 export const createCoupon = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createCouponSchema)
+    .validator(createCouponSchema)
     .handler(async ({ context, data }): Promise<CreateCouponResponse> => {
         const userId = context.session.user.id;
         const { shopId, productIds, categoryIds, ...couponData } = data;
@@ -273,7 +273,7 @@ export const createCoupon = createServerFn({ method: "POST" })
 
 export const updateCoupon = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateCouponSchema)
+    .validator(updateCouponSchema)
     .handler(async ({ context, data }): Promise<UpdateCouponResponse> => {
         const userId = context.session.user.id;
         const { id, shopId, productIds, categoryIds, ...updateData } = data;
@@ -455,7 +455,7 @@ export const updateCoupon = createServerFn({ method: "POST" })
 
 export const deleteCoupon = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         deleteCouponSchema.extend({
             shopId: z.string().min(1, "Shop ID is required"),
         }),
@@ -487,7 +487,7 @@ export const deleteCoupon = createServerFn({ method: "POST" })
 // ============================================================================
 
 export const validateCoupon = createServerFn({ method: "POST" })
-    .inputValidator(validateCouponSchema)
+    .validator(validateCouponSchema)
     .handler(async ({ data }): Promise<ValidateCouponResponse> => {
         const { code, shopId, cartAmount, userId, cartItems } = data;
         const _cartAmountValue = parseFloat(cartAmount);
@@ -669,7 +669,7 @@ export const validateCoupon = createServerFn({ method: "POST" })
 // ============================================================================
 
 export const getAvailableCouponsForUser = createServerFn({ method: "GET" })
-    .inputValidator(getAvailableCouponsForUserSchema)
+    .validator(getAvailableCouponsForUserSchema)
     .handler(async ({ data }): Promise<AvailableCouponsResponse> => {
         const { shopId, userId } = data;
         const now = new Date();

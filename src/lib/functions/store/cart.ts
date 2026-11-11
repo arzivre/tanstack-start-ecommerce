@@ -21,7 +21,7 @@ import type { CartResponse } from "@/types/cart";
 
 export const getCart = createServerFn({ method: "GET" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(getCartSchema)
+    .validator(getCartSchema)
     .handler(async ({ context, data }): Promise<CartResponse> => {
         const userId = context.session?.user?.id;
         const guestSessionId = data.sessionId || null;
@@ -63,7 +63,7 @@ export const getCart = createServerFn({ method: "GET" })
 
 export const addToCart = createServerFn({ method: "POST" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(
+    .validator(
         addToCartSchema.extend({
             sessionId: getCartSchema.shape.sessionId,
         }),
@@ -149,7 +149,7 @@ export const addToCart = createServerFn({ method: "POST" })
 
 export const updateCartItem = createServerFn({ method: "POST" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(
+    .validator(
         updateCartItemSchema.extend({
             sessionId: getCartSchema.shape.sessionId,
         }),
@@ -214,7 +214,7 @@ export const updateCartItem = createServerFn({ method: "POST" })
 
 export const removeFromCart = createServerFn({ method: "POST" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(
+    .validator(
         removeFromCartSchema.extend({
             sessionId: getCartSchema.shape.sessionId,
         }),
@@ -263,7 +263,7 @@ export const removeFromCart = createServerFn({ method: "POST" })
 
 export const clearCart = createServerFn({ method: "POST" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(clearCartSchema)
+    .validator(clearCartSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
         const guestSessionId = data.sessionId;
@@ -313,7 +313,7 @@ export const clearCart = createServerFn({ method: "POST" })
 
 export const mergeCarts = createServerFn({ method: "POST" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(mergeCartsSchema)
+    .validator(mergeCartsSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
 

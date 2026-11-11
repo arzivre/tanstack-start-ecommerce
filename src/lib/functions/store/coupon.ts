@@ -41,7 +41,7 @@ import { z } from "zod";
  * No authentication required
  */
 export const getStoreCoupons = createServerFn({ method: "GET" })
-    .inputValidator(storeCouponsQuerySchema)
+    .validator(storeCouponsQuerySchema)
     .handler(async ({ data }): Promise<CouponListResponse> => {
         const { limit, offset, search, shopId, shopSlug } =
             data as StoreCouponsQuery;
@@ -107,7 +107,7 @@ export const getStoreCoupons = createServerFn({ method: "GET" })
  * Get a coupon by its code for display purposes
  */
 export const getStoreCouponByCode = createServerFn({ method: "GET" })
-    .inputValidator(getCouponByCodeSchema)
+    .validator(getCouponByCodeSchema)
     .handler(async ({ data }) => {
         const { code, shopId, shopSlug } = data;
 
@@ -165,7 +165,7 @@ export const getStoreCouponByCode = createServerFn({ method: "GET" })
  * Checks all conditions: active, dates, usage limits, minimum cart, etc.
  */
 export const validateStoreCoupon = createServerFn({ method: "POST" })
-    .inputValidator(validateCouponSchema)
+    .validator(validateCouponSchema)
     .handler(async ({ data }): Promise<ValidateCouponResponse> => {
         const { code, shopId, cartAmount, userId, cartItems } = data;
 
@@ -353,7 +353,7 @@ export const validateStoreCoupon = createServerFn({ method: "POST" })
  * Get featured/promotional coupons for display on homepage or banners
  */
 export const getFeaturedCoupons = createServerFn({ method: "GET" })
-    .inputValidator(
+    .validator(
         z.object({
             shopSlug: z.string().optional(),
             shopId: z.string().optional(),

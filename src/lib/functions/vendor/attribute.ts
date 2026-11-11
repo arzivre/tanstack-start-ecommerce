@@ -36,7 +36,7 @@ import { z as zod } from "zod";
 
 export const getAttributes = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(vendorAttributesQuerySchema)
+    .validator(vendorAttributesQuerySchema)
     .handler(async ({ context, data }): Promise<AttributeListResponse> => {
         const userId = context.session.user.id;
         const {
@@ -74,7 +74,7 @@ export const getAttributes = createServerFn({ method: "GET" })
 
 export const getAttributeById = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorAttributesQuerySchema
             .pick({ shopId: true })
             .extend({ id: zod.string().min(1, "Attribute ID is required") }),
@@ -113,7 +113,7 @@ export const getAttributeById = createServerFn({ method: "GET" })
 
 export const createAttribute = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createAttributeSchema)
+    .validator(createAttributeSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { shopId, values, ...attributeData } = data;
@@ -194,7 +194,7 @@ export const createAttribute = createServerFn({ method: "POST" })
 
 export const updateAttribute = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateAttributeSchema)
+    .validator(updateAttributeSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { id, shopId, values, ...updateData } = data;
@@ -293,7 +293,7 @@ export const updateAttribute = createServerFn({ method: "POST" })
 
 export const deleteAttribute = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorAttributesQuerySchema
             .pick({ shopId: true })
             .extend({ id: zod.string().min(1, "Attribute ID is required") }),

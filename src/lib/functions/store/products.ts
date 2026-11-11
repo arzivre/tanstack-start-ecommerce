@@ -39,7 +39,7 @@ function toStoreProduct(product: NormalizedProduct): StoreProduct {
 }
 
 export const getStoreProducts = createServerFn({ method: "GET" })
-    .inputValidator(storeProductsQuerySchema)
+    .validator(storeProductsQuerySchema)
     .handler(async ({ data }): Promise<StoreProductListResponse> => {
         const {
             limit,
@@ -121,7 +121,7 @@ export const getStoreProducts = createServerFn({ method: "GET" })
     });
 
 export const getStoreProductBySlug = createServerFn({ method: "GET" })
-    .inputValidator(getProductBySlugSchema)
+    .validator(getProductBySlugSchema)
     .handler(async ({ data }) => {
         const { slug, shopSlug } = data;
 
@@ -183,7 +183,7 @@ export const getStoreProductBySlug = createServerFn({ method: "GET" })
  * Only returns if the product is active and published
  */
 export const getStoreProductById = createServerFn({ method: "GET" })
-    .inputValidator(getProductByIdSchema)
+    .validator(getProductByIdSchema)
     .handler(async ({ data }) => {
         const { id } = data;
 
@@ -228,7 +228,7 @@ export const getStoreProductById = createServerFn({ method: "GET" })
  * Get featured products for homepage or promotional sections
  */
 export const getFeaturedProducts = createServerFn({ method: "GET" })
-    .inputValidator(getFeaturedProductsSchema)
+    .validator(getFeaturedProductsSchema)
     .handler(async ({ data }) => {
         const { limit } = data;
 
@@ -260,7 +260,7 @@ export const getFeaturedProducts = createServerFn({ method: "GET" })
  * Used on product detail pages for cross-selling
  */
 export const getRelatedProducts = createServerFn({ method: "GET" })
-    .inputValidator(getRelatedProductsSchema)
+    .validator(getRelatedProductsSchema)
     .handler(async ({ data }) => {
         const { productId, limit } = data;
 

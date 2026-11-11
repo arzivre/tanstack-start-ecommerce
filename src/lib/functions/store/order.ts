@@ -30,7 +30,7 @@ import { createOrderNotification } from "../vendor";
 
 export const createCheckoutSession = createServerFn({ method: "POST" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(createCheckoutSessionSchema)
+    .validator(createCheckoutSessionSchema)
     .handler(async ({ context, data }): Promise<CheckoutResult> => {
         const userId = context.session?.user?.id;
 
@@ -341,7 +341,7 @@ export const createCheckoutSession = createServerFn({ method: "POST" })
 
 export const confirmPayment = createServerFn({ method: "POST" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(confirmPaymentSchema)
+    .validator(confirmPaymentSchema)
     .handler(async ({ data }) => {
         const { paymentIntentId, orderIds } = data;
 
@@ -415,7 +415,7 @@ export const confirmPayment = createServerFn({ method: "POST" })
 
 export const getCustomerOrders = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(getOrdersSchema)
+    .validator(getOrdersSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
         const { limit, offset, status } = data;
@@ -475,7 +475,7 @@ export const getCustomerOrders = createServerFn({ method: "GET" })
 
 export const getOrderById = createServerFn({ method: "GET" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(getOrderByIdSchema)
+    .validator(getOrderByIdSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
         const { orderId } = data;
@@ -537,7 +537,7 @@ export const getOrderById = createServerFn({ method: "GET" })
 
 export const getOrdersByIds = createServerFn({ method: "GET" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(getOrdersByIdsSchema)
+    .validator(getOrdersByIdsSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
         const { orderIds, paymentIntentId } = data;
@@ -623,7 +623,7 @@ export const getOrdersByIds = createServerFn({ method: "GET" })
 
 export const cancelOrder = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(cancelOrderSchema)
+    .validator(cancelOrderSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
         const { orderId, reason } = data;
@@ -684,7 +684,7 @@ export const cancelOrder = createServerFn({ method: "POST" })
 
 export const getOrderPaymentSession = createServerFn({ method: "POST" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(getOrderByIdSchema)
+    .validator(getOrderByIdSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
         const { orderId } = data;

@@ -15,7 +15,7 @@ const getInvoiceUrlSchema = z.object({
  */
 export const getInvoiceUrl = createServerFn({ method: "POST" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(getInvoiceUrlSchema)
+    .validator(getInvoiceUrlSchema)
     .handler(async ({ context, data }) => {
         const { orderId, paymentIntentId } = data;
         const userId = context.session?.user?.id;

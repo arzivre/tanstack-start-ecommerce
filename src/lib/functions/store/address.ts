@@ -45,7 +45,7 @@ export const getUserAddresses = createServerFn({ method: "GET" })
 
 export const createAddress = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createAddressSchema)
+    .validator(createAddressSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
 
@@ -107,7 +107,7 @@ export const createAddress = createServerFn({ method: "POST" })
 
 export const updateAddress = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateAddressSchema)
+    .validator(updateAddressSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
 
@@ -165,7 +165,7 @@ export const updateAddress = createServerFn({ method: "POST" })
 
 export const deleteAddress = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(deleteAddressSchema)
+    .validator(deleteAddressSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
 
@@ -216,7 +216,7 @@ export const deleteAddress = createServerFn({ method: "POST" })
 
 export const setDefaultAddress = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(deleteAddressSchema) // Same schema - just needs ID
+    .validator(deleteAddressSchema) // Same schema - just needs ID
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
 

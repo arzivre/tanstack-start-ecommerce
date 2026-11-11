@@ -31,7 +31,7 @@ import { z as zod } from "zod";
 
 export const getTags = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(vendorTagsQuerySchema)
+    .validator(vendorTagsQuerySchema)
     .handler(async ({ context, data }): Promise<TagListResponse> => {
         const userId = context.session.user.id;
         const {
@@ -66,7 +66,7 @@ export const getTags = createServerFn({ method: "GET" })
 
 export const getTagById = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorTagsQuerySchema
             .pick({ shopId: true })
             .extend({ id: zod.string().min(1, "Tag ID is required") }),
@@ -101,7 +101,7 @@ export const getTagById = createServerFn({ method: "GET" })
 
 export const createTag = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createTagSchema)
+    .validator(createTagSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { shopId, ...tagData } = data;
@@ -164,7 +164,7 @@ export const createTag = createServerFn({ method: "POST" })
 
 export const updateTag = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateTagSchema)
+    .validator(updateTagSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { id, shopId, ...updateData } = data;
@@ -235,7 +235,7 @@ export const updateTag = createServerFn({ method: "POST" })
 
 export const deleteTag = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         vendorTagsQuerySchema
             .pick({ shopId: true })
             .extend({ id: zod.string().min(1, "Tag ID is required") }),

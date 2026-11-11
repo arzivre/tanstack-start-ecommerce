@@ -48,7 +48,7 @@ export const getWishlist = createServerFn({ method: "GET" })
 
 export const toggleWishlist = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(toggleWishlistSchema)
+    .validator(toggleWishlistSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
 
@@ -91,7 +91,7 @@ export const toggleWishlist = createServerFn({ method: "POST" })
 
 export const checkWishlistStatus = createServerFn({ method: "POST" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(toggleWishlistSchema)
+    .validator(toggleWishlistSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
 

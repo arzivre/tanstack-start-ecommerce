@@ -20,7 +20,7 @@ import type { StoreShop, StoreShopListResponse } from "@/types/shop";
  * No authentication required
  */
 export const getStoreShops = createServerFn({ method: "GET" })
-    .inputValidator(storeShopsQuerySchema)
+    .validator(storeShopsQuerySchema)
     .handler(async ({ data }): Promise<StoreShopListResponse> => {
         const { limit, offset, search, category, sortBy, sortDirection } = data;
 
@@ -160,7 +160,7 @@ export const getStoreShops = createServerFn({ method: "GET" })
     });
 
 export const getStoreShopBySlug = createServerFn({ method: "GET" })
-    .inputValidator(storeShopBySlugSchema)
+    .validator(storeShopBySlugSchema)
     .handler(async ({ data }) => {
         const { slug } = data;
 

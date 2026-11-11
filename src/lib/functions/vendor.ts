@@ -10,7 +10,7 @@ import { generateSlug } from "../utils/slug";
 import { vendorRegisterSchema } from "../validators/auth";
 
 export const registerVendor = createServerFn({ method: "POST" })
-    .inputValidator(vendorRegisterSchema)
+    .validator(vendorRegisterSchema)
     .handler(async ({ data }) => {
         const {
             name,

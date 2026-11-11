@@ -32,7 +32,7 @@ import type { ProductListResponse } from "@/types/products";
 // ============================================================================
 export const getProducts = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(vendorProductsQuerySchema)
+    .validator(vendorProductsQuerySchema)
     .handler(async ({ context, data }): Promise<ProductListResponse> => {
         const userId = context.session.user.id;
         const {
@@ -93,7 +93,7 @@ export const getProducts = createServerFn({ method: "GET" })
 
 export const getProductById = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         getProductByIdSchema
             .extend({
                 shopId: getProductByIdSchema.shape.id, // Reuse the shape
@@ -137,7 +137,7 @@ export const getProductById = createServerFn({ method: "GET" })
 
 export const createProduct = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createProductSchema)
+    .validator(createProductSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const {
@@ -272,7 +272,7 @@ export const createProduct = createServerFn({ method: "POST" })
 
 export const updateProduct = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateProductSchema)
+    .validator(updateProductSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const {
@@ -468,7 +468,7 @@ export const updateProduct = createServerFn({ method: "POST" })
 
 export const deleteProduct = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(
+    .validator(
         deleteProductSchema.extend({
             shopId: deleteProductSchema.shape.id,
         }),

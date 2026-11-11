@@ -30,7 +30,7 @@ import type {
  * No authentication required
  */
 export const getStoreCategories = createServerFn({ method: "GET" })
-    .inputValidator(storeCategoriesQuerySchema)
+    .validator(storeCategoriesQuerySchema)
     .handler(async ({ data }): Promise<CategoryListResponse> => {
         const {
             limit,
@@ -97,7 +97,7 @@ export const getStoreCategories = createServerFn({ method: "GET" })
  * Only returns if the category is active
  */
 export const getStoreCategoryBySlug = createServerFn({ method: "GET" })
-    .inputValidator(getCategoryBySlugSchema)
+    .validator(getCategoryBySlugSchema)
     .handler(async ({ data }) => {
         const { slug, shopSlug } = data;
 
@@ -143,7 +143,7 @@ export const getStoreCategoryBySlug = createServerFn({ method: "GET" })
     });
 
 export const getStoreCategoryById = createServerFn({ method: "GET" })
-    .inputValidator(getCategoryByIdSchema)
+    .validator(getCategoryByIdSchema)
     .handler(async ({ data }) => {
         const { id } = data;
 
@@ -171,7 +171,7 @@ export const getStoreCategoryById = createServerFn({ method: "GET" })
  * Get featured categories for homepage or promotional sections
  */
 export const getFeaturedCategories = createServerFn({ method: "GET" })
-    .inputValidator(
+    .validator(
         z.object({
             limit: z.coerce.number().min(1).max(20).optional().default(8),
             shopSlug: z.string().optional(),
@@ -216,7 +216,7 @@ export const getFeaturedCategories = createServerFn({ method: "GET" })
  * Get hierarchical category tree for navigation menus
  */
 export const getCategoryTree = createServerFn({ method: "GET" })
-    .inputValidator(
+    .validator(
         z.object({
             shopSlug: z.string().optional(),
             shopId: z.string().optional(),
@@ -268,7 +268,7 @@ export const getCategoryTree = createServerFn({ method: "GET" })
  * Get subcategories of a parent category
  */
 export const getSubcategories = createServerFn({ method: "GET" })
-    .inputValidator(
+    .validator(
         z.object({
             parentId: z.string().min(1, "Parent category ID is required"),
             limit: z.coerce.number().min(1).max(50).optional().default(20),

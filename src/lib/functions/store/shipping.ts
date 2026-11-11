@@ -9,7 +9,7 @@ import {
 import { shippingMethods } from "@/lib/db/schema/shipping-schema";
 
 export const getAvailableShippingMethods = createServerFn({ method: "POST" })
-    .inputValidator(
+    .validator(
         z.object({
             productIds: z.array(z.string()),
         }),

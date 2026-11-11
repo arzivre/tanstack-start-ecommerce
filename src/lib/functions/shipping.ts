@@ -25,7 +25,7 @@ import {
 
 export const getShippingMethods = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(getShippingMethodsQuerySchema)
+    .validator(getShippingMethodsQuerySchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const {
@@ -103,7 +103,7 @@ export const getShippingMethods = createServerFn({ method: "GET" })
 
 export const getShippingMethodById = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(getShippingMethodByIdSchema)
+    .validator(getShippingMethodByIdSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { id, shopId } = data;
@@ -140,7 +140,7 @@ export const getShippingMethodById = createServerFn({ method: "GET" })
 
 export const createShippingMethod = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createShippingMethodSchema)
+    .validator(createShippingMethodSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { shopId, ...methodData } = data;
@@ -178,7 +178,7 @@ export const createShippingMethod = createServerFn({ method: "POST" })
 
 export const updateShippingMethod = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateShippingMethodSchema)
+    .validator(updateShippingMethodSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { id, shopId, ...updates } = data;
@@ -222,7 +222,7 @@ export const updateShippingMethod = createServerFn({ method: "POST" })
 
 export const deleteShippingMethod = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(deleteShippingMethodSchema)
+    .validator(deleteShippingMethodSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { id, shopId } = data;

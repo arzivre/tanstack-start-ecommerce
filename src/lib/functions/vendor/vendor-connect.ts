@@ -42,7 +42,7 @@ const getStatusSchema = z.object({
  */
 export const startStripeOnboarding = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(startOnboardingSchema)
+    .validator(startOnboardingSchema)
     .handler(async ({ context, data }): Promise<{ url: string }> => {
         const userId = context.session?.user?.id;
         const { shopSlug, returnPath } = data;
@@ -118,7 +118,7 @@ export const startStripeOnboarding = createServerFn({ method: "POST" })
  */
 export const getVendorStripeStatus = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(getStatusSchema)
+    .validator(getStatusSchema)
     .handler(async ({ context, data }): Promise<StripeConnectStatus> => {
         const userId = context.session?.user?.id;
         // shopSlug is validated but we fetch by userId for security

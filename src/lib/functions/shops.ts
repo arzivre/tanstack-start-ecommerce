@@ -78,7 +78,7 @@ export const getVendorShops = createServerFn({ method: "GET" })
 // ============================================================================
 export const getShopBySlug = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(getShopBySlugSchema)
+    .validator(getShopBySlugSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { slug } = data;
@@ -121,7 +121,7 @@ export const getShopBySlug = createServerFn({ method: "GET" })
 // ============================================================================
 export const createShop = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createShopSchema)
+    .validator(createShopSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
 
@@ -214,7 +214,7 @@ export const createShop = createServerFn({ method: "POST" })
 
 export const updateShop = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateShopSchema)
+    .validator(updateShopSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { id: shopId, ...updateData } = data;
@@ -290,7 +290,7 @@ export const updateShop = createServerFn({ method: "POST" })
 
 export const deleteShop = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(deleteShopSchema)
+    .validator(deleteShopSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session.user.id;
         const { id: shopId } = data;

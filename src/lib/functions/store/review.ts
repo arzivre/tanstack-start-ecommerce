@@ -48,7 +48,7 @@ import type { ReviewEligibility } from "@/types/review";
  */
 export const checkReviewEligibility = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(checkReviewEligibilitySchema)
+    .validator(checkReviewEligibilitySchema)
     .handler(async ({ context, data }): Promise<ReviewEligibility> => {
         const userId = context.session?.user?.id;
         if (!userId) {
@@ -137,7 +137,7 @@ export const checkReviewEligibility = createServerFn({ method: "GET" })
 
 export const createReview = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(createReviewSchema)
+    .validator(createReviewSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
         if (!userId) {
@@ -220,7 +220,7 @@ export const createReview = createServerFn({ method: "POST" })
 
 export const updateReview = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(updateReviewSchema)
+    .validator(updateReviewSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
         if (!userId) {
@@ -257,7 +257,7 @@ export const updateReview = createServerFn({ method: "POST" })
 
 export const deleteReview = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(deleteReviewSchema)
+    .validator(deleteReviewSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
         if (!userId) {
@@ -287,7 +287,7 @@ export const deleteReview = createServerFn({ method: "POST" })
 
 export const getProductReviews = createServerFn({ method: "GET" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(getProductReviewsSchema)
+    .validator(getProductReviewsSchema)
     .handler(async ({ context, data }) => {
         const currentUserId = context.session?.user?.id;
         const { productId, limit, offset, sortBy } = data;
@@ -388,7 +388,7 @@ export const getProductReviews = createServerFn({ method: "GET" })
 
 export const voteReviewHelpful = createServerFn({ method: "POST" })
     .middleware([authMiddleware])
-    .inputValidator(voteHelpfulSchema)
+    .validator(voteHelpfulSchema)
     .handler(async ({ context, data }) => {
         const userId = context.session?.user?.id;
         if (!userId) {
@@ -511,7 +511,7 @@ export const getUserReviews = createServerFn({ method: "GET" })
 
 export const getShopReviews = createServerFn({ method: "GET" })
     .middleware([optionalAuthMiddleware])
-    .inputValidator(getShopReviewsSchema)
+    .validator(getShopReviewsSchema)
     .handler(async ({ context, data }) => {
         const currentUserId = context.session?.user?.id;
         const { shopId, limit, offset } = data;
