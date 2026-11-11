@@ -520,6 +520,7 @@ export function AddProductDialog({
             {
                 name: "tagIds",
                 type: "custom",
+                defaultValue: [],
                 render: ({ form, isSubmitting: isSubmittingExternal }) => (
                     <form.Field name="tagIds">
                         {(field: any) => (

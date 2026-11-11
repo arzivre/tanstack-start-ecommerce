@@ -129,42 +129,13 @@ export function EntityFormDialog<T extends Record<string, any>>({
             onOpenChange(false);
             form.reset();
         },
+        // onSubmitInvalid: ({ value, formApi }) => {
+        //     console.log("blocked. values:", value);
+        //     console.log("field meta:", formApi.state.fieldMeta);
+        // },
     });
 
     const prevOpenRef = useRef(open);
-
-    useEffect(() => {
-        if (open && !prevOpenRef.current) {
-            if (initialValues) {
-                Object.entries(initialValues).forEach(([key, value]) => {
-                    form.setFieldValue(key as any, value);
-                });
-                // Also set defaults for fields not in initialValues
-                fields.forEach((field) => {
-                    if (!(field.name in initialValues)) {
-                        form.setFieldValue(
-                            field.name as any,
-                            field.defaultValue ?? "",
-                        );
-                    }
-                });
-            } else {
-                form.reset();
-                fields.forEach((field) => {
-                    const value = field.defaultValue ?? "";
-                    if (value !== "") {
-                        form.setFieldValue(field.name, value);
-                    }
-                });
-            }
-        }
-
-        if (!open && prevOpenRef.current) {
-            form.reset();
-        }
-
-        prevOpenRef.current = open;
-    }, [open, initialValues, fields, form]);
 
     const renderField = (field: EntityFormField) => {
         if (field.type === "custom" && field.render) {
@@ -183,7 +154,7 @@ export function EntityFormDialog<T extends Record<string, any>>({
 
         const validators: Record<string, (props: any) => unknown> = {};
         if (fieldSchema) {
-            validators.onBlur = field.required
+            validators.onChange = field.required
                 ? validateField(fieldSchema)
                 : validateOptionalField(fieldSchema);
         }
@@ -409,6 +380,39 @@ export function EntityFormDialog<T extends Record<string, any>>({
             />
         );
     };
+
+    useEffect(() => {
+        if (open && !prevOpenRef.current) {
+            if (initialValues) {
+                Object.entries(initialValues).forEach(([key, value]) => {
+                    form.setFieldValue(key as any, value);
+                });
+                // Also set defaults for fields not in initialValues
+                fields.forEach((field) => {
+                    if (!(field.name in initialValues)) {
+                        form.setFieldValue(
+                            field.name as any,
+                            field.defaultValue ?? "",
+                        );
+                    }
+                });
+            } else {
+                form.reset();
+                fields.forEach((field) => {
+                    const value = field.defaultValue ?? "";
+                    if (value !== "") {
+                        form.setFieldValue(field.name, value);
+                    }
+                });
+            }
+        }
+
+        if (!open && prevOpenRef.current) {
+            form.reset();
+        }
+
+        prevOpenRef.current = open;
+    }, [open, initialValues, fields, form]);
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
