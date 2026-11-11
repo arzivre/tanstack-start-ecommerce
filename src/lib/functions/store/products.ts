@@ -1,9 +1,12 @@
+import { createServerFn } from "@tanstack/react-start";
+import { and, eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { products } from "@/lib/db/schema/products-schema";
 import {
     executeProductQuery,
     fetchProductWithRelations,
 } from "@/lib/helper/products-query-helpers";
+import { getProductRatingStats } from "@/lib/helper/review-query-helpers";
 import {
     getFeaturedProductsSchema,
     getProductByIdSchema,
@@ -21,8 +24,6 @@ import type {
     StoreProduct,
     StoreProductListResponse,
 } from "@/types/store-types";
-import { createServerFn } from "@tanstack/react-start";
-import { and, eq } from "drizzle-orm";
 
 /**
  * Transform NormalizedProduct to StoreProduct by removing sensitive fields
@@ -165,11 +166,11 @@ export const getStoreProductBySlug = createServerFn({ method: "GET" })
 
         // Get rating stats
         // TODO: Uncomment this when rating stats are implemented
-        // const ratingStats = await getProductRatingStats(product.id);
+        const ratingStats = await getProductRatingStats(product.id);
 
         return {
             product: toStoreProduct(normalizedProduct),
-            //   ratingStats,
+            ratingStats,
         };
     });
 
@@ -211,11 +212,11 @@ export const getStoreProductById = createServerFn({ method: "GET" })
 
         // Get rating stats
         // TODO: Uncomment this when rating stats are implemented
-        // const ratingStats = await getProductRatingStats(product.id);
+        const ratingStats = await getProductRatingStats(product.id);
 
         return {
             product: toStoreProduct(normalizedProduct),
-            //   ratingStats,
+            ratingStats,
         };
     });
 

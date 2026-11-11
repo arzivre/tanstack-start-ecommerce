@@ -3,7 +3,7 @@ import { ProductDescriptionTab } from "@/components/base/products/details/produc
 import ProductShippingTab from "@/components/base/products/details/product-shipping-tab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { StoreProduct } from "@/types/store-types";
-import { ProductReviewsTab } from "./product-reviews-tab";
+import ProductReviewsTab from "./product-reviews-tab";
 
 interface ProductDetailsTabsProps {
     product: StoreProduct;
@@ -76,13 +76,7 @@ export default function ProductDetailsTabs({
                     <ProductAdditionalInfoTab specifications={specifications} />
                 </TabsContent>
                 <TabsContent value="reviews">
-                    <ProductReviewsTab
-                        reviews={[]}
-                        averageRating={parseFloat(product.averageRating) || 0}
-                        ratingBreakdown={{ 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }}
-                        totalRatings={product.reviewCount}
-                        productId={product.id}
-                    />
+                    <ProductReviewsTab productId={product.id} />
                 </TabsContent>
                 <TabsContent value="shipping">
                     <ProductShippingTab shipping={shipping} />

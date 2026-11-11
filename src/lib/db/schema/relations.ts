@@ -10,6 +10,7 @@ import { emailDeliveries } from "./email-schema";
 import { notifications } from "./notification-schema";
 import * as order from "./order-schema";
 import * as products from "./products-schema";
+import * as review from "./review-schema";
 import { shippingMethods } from "./shipping-schema";
 import * as shop from "./shop-schema";
 import { tags } from "./tags-schema";
@@ -33,6 +34,7 @@ const schema = {
     ...order,
     notifications,
     emailDeliveries,
+    ...review,
 };
 
 export const relations = defineRelations(schema, (r) => ({
@@ -55,6 +57,8 @@ export const relations = defineRelations(schema, (r) => ({
         addresses: r.many.customerAddresses(),
         wishlistItems: r.many.wishlistItems(),
         orders: r.many.orders(),
+        reviews: r.many.productReviews(),
+        reviewHelpfulVotes: r.many.reviewHelpfulVotes(),
     },
 
     session: {
@@ -109,6 +113,7 @@ export const relations = defineRelations(schema, (r) => ({
         shippingMethods: r.many.shippingMethods(),
         orders: r.many.orders(),
         notifications: r.many.notifications(),
+        reviews: r.many.productReviews(),
     },
 
     notifications: {
@@ -245,6 +250,7 @@ export const relations = defineRelations(schema, (r) => ({
         cartItems: r.many.cartItems(),
         wishlistItems: r.many.wishlistItems(),
         orderItems: r.many.orderItems(),
+        reviews: r.many.productReviews(),
     },
 
     productShippingMethods: {
@@ -414,6 +420,7 @@ export const relations = defineRelations(schema, (r) => ({
         items: r.many.orderItems(),
         payments: r.many.payments(),
         emailDeliveries: r.many.emailDeliveries(),
+        reviews: r.many.productReviews(),
     },
 
     orderItems: {
@@ -427,6 +434,7 @@ export const relations = defineRelations(schema, (r) => ({
             from: r.orderItems.productId,
             to: r.products.id,
         }),
+        reviews: r.many.productReviews(),
     },
 
     payments: {
@@ -442,6 +450,48 @@ export const relations = defineRelations(schema, (r) => ({
         order: r.one.orders({
             from: r.emailDeliveries.orderId,
             to: r.orders.id,
+        }),
+    },
+
+    productReviews: {
+        user: r.one.user({
+            from: r.productReviews.userId,
+            to: r.user.id,
+            optional: false,
+        }),
+        product: r.one.products({
+            from: r.productReviews.productId,
+            to: r.products.id,
+            optional: false,
+        }),
+        shop: r.one.shops({
+            from: r.productReviews.shopId,
+            to: r.shops.id,
+            optional: false,
+        }),
+        order: r.one.orders({
+            from: r.productReviews.orderId,
+            to: r.orders.id,
+            optional: false,
+        }),
+        orderItem: r.one.orderItems({
+            from: r.productReviews.orderItemId,
+            to: r.orderItems.id,
+            optional: false,
+        }),
+        helpfulVotes: r.many.reviewHelpfulVotes(),
+    },
+
+    reviewHelpfulVotes: {
+        review: r.one.productReviews({
+            from: r.reviewHelpfulVotes.reviewId,
+            to: r.productReviews.id,
+            optional: false,
+        }),
+        user: r.one.user({
+            from: r.reviewHelpfulVotes.userId,
+            to: r.user.id,
+            optional: false,
         }),
     },
 }));
