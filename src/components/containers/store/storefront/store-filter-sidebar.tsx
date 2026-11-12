@@ -1,3 +1,4 @@
+import { Search, SlidersHorizontal, Star, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -10,7 +11,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { Search, SlidersHorizontal, Star, X } from "lucide-react";
 
 import type { StoreFilters } from "@/types/store-types";
 

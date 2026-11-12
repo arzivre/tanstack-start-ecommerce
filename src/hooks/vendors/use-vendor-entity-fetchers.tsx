@@ -9,11 +9,11 @@ import { getCoupons } from "@/lib/functions/vendor/coupons";
 import { getProducts } from "@/lib/functions/vendor/products";
 import { getTags } from "@/lib/functions/vendor/tags";
 import { getTaxRates } from "@/lib/functions/vendor/tax";
+import { getVendorTransactions } from "@/lib/functions/vendor/transactions";
 import {
     booleanFilterTransform,
     createServerFetcher,
 } from "@/lib/helper/create-server-fetcher";
-
 import type { AttributeItem } from "@/types/attributes";
 import type { BrandItem } from "@/types/brands";
 import type { NormalizedCategory } from "@/types/category-types";
@@ -21,15 +21,12 @@ import type { CouponItem } from "@/types/coupons";
 import type { ProductItem } from "@/types/products";
 import type { TagItem } from "@/types/tags";
 import type { TaxRateItem } from "@/types/taxes";
+import type { VendorTransactionResponse } from "@/types/transaction";
 
 export const VENDOR_STATUS_OPTIONS = [
     { label: "Active", value: "true" },
     { label: "Inactive", value: "false" },
 ];
-
-// ============================================================================
-// Categories Fetcher
-// ============================================================================
 
 export function createVendorCategoriesFetcher(
     shopId: string,
@@ -50,10 +47,6 @@ export function createVendorCategoriesFetcher(
     });
 }
 
-// ============================================================================
-// Brands Fetcher
-// ============================================================================
-
 export function createVendorBrandsFetcher(
     shopId: string,
 ): (params: DataTableFetchParams) => Promise<DataTableFetchResult<BrandItem>> {
@@ -68,10 +61,6 @@ export function createVendorBrandsFetcher(
         transformFilters: booleanFilterTransform,
     });
 }
-
-// ============================================================================
-// Attributes Fetcher
-// ============================================================================
 
 export function createVendorAttributesFetcher(
     shopId: string,
@@ -92,10 +81,6 @@ export function createVendorAttributesFetcher(
     });
 }
 
-// ============================================================================
-// Tags Fetcher
-// ============================================================================
-
 export function createVendorTagsFetcher(
     shopId: string,
 ): (params: DataTableFetchParams) => Promise<DataTableFetchResult<TagItem>> {
@@ -114,10 +99,6 @@ export function createVendorTagsFetcher(
         transformFilters: booleanFilterTransform,
     });
 }
-
-// ============================================================================
-// Tax Fetcher
-// ============================================================================
 
 export function createVendorTaxRatesFetcher(
     shopId: string,
@@ -200,5 +181,33 @@ export function createVendorProductsFetcher(
         },
         defaultQuery: { sortBy: "createdAt", sortDirection: "desc" },
         transformFilters: booleanFilterTransform,
+    });
+}
+
+// ============================================================================
+// Transactions Fetcher
+// ============================================================================
+
+export function createVendorTransactionsFetcher(
+    shopSlug: string,
+): (
+    params: DataTableFetchParams,
+) => Promise<DataTableFetchResult<VendorTransactionResponse>> {
+    return createServerFetcher<VendorTransactionResponse, any>({
+        fetchFn: async (query) => {
+            const response = await getVendorTransactions({
+                data: { ...query, shopSlug },
+            });
+            return {
+                data: response.transactions ?? [],
+                total: response.total ?? 0,
+            };
+        },
+        sortFieldMap: {
+            createdAt: "createdAt",
+            totalAmount: "totalAmount",
+        },
+        filterFieldMap: { status: "status" },
+        defaultQuery: { sortBy: "createdAt", sortDirection: "desc" },
     });
 }
