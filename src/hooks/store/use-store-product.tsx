@@ -5,8 +5,7 @@
  * Used in the public-facing product pages.
  */
 
-import { infiniteQueryOptions, queryOptions } from "@tanstack/react-query";
-import { PRODUCTS_PAGE_SIZE } from "@/lib/constants/store-products";
+import { queryOptions } from "@tanstack/react-query";
 import {
     getFeaturedProducts,
     getRelatedProducts,
@@ -25,8 +24,6 @@ export const storeProductsKeys = {
     lists: () => [...storeProductsKeys.all, "list"] as const,
     list: (params: Partial<StoreProductsQuery>) =>
         [...storeProductsKeys.lists(), params] as const,
-    infinite: (params: Partial<StoreProductsQuery>) =>
-        [...storeProductsKeys.all, "infinite", params] as const,
     details: () => [...storeProductsKeys.all, "detail"] as const,
     detailBySlug: (slug: string, shopSlug?: string) =>
         [...storeProductsKeys.details(), "slug", slug, shopSlug] as const,
@@ -43,7 +40,7 @@ export const storeProductsKeys = {
 // ============================================================================
 
 const defaultParams: Partial<StoreProductsQuery> = {
-    limit: PRODUCTS_PAGE_SIZE.initial,
+    limit: 12,
     offset: 0,
     sortBy: "createdAt",
     sortDirection: "desc",
@@ -63,60 +60,6 @@ export const storeProductsQueryOptions = (
     return queryOptions({
         queryKey: storeProductsKeys.list(mergedParams),
         queryFn: () => getStoreProducts({ data: mergedParams }),
-    });
-};
-
-/**
- * Infinite query options for fetching store products with infinite scrolling
- * Used for the main product listing page with load-more pagination
- */
-export const storeProductsInfiniteQueryOptions = (
-    params: Partial<Omit<StoreProductsQuery, "limit" | "offset">> = {},
-) => {
-    // Base params without pagination (used as query key)
-    const baseParams = {
-        search: params.search,
-        minPrice: params.minPrice,
-        maxPrice: params.maxPrice,
-        inStock: params.inStock,
-        sortBy: params.sortBy ?? defaultParams.sortBy,
-        sortDirection: params.sortDirection ?? defaultParams.sortDirection,
-    };
-
-    return infiniteQueryOptions({
-        queryKey: storeProductsKeys.infinite(baseParams),
-        queryFn: async ({ pageParam = 0 }) => {
-            const isFirstPage = pageParam === 0;
-            const limit = isFirstPage
-                ? PRODUCTS_PAGE_SIZE.initial
-                : PRODUCTS_PAGE_SIZE.subsequent;
-
-            const result = await getStoreProducts({
-                data: {
-                    ...baseParams,
-                    limit,
-                    offset: pageParam,
-                },
-            });
-
-            return result;
-        },
-        initialPageParam: 0,
-        getNextPageParam: (lastPage, allPages) => {
-            // Calculate total items fetched so far
-            const totalFetched = allPages.reduce(
-                (acc, page) => acc + page.data.length,
-                0,
-            );
-
-            // If we've fetched all items, return undefined to stop pagination
-            if (totalFetched >= lastPage.total) {
-                return undefined;
-            }
-
-            // Return the next offset
-            return totalFetched;
-        },
     });
 };
 
@@ -177,7 +120,6 @@ export const useStoreProducts = () => ({
     productsQueryOptions: storeProductsQueryOptions,
     productBySlugQueryOptions: storeProductBySlugQueryOptions,
     productByIdQueryOptions: storeProductByIdQueryOptions,
-    infiniteProductsQueryOptions: storeProductsInfiniteQueryOptions,
     featuredProductsQueryOptions,
     relatedProductsQueryOptions,
 });

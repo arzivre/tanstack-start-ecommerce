@@ -1,14 +1,14 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
 import ProductCardHorizontal from "@/components/base/products/details/product-card-horizontal";
 import { Button } from "@/components/ui/button";
 import type { StoreProduct } from "@/types/store-types";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
 
 interface SimilarProductsSectionProps {
     products: StoreProduct[];
 }
 
-export function SimilarProductsSection({
+export default function SimilarProductsSection({
     products,
 }: SimilarProductsSectionProps) {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -31,7 +31,7 @@ export function SimilarProductsSection({
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold tracking-tight">
+                <h2 className="font-bold text-2xl tracking-tight">
                     Similar Products
                 </h2>
                 <div className="flex gap-2">

@@ -84,8 +84,8 @@ export interface ProductItem {
     tagNames: string[];
     attributeIds: string[];
     attributeNames: string[];
-    shippingMethodIds: string[];
-    shippingMethodNames: string[];
+    // shippingMethodIds: string[];
+    // shippingMethodNames: string[];
     // Maps attribute ID to selected value IDs: { [attributeId]: [valueId1, valueId2] }
     attributeValues: Record<string, string[]>;
     /** Maps valueId → valueName for UI display */
@@ -192,6 +192,7 @@ export interface ProductQueryOptions {
     lowStock?: boolean;
     minPrice?: number;
     maxPrice?: number;
+    minRating?: number;
     limit?: number;
     offset?: number;
     sortBy?:
@@ -256,10 +257,10 @@ export interface BatchedProductRelations {
     taxRatesMap: Map<string, string>;
     shopsMap: Map<string, { id: string; name: string; slug: string }>;
     vendorsMap: Map<string, { id: string; businessName: string | null }>;
-    shippingMethodsMap: Map<
-        string,
-        { shippingMethodId: string; shippingMethodName: string }[]
-    >;
+    // shippingMethodsMap: Map<
+    //     string,
+    //     { shippingMethodId: string; shippingMethodName: string }[]
+    // >;
 }
 
 export interface ListProductsResponse {
