@@ -1,3 +1,5 @@
+import { Filter } from "lucide-react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import {
     Sheet,
@@ -6,12 +8,9 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
-import { Filter } from "lucide-react";
-import React from "react";
-import FilterSidebar from "./filter-sidebar";
-
 import type { FilterState } from "@/lib/store/product-filters-store";
+import { cn } from "@/lib/utils";
+import FilterSidebar from "./filter-sidebar";
 
 interface MobileFilterDrawerProps {
     filters: FilterState;

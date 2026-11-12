@@ -1,5 +1,5 @@
-import CategoryTemplate from "@/components/templates/store/category/category-template";
 import { createFileRoute } from "@tanstack/react-router";
+import CategoryTemplate from "@/components/templates/store/category/category-template";
 import {
     categoryTreeQueryOptions,
     featuredCategoriesQueryOptions,

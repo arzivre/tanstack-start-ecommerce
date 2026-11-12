@@ -1,3 +1,4 @@
+import { Star } from "lucide-react";
 import { ColorRadioItem } from "@/components/base/products/color-radio-item";
 import { FilterGroup } from "@/components/base/products/filter-group";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,6 @@ import { RadioGroup } from "@/components/ui/radio-group";
 import { Slider } from "@/components/ui/slider";
 import { COLORS, SIZES } from "@/data/products";
 import type { FilterState } from "@/lib/store/product-filters-store";
-import { Star } from "lucide-react";
 
 interface FilterSidebarProps {
     filters: FilterState;

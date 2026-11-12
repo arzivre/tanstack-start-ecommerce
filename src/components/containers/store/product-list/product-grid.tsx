@@ -1,10 +1,9 @@
+import { Loader2 } from "lucide-react";
 import ProductCard from "@/components/base/products/product-card";
 import { ProductGridSkeleton } from "@/components/base/products/product-grid-skeleton";
 import { ProductNotFound } from "@/components/base/products/product-not-found";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Loader2 } from "lucide-react";
-
 import type { DisplayProduct } from "@/types/store-types";
 
 interface ProductGridProps {
