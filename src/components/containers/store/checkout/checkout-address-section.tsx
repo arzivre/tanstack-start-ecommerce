@@ -72,9 +72,9 @@ export function CheckoutAddressSection({
     if (!isAuthenticated) {
         return (
             <div className="space-y-4">
-                <h2 className="font-semibold text-xl">
+                {/*<h2 className="font-semibold text-xl">
                     {title || "Shipping Address"}
-                </h2>
+                </h2>*/}
                 <ShippingAddressForm
                     onAddressSelect={onSelectAddress}
                     initialValues={
@@ -102,11 +102,11 @@ export function CheckoutAddressSection({
         return (
             <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                    <h2 className="font-semibold text-xl">
+                    {/*<h2 className="font-semibold text-xl">
                         {addresses.length === 0
                             ? title || "Shipping Address"
                             : "Add New Address"}
-                    </h2>
+                    </h2>*/}
                     {addresses.length > 0 && (
                         <Button
                             variant="ghost"

@@ -41,6 +41,7 @@ export const getCart = createServerFn({ method: "GET" })
             const session = await db.query.cartSessions.findFirst({
                 where: { userId },
             });
+            console.log("session", session);
             sessionId = session?.id || null;
         } else if (guestSessionId) {
             const session = await db.query.cartSessions.findFirst({
