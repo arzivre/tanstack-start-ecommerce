@@ -1,6 +1,8 @@
-import { DataTable } from "@/components/base/data-table/data-table";
 import { useMemo } from "react";
+import { DataTable } from "@/components/base/data-table/data-table";
 import {
+    type CouponMutationState,
+    type CouponTableActions,
     createCouponColumns,
     getSharedCouponFilters,
 } from "./coupon-table-columns";
@@ -10,10 +12,6 @@ import type {
     DataTableFetchResult,
 } from "@/components/base/data-table/types";
 import type { CouponItem, CouponPermissions } from "@/types/coupons";
-import type {
-    CouponMutationState,
-    CouponTableActions,
-} from "./coupon-table-columns";
 
 // ============================================================================
 // Constants
@@ -35,7 +33,10 @@ const TYPE_OPTIONS = [
 // ============================================================================
 
 interface AdminCouponTableProps extends CouponTableActions {
-    coupons: CouponItem[];
+    coupons?: CouponItem[];
+    fetcher?: (
+        params: DataTableFetchParams,
+    ) => Promise<DataTableFetchResult<CouponItem>>;
     className?: string;
     mutationState?: CouponMutationState;
     isCouponMutating?: (id: string) => boolean;
@@ -44,6 +45,7 @@ interface AdminCouponTableProps extends CouponTableActions {
 
 export function AdminCouponTable({
     coupons,
+    fetcher,
     className,
     onEdit,
     onDelete,
@@ -83,11 +85,24 @@ export function AdminCouponTable({
         [],
     );
 
+    if (fetcher) {
+        return (
+            <DataTable
+                columns={columns}
+                server={{ fetcher }}
+                context="admin"
+                initialPageSize={10}
+                filterableColumns={filterableColumns}
+                globalFilterPlaceholder="Search coupons..."
+                className={className}
+            />
+        );
+    }
+
     return (
         <DataTable
             columns={columns}
-            data={coupons}
-            context="shop"
+            data={coupons || []}
             initialPageSize={10}
             filterableColumns={filterableColumns}
             globalFilterPlaceholder="Search coupons..."

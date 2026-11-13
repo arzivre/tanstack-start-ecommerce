@@ -4,6 +4,8 @@ import {
     booleanFilterTransform,
     createServerFetcher,
 } from "@/lib/helper/create-server-fetcher";
+import { getAdminAttributes } from "#/lib/functions/admin/attribute";
+import { getAdminCoupons } from "#/lib/functions/admin/coupon";
 
 import type {
     DataTableFetchParams,
@@ -12,7 +14,7 @@ import type {
 import type { BrandItem } from "@/types/brands";
 import type { NormalizedCategory } from "@/types/category-types";
 import type { AttributeItem } from "@/types/attributes";
-import { getAdminAttributes } from "#/lib/functions/admin/attribute";
+import type { CouponItem } from "#/types/coupons";
 
 export const ADMIN_STATUS_OPTIONS = [
     { label: "Active", value: "true" },
@@ -60,6 +62,33 @@ export function createAdminAttributesFetcher(): (
         sortFieldMap: { name: "name", createdAt: "createdAt" },
         filterFieldMap: { isActive: "isActive", type: "type" },
         defaultQuery: { sortBy: "sortOrder", sortDirection: "asc" },
+        transformFilters: booleanFilterTransform,
+    });
+}
+
+export function createAdminCouponsFetcher(): (
+    params: DataTableFetchParams,
+) => Promise<DataTableFetchResult<CouponItem>> {
+    return createServerFetcher<CouponItem, any>({
+        fetchFn: async (query) => {
+            const response = await getAdminCoupons({ data: query });
+            return { data: response.data ?? [], total: response.total ?? 0 };
+        },
+        sortFieldMap: {
+            code: "code",
+            discountAmount: "discountAmount",
+            usageCount: "usageCount",
+            activeFrom: "activeFrom",
+            activeTo: "activeTo",
+            createdAt: "createdAt",
+        },
+        filterFieldMap: {
+            isActive: "isActive",
+            type: "type",
+            status: "status",
+            applicableTo: "applicableTo",
+        },
+        defaultQuery: { sortBy: "createdAt", sortDirection: "desc" },
         transformFilters: booleanFilterTransform,
     });
 }
