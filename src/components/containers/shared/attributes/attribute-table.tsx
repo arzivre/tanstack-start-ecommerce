@@ -58,11 +58,12 @@ export default function AttributeTable({
     const filterableColumns = useMemo(() => getSharedAttributeFilters(), []);
 
     if (fetcher) {
+        const context = mode === "admin" ? "admin" : "shop";
         return (
             <DataTable
                 columns={columns}
                 server={{ fetcher }}
-                context="shop"
+                context={context}
                 initialPageSize={10}
                 filterableColumns={filterableColumns}
                 globalFilterPlaceholder="Search attributes..."

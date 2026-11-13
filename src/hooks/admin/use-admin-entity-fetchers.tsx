@@ -11,6 +11,8 @@ import type {
 } from "@/components/base/data-table/types";
 import type { BrandItem } from "@/types/brands";
 import type { NormalizedCategory } from "@/types/category-types";
+import type { AttributeItem } from "@/types/attributes";
+import { getAdminAttributes } from "#/lib/functions/admin/attribute";
 
 export const ADMIN_STATUS_OPTIONS = [
     { label: "Active", value: "true" },
@@ -42,6 +44,21 @@ export function createAdminBrandsFetcher(): (
         },
         sortFieldMap: { name: "name", createdAt: "createdAt" },
         filterFieldMap: { isActive: "isActive" },
+        defaultQuery: { sortBy: "sortOrder", sortDirection: "asc" },
+        transformFilters: booleanFilterTransform,
+    });
+}
+
+export function createAdminAttributesFetcher(): (
+    params: DataTableFetchParams,
+) => Promise<DataTableFetchResult<AttributeItem>> {
+    return createServerFetcher<AttributeItem, any>({
+        fetchFn: async (query) => {
+            const response = await getAdminAttributes({ data: query });
+            return { data: response.data ?? [], total: response.total ?? 0 };
+        },
+        sortFieldMap: { name: "name", createdAt: "createdAt" },
+        filterFieldMap: { isActive: "isActive", type: "type" },
         defaultQuery: { sortBy: "sortOrder", sortDirection: "asc" },
         transformFilters: booleanFilterTransform,
     });
