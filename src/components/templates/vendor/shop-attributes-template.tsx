@@ -1,14 +1,14 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import AttributeHeader from "@/components/containers/shared/attributes/attribute-header";
-import AttributeTable from "@/components/containers/shared/attributes/attribute-table";
+} from "#/components/base/data-table/types";
+import AttributeHeader from "#/components/containers/shared/attributes/attribute-header";
+import AttributeTable from "#/components/containers/shared/attributes/attribute-table";
 import type {
     AttributeMutationState,
     AttributeTableActions,
-} from "@/components/containers/shared/attributes/attribute-table-columns";
-import type { AttributeItem } from "@/types/attributes";
+} from "#/components/containers/shared/attributes/attribute-table-columns";
+import type { AttributeItem } from "#/types/attributes";
 
 interface ShopAttributesTemplateProps extends AttributeTableActions {
     fetcher: (

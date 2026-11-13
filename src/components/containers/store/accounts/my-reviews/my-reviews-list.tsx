@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { AlertCircle, Loader2, MessageSquare } from "lucide-react";
 import { useState } from "react";
-import { NotFound } from "@/components/base/empty/not-found";
-import { EditReviewDialog } from "@/components/base/products/details/review/edit-review-dialog";
-import { MyReviewCard } from "@/components/base/products/details/review/my-review-card";
-import { Button } from "@/components/ui/button";
-import { useReviewMutations, useUserReviews } from "@/hooks/store/use-reviews";
+import { NotFound } from "#/components/base/empty/not-found";
+import { EditReviewDialog } from "#/components/base/products/details/review/edit-review-dialog";
+import { MyReviewCard } from "#/components/base/products/details/review/my-review-card";
+import { Button } from "#/components/ui/button";
+import { useReviewMutations, useUserReviews } from "#/hooks/store/use-reviews";
 
 export default function MyReviewsList() {
     const { data: reviews, isLoading, error } = useUserReviews();

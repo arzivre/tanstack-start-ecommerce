@@ -1,4 +1,4 @@
-import { PageHeader } from '@/components/base/common/page-header'
+import { PageHeader } from '#/components/base/common/page-header'
 
 export interface TransactionHeaderProps {
   role?: 'admin' | 'vendor'

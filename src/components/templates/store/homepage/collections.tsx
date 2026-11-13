@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
-import Section from "@/components/base/common/section";
-import CollectionContainer from "@/components/containers/store/collection-container";
-import { Button } from "@/components/ui/button";
-import StarSolidIcon from "@/components/ui/icons/star-solid";
-import { useStoreProducts } from "@/hooks/store/use-store-product";
-import { toDisplayProducts } from "@/lib/helper/products-query-helpers";
+import Section from "#/components/base/common/section";
+import CollectionContainer from "#/components/containers/store/collection-container";
+import { Button } from "#/components/ui/button";
+import StarSolidIcon from "#/components/ui/icons/star-solid";
+import { useStoreProducts } from "#/hooks/store/use-store-product";
+import { toDisplayProducts } from "#/lib/helper/products-query-helpers";
 
 // Maximum number of category tabs (including "All")
 const MAX_CATEGORY_TABS = 4;

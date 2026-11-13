@@ -1,12 +1,12 @@
-import { BreadcrumbNav } from "@/components/base/common/breadcrumb-nav";
-import StoreFilterSidebar from "@/components/containers/store/storefront/store-filter-sidebar";
-import StoreList from "@/components/containers/store/storefront/store-list";
-import { storeShopsInfiniteQueryOptions } from "@/hooks/store/use-store-shops";
+import { BreadcrumbNav } from "#/components/base/common/breadcrumb-nav";
+import StoreFilterSidebar from "#/components/containers/store/storefront/store-filter-sidebar";
+import StoreList from "#/components/containers/store/storefront/store-list";
+import { storeShopsInfiniteQueryOptions } from "#/hooks/store/use-store-shops";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import type { Store, StoreFilters } from "@/types/store-types";
+import type { Store, StoreFilters } from "#/types/store-types";
 
 const defaultFilters: StoreFilters = {
     search: "",

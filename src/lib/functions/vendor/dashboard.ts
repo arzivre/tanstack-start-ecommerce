@@ -8,19 +8,19 @@
 import { createServerFn } from "@tanstack/react-start";
 import { and, count, desc, eq, gte, inArray, sql } from "drizzle-orm";
 import { z } from "zod";
-import { db } from "@/lib/db";
-import { user } from "@/lib/db/schema/auth-schema";
-import { orderItems, orders } from "@/lib/db/schema/order-schema";
-import { productImages, products } from "@/lib/db/schema/products-schema";
-import { getShopIdsForOrderQuery } from "@/lib/helper/order-helpers";
-import { requireShopAccess } from "@/lib/helper/vendor";
-import { authMiddleware } from "@/lib/middleware/auth";
+import { db } from "#/lib/db";
+import { user } from "#/lib/db/schema/auth-schema";
+import { orderItems, orders } from "#/lib/db/schema/order-schema";
+import { productImages, products } from "#/lib/db/schema/products-schema";
+import { getShopIdsForOrderQuery } from "#/lib/helper/order-helpers";
+import { requireShopAccess } from "#/lib/helper/vendor";
+import { authMiddleware } from "#/lib/middleware/auth";
 import type {
     DashboardMonthlySales,
     DashboardRecentOrder,
     DashboardTopProduct,
     ShopDashboardData,
-} from "@/types/shop-dashboard";
+} from "#/types/shop-dashboard";
 
 // ============================================================================
 // Validators

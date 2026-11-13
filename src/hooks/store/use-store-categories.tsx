@@ -12,8 +12,8 @@ import {
     getStoreCategories,
     getStoreCategoryBySlug,
     getSubcategories,
-} from "@/lib/functions/store/categories";
-import type { StoreCategoriesQuery } from "@/lib/validators/shared/category-query";
+} from "#/lib/functions/store/categories";
+import type { StoreCategoriesQuery } from "#/lib/validators/shared/category-query";
 
 // ============================================================================
 // Query Keys

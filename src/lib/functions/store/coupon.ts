@@ -6,28 +6,28 @@
  * Only returns active and valid coupons.
  */
 
-import { db } from "@/lib/db";
-import { coupons, couponUsage } from "@/lib/db/schema/coupon-schema";
+import { db } from "#/lib/db";
+import { coupons, couponUsage } from "#/lib/db/schema/coupon-schema";
 import {
     executeCouponQuery,
     fetchCouponWithRelations,
     getActiveCouponsForShop,
-} from "@/lib/helper/coupon-query-helpers";
+} from "#/lib/helper/coupon-query-helpers";
 import {
     getCouponByCodeSchema,
     type StoreCouponsQuery,
     storeCouponsQuerySchema,
     validateCouponSchema,
-} from "@/lib/validators/shared/coupon-query";
+} from "#/lib/validators/shared/coupon-query";
 import {
     createPaginatedResponse,
     emptyPaginatedResponse,
-} from "@/types/api-response";
+} from "#/types/api-response";
 import type {
     CouponListResponse,
     NormalizedCoupon,
     ValidateCouponResponse,
-} from "@/types/coupons";
+} from "#/types/coupons";
 import { createServerFn } from "@tanstack/react-start";
 import { and, count, eq, gte, ilike, lte } from "drizzle-orm";
 import { z } from "zod";
@@ -49,7 +49,7 @@ export const getStoreCoupons = createServerFn({ method: "GET" })
         // Resolve shop ID if only slug is provided
         let resolvedShopId = shopId;
         if (shopSlug && !shopId) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)
@@ -114,7 +114,7 @@ export const getStoreCouponByCode = createServerFn({ method: "GET" })
         // Resolve shop ID if only slug is provided
         let resolvedShopId = shopId;
         if (shopSlug && !shopId) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)
@@ -366,7 +366,7 @@ export const getFeaturedCoupons = createServerFn({ method: "GET" })
         // Resolve shop ID
         let resolvedShopId = shopId;
         if (shopSlug && !shopId) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)

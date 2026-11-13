@@ -1,18 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import { BarChart3, MapPin, Package, Star } from "lucide-react";
 import { useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
 import {
     Card,
     CardContent,
     CardFooter,
     CardHeader,
-} from "@/components/ui/card";
-import { useShops } from "@/hooks/vendors/use-shops";
-import type { Shop } from "@/lib/db/schema/shop-schema";
-import { cn } from "@/lib/utils";
-import type { UpdateShopInput } from "@/lib/validators/shop";
+} from "#/components/ui/card";
+import { useShops } from "#/hooks/vendors/use-shops";
+import type { Shop } from "#/lib/db/schema/shop-schema";
+import { cn } from "#/lib/utils";
+import type { UpdateShopInput } from "#/lib/validators/shop";
 import { EditShopDialog } from "./edit-shop-dialog";
 
 interface ShopCardProps {

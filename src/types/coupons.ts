@@ -13,7 +13,7 @@ import type {
     CouponProductRelation as ZodCouponProductRelation,
     CouponStatus as ZodCouponStatus,
     CouponType as ZodCouponType,
-} from "@/lib/validators/shared/coupon-query";
+} from "#/lib/validators/shared/coupon-query";
 import type { PaginatedResponse } from "./api-response";
 
 // ============================================================================

@@ -1,4 +1,4 @@
-import { createEntityHeader } from "@/components/base/common/entity-header";
+import { createEntityHeader } from "#/components/base/common/entity-header";
 
 export const ProductHeader = createEntityHeader({
     entityName: "Product",
@@ -8,4 +8,4 @@ export const ProductHeader = createEntityHeader({
 });
 
 export default ProductHeader;
-export type { EntityHeaderProps as ProductHeaderProps } from "@/components/base/common/entity-header";
+export type { EntityHeaderProps as ProductHeaderProps } from "#/components/base/common/entity-header";

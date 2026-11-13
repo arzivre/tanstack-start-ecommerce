@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Star } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
-import type { StoreProduct } from "@/types/store-types";
+import { Badge } from "#/components/ui/badge";
+import { cn } from "#/lib/utils";
+import type { StoreProduct } from "#/types/store-types";
 
 interface ProductCardHorizontalProps {
     product: StoreProduct;

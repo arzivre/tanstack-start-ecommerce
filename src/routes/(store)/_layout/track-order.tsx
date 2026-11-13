@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { format } from "date-fns";
 import { useCallback, useEffect, useState } from "react";
 import { z } from "zod";
-import OrderTrackingTemplate from "@/components/templates/store/order/order-tracking-template";
-import { useOrderById } from "@/hooks/store/use-checkout";
-import type { TrackingData } from "@/types/tracking-order";
+import OrderTrackingTemplate from "#/components/templates/store/order/order-tracking-template";
+import { useOrderById } from "#/hooks/store/use-checkout";
+import type { TrackingData } from "#/types/tracking-order";
 
 const searchSchema = z.object({
     orderId: z.string().optional(),

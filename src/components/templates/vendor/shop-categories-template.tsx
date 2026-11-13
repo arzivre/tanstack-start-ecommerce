@@ -1,11 +1,11 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import CategoryHeader from "@/components/containers/shared/categories/category-header";
-import VendorCategoryTable from "@/components/containers/shared/categories/category-table";
-import type { VendorCategoryMutationState } from "@/hooks/vendors/use-categories";
-import type { NormalizedCategory } from "@/types/category-types";
+} from "#/components/base/data-table/types";
+import CategoryHeader from "#/components/containers/shared/categories/category-header";
+import VendorCategoryTable from "#/components/containers/shared/categories/category-table";
+import type { VendorCategoryMutationState } from "#/hooks/vendors/use-categories";
+import type { NormalizedCategory } from "#/types/category-types";
 
 interface ShopCategoriesTemplateProps {
     fetcher: (

@@ -5,7 +5,7 @@
  */
 
 import type { SQL } from "drizzle-orm";
-import type { ProductImage } from "@/lib/db/schema/products-schema";
+import type { ProductImage } from "#/lib/db/schema/products-schema";
 import type { PaginatedResponse } from "./api-response";
 
 // ============================================================================

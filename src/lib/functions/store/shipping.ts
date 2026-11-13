@@ -1,12 +1,12 @@
 import { createServerFn } from "@tanstack/react-start";
 import { and, eq, inArray } from "drizzle-orm";
 import { z } from "zod";
-import { db } from "@/lib/db";
+import { db } from "#/lib/db";
 import {
     productShippingMethods,
     products,
-} from "@/lib/db/schema/products-schema";
-import { shippingMethods } from "@/lib/db/schema/shipping-schema";
+} from "#/lib/db/schema/products-schema";
+import { shippingMethods } from "#/lib/db/schema/shipping-schema";
 
 export const getAvailableShippingMethods = createServerFn({ method: "POST" })
     .validator(

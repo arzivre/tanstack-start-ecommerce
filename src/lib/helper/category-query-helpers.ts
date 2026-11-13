@@ -15,7 +15,7 @@ import type {
     CategoryQueryResult,
     CategoryTreeNode,
     NormalizedCategory,
-} from "@/types/category-types";
+} from "#/types/category-types";
 import { db } from "../db";
 import { categories } from "../db/schema/category-schema";
 import { shops } from "../db/schema/shop-schema";

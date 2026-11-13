@@ -17,12 +17,12 @@ import {
     getBrandById,
     getBrands,
     updateBrand,
-} from "@/lib/functions/vendor/brands";
+} from "#/lib/functions/vendor/brands";
 import type {
     CreateBrandInput,
     UpdateBrandInput,
-} from "@/lib/validators/brands";
-import type { ListBrandsQuery } from "@/types/brands";
+} from "#/lib/validators/brands";
+import type { ListBrandsQuery } from "#/types/brands";
 
 // ============================================================================
 // Query Keys

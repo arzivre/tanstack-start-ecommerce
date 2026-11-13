@@ -1,10 +1,10 @@
 import { useMemo } from "react";
-import { DataTable } from "@/components/base/data-table/data-table";
+import { DataTable } from "#/components/base/data-table/data-table";
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import type { AttributeItem } from "@/types/attributes";
+} from "#/components/base/data-table/types";
+import type { AttributeItem } from "#/types/attributes";
 import {
     type AttributeMutationState,
     type AttributeTableActions,

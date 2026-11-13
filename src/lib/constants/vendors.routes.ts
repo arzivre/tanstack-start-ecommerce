@@ -13,7 +13,7 @@ import {
     TruckElectric,
     Users,
 } from "lucide-react";
-import type { VendorNavItem } from "@/types/vendor";
+import type { VendorNavItem } from "#/types/vendor";
 
 export const getShopNavItems = (shopSlug: string): VendorNavItem[] => [
     {

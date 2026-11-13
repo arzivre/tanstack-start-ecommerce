@@ -1,7 +1,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Loader2, MoreHorizontal } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -9,9 +9,9 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
-import type { TaxRateItem } from "@/types/taxes";
+} from "#/components/ui/dropdown-menu";
+import { cn } from "#/lib/utils";
+import type { TaxRateItem } from "#/types/taxes";
 
 export interface TaxTableActions {
     onEdit?: (taxRate: TaxRateItem) => void;

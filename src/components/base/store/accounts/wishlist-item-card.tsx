@@ -1,5 +1,5 @@
 import { Loader2, ShoppingCart, Star, Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "#/components/ui/button";
 
 export default function WishlistItemCard({
     item,

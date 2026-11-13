@@ -16,8 +16,8 @@ import {
     getAdminBrandById,
     getAdminBrands,
     toggleAdminBrandActive,
-} from "@/lib/functions/admin/brand";
-import type { AdminBrandsQuery } from "@/lib/validators/shared/brand-query";
+} from "#/lib/functions/admin/brand";
+import type { AdminBrandsQuery } from "#/lib/validators/shared/brand-query";
 
 // ============================================================================
 // Query Keys

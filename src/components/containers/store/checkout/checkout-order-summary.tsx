@@ -1,19 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Loader2, ShoppingBag, Tag, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { EmptyState } from "@/components/base/empty/empty-state";
-import { Button } from "@/components/ui/button";
+import { EmptyState } from "#/components/base/empty/empty-state";
+import { Button } from "#/components/ui/button";
 import {
     InputGroup,
     InputGroupAddon,
     InputGroupButton,
     InputGroupInput,
-} from "@/components/ui/input-group";
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useCart } from "@/hooks/store/use-cart";
-import { useCartStore } from "@/lib/store/cart-store";
-import type { AppliedCoupon } from "@/types/coupon";
+} from "#/components/ui/input-group";
+import { Separator } from "#/components/ui/separator";
+import { Skeleton } from "#/components/ui/skeleton";
+import { useCart } from "#/hooks/store/use-cart";
+import { useCartStore } from "#/lib/store/cart-store";
+import type { AppliedCoupon } from "#/types/coupon";
 
 interface CheckoutOrderSummaryProps {
     onProceedToPayment?: () => void;

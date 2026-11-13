@@ -15,8 +15,8 @@ import {
     checkWishlistStatus,
     getWishlist,
     toggleWishlist,
-} from "@/lib/functions/store/wishlist";
-import type { ToggleWishlistInput } from "@/lib/validators/wishlist";
+} from "#/lib/functions/store/wishlist";
+import type { ToggleWishlistInput } from "#/lib/validators/wishlist";
 
 // ============================================================================
 // Query Keys

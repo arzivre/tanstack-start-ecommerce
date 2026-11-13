@@ -1,4 +1,4 @@
-import type { BrandItem } from "@/types/brands";
+import type { BrandItem } from "#/types/brands";
 
 export const mockBrands: BrandItem[] = [
     {

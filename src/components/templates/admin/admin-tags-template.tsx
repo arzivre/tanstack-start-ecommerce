@@ -1,10 +1,10 @@
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import { AddTagDialog } from "@/components/containers/shared/tags/add-tag-dialog";
-import TagHeader from "@/components/containers/shared/tags/tag-header";
-import TagTable from "@/components/containers/shared/tags/tag-table";
-import { Button } from "@/components/ui/button";
-import type { TagFormValues, TagItem } from "@/types/tags";
+import { AddTagDialog } from "#/components/containers/shared/tags/add-tag-dialog";
+import TagHeader from "#/components/containers/shared/tags/tag-header";
+import TagTable from "#/components/containers/shared/tags/tag-table";
+import { Button } from "#/components/ui/button";
+import type { TagFormValues, TagItem } from "#/types/tags";
 
 interface AdminTagsTemplateProps {
     tags: TagItem[];

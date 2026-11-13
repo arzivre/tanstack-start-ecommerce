@@ -1,5 +1,5 @@
 import { useForm } from '@tanstack/react-form'
-import { Button } from '@/components/ui/button'
+import { Button } from '#/components/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -7,22 +7,22 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '#/components/ui/dialog'
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from '@/components/ui/field'
-import { Input } from '@/components/ui/input'
+} from '#/components/ui/field'
+import { Input } from '#/components/ui/input'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import type { StaffFormValues } from '@/types/staff'
+} from '#/components/ui/select'
+import type { StaffFormValues } from '#/types/staff'
 
 // Helper function to safely get string errors from field meta
 function getFieldErrors(errors: any): string[] {

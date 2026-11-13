@@ -1,11 +1,11 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import TaxHeader from "@/components/containers/shared/taxes/tax-header";
-import { TaxTable } from "@/components/containers/shared/taxes/tax-table";
-import type { TaxMutationState } from "@/components/containers/shared/taxes/tax-table-columns";
-import type { TaxRateItem } from "@/types/taxes";
+} from "#/components/base/data-table/types";
+import TaxHeader from "#/components/containers/shared/taxes/tax-header";
+import { TaxTable } from "#/components/containers/shared/taxes/tax-table";
+import type { TaxMutationState } from "#/components/containers/shared/taxes/tax-table-columns";
+import type { TaxRateItem } from "#/types/taxes";
 
 interface ShopTaxesTemplateProps {
     fetcher: (

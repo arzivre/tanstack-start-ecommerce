@@ -16,13 +16,13 @@ import {
     deleteProduct,
     getProductById,
     updateProduct,
-} from "@/lib/functions/vendor/products";
+} from "#/lib/functions/vendor/products";
 import type {
     CreateProductInput,
     UpdateProductInput,
     VendorProductsQuery,
-} from "@/lib/validators/shared/product-query";
-import type { ProductMutationState } from "@/types/products";
+} from "#/lib/validators/shared/product-query";
+import type { ProductMutationState } from "#/types/products";
 
 // ============================================================================
 // Query Keys

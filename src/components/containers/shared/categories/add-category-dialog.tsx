@@ -1,8 +1,8 @@
 import { useForm } from "@tanstack/react-form";
 import { FileUploaderRegular } from "@uploadcare/react-uploader";
-import { Form } from "@/components/base/forms/form";
-import { Field } from "@/components/base/forms/form-field";
-import { Button } from "@/components/ui/button";
+import { Form } from "#/components/base/forms/form";
+import { Field } from "#/components/base/forms/form-field";
+import { Button } from "#/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -10,22 +10,22 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog";
-import { FieldLabel, Field as UIField } from "@/components/ui/field";
+} from "#/components/ui/dialog";
+import { FieldLabel, Field as UIField } from "#/components/ui/field";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
-import { CATEGORY_ICON_OPTIONS } from "@/lib/constants/category-icons";
-import { validateField, validateOptionalField } from "@/lib/helper/validators";
-import { createCategorySchema } from "@/lib/validators/category";
+} from "#/components/ui/select";
+import { CATEGORY_ICON_OPTIONS } from "#/lib/constants/category-icons";
+import { validateField, validateOptionalField } from "#/lib/helper/validators";
+import { createCategorySchema } from "#/lib/validators/category";
 import type {
     CategoryFormValues,
     CategoryOption,
-} from "@/types/category-types";
+} from "#/types/category-types";
 
 interface AddCategoryDialogProps {
     open: boolean;

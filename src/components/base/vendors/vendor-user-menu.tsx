@@ -1,4 +1,4 @@
-import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { AvatarFallback, AvatarImage } from "#/components/ui/avatar";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -6,17 +6,17 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "#/components/ui/dropdown-menu";
 import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
     useSidebar,
-} from "@/components/ui/sidebar";
+} from "#/components/ui/sidebar";
 import { useRouter } from "@tanstack/react-router";
 import { ChevronDown, LogOut, User } from "lucide-react";
 import { Avatar as AvatarPrimitive } from "radix-ui";
-import { signOut } from "@/lib/auth/auth-client";
+import { signOut } from "#/lib/auth/auth-client";
 
 interface VendorUser {
     name?: string | null;

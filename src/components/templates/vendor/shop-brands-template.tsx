@@ -1,11 +1,11 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import BrandHeader from "@/components/containers/shared/brands/brand-header";
-import { VendorBrandTable } from "@/components/containers/shared/brands/brand-table";
-import type { BrandMutationState } from "@/components/containers/shared/brands/brand-table-columns";
-import type { BrandItem } from "@/types/brands";
+} from "#/components/base/data-table/types";
+import BrandHeader from "#/components/containers/shared/brands/brand-header";
+import { VendorBrandTable } from "#/components/containers/shared/brands/brand-table";
+import type { BrandMutationState } from "#/components/containers/shared/brands/brand-table-columns";
+import type { BrandItem } from "#/types/brands";
 
 interface ShopBrandsTemplateProps {
     fetcher: (

@@ -1,10 +1,10 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import CouponHeader from "@/components/containers/shared/coupons/coupon-header";
-import CouponTable from "@/components/containers/shared/coupons/coupon-table";
-import type { CouponItem, CouponMutationState } from "@/types/coupons";
+} from "#/components/base/data-table/types";
+import CouponHeader from "#/components/containers/shared/coupons/coupon-header";
+import CouponTable from "#/components/containers/shared/coupons/coupon-table";
+import type { CouponItem, CouponMutationState } from "#/types/coupons";
 
 interface ShopCouponsTemplateProps {
     fetcher: (

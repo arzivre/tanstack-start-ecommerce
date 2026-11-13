@@ -1,4 +1,4 @@
-import { createEntityHeader } from "@/components/base/common/entity-header";
+import { createEntityHeader } from "#/components/base/common/entity-header";
 
 export const CouponHeader = createEntityHeader({
     entityName: "Coupon",
@@ -8,4 +8,4 @@ export const CouponHeader = createEntityHeader({
 });
 
 export default CouponHeader;
-export type { EntityHeaderProps as CouponHeaderProps } from "@/components/base/common/entity-header";
+export type { EntityHeaderProps as CouponHeaderProps } from "#/components/base/common/entity-header";

@@ -5,16 +5,16 @@
  * Handles onboarding, status checking, and dashboard access.
  */
 
-import { db } from "@/lib/db";
-import { vendors } from "@/lib/db/schema/shop-schema";
-import { authMiddleware } from "@/lib/middleware/auth";
+import { db } from "#/lib/db";
+import { vendors } from "#/lib/db/schema/shop-schema";
+import { authMiddleware } from "#/lib/middleware/auth";
 import {
     createAccountLink,
     createConnectedAccount,
     createLoginLink,
     getAccountStatus as getStripeAccountStatus,
-} from "@/lib/stripe/connect";
-import type { StripeConnectStatus } from "@/types/orders";
+} from "#/lib/stripe/connect";
+import type { StripeConnectStatus } from "#/types/orders";
 import { createServerFn } from "@tanstack/react-start";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
@@ -248,7 +248,7 @@ export const disconnectStripeAccount = createServerFn({ method: "POST" })
         }
 
         // Delete the Stripe account
-        const { deleteConnectedAccount } = await import("@/lib/stripe/connect");
+        const { deleteConnectedAccount } = await import("#/lib/stripe/connect");
         await deleteConnectedAccount(vendor.stripeConnectedAccountId);
 
         // Clear Stripe data from database

@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Store } from "lucide-react";
-import { VendorNavMenu } from "@/components/base/vendors/vendor-nav-menu";
-import { VendorUserMenu } from "@/components/base/vendors/vendor-user-menu";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { VendorNavMenu } from "#/components/base/vendors/vendor-nav-menu";
+import { VendorUserMenu } from "#/components/base/vendors/vendor-user-menu";
+import { Button } from "#/components/ui/button";
+import { Separator } from "#/components/ui/separator";
 import {
     Sidebar,
     SidebarContent,
@@ -13,9 +13,9 @@ import {
     SidebarGroupLabel,
     SidebarHeader,
     SidebarRail,
-} from "@/components/ui/sidebar";
-import { useSession } from "@/lib/auth/auth-client";
-import { getShopNavItems } from "@/lib/constants/vendors.routes";
+} from "#/components/ui/sidebar";
+import { useSession } from "#/lib/auth/auth-client";
+import { getShopNavItems } from "#/lib/constants/vendors.routes";
 
 interface ShopSidebarProps {
     shopName: string;

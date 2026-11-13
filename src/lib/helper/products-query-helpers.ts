@@ -11,14 +11,14 @@ import {
     or,
     type SQL,
 } from "drizzle-orm";
-import { db } from "@/lib/db";
+import { db } from "#/lib/db";
 import type {
     BatchedProductRelations,
     ListProductsResponse,
     NormalizedProduct,
     ProductQueryOptions,
-} from "@/types/products";
-import type { DisplayProduct, StoreProduct } from "@/types/store-types";
+} from "#/types/products";
+import type { DisplayProduct, StoreProduct } from "#/types/store-types";
 import { attributes, attributeValues } from "../db/schema/attribute-schema";
 import { brands } from "../db/schema/brand-schema";
 import { categories } from "../db/schema/category-schema";

@@ -15,20 +15,20 @@ import { useNavigate } from "@tanstack/react-router";
 import { CreditCard, Loader2, Lock, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
+import { Button } from "#/components/ui/button";
 import {
     Dialog,
     DialogContent,
     DialogDescription,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
+} from "#/components/ui/dialog";
+import { ScrollArea } from "#/components/ui/scroll-area";
 import {
     clearCheckoutSession,
     useConfirmPayment,
-} from "@/hooks/store/use-checkout";
-import type { CheckoutSessionData } from "@/types/orders";
+} from "#/hooks/store/use-checkout";
+import type { CheckoutSessionData } from "#/types/orders";
 
 // Initialize Stripe - Replace with your publishable key from env
 const stripePromise = loadStripe(

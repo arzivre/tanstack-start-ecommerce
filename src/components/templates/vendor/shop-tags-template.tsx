@@ -1,14 +1,14 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import TagHeader from "@/components/containers/shared/tags/tag-header";
-import TagTable from "@/components/containers/shared/tags/tag-table";
+} from "#/components/base/data-table/types";
+import TagHeader from "#/components/containers/shared/tags/tag-header";
+import TagTable from "#/components/containers/shared/tags/tag-table";
 import type {
     TagMutationState,
     TagTableActions,
-} from "@/components/containers/shared/tags/tag-table-columns";
-import type { TagItem } from "@/types/tags";
+} from "#/components/containers/shared/tags/tag-table-columns";
+import type { TagItem } from "#/types/tags";
 
 interface ShopTagsTemplateProps extends TagTableActions {
     fetcher: (

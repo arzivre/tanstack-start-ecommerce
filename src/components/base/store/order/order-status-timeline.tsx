@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+import { cn } from '#/lib/utils'
 import { Check, Circle, Package } from 'lucide-react'
 
 interface TimelineStage {

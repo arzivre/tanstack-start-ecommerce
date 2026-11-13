@@ -1,10 +1,10 @@
-import { db } from "@/lib/db";
-import { vendors } from "@/lib/db/schema/shop-schema";
-import { sendEmail } from "@/lib/email";
-import VendorNewOrderEmail from "@/lib/emails/vendor-new-order-email";
-import { createOrderNotification } from "@/lib/functions/vendor";
-import { constructWebhookEvent } from "@/lib/stripe/connect";
-import { sendOrderConfirmationEmailForOrderId } from "@/lib/validators/emails/order-confirmation";
+import { db } from "#/lib/db";
+import { vendors } from "#/lib/db/schema/shop-schema";
+import { sendEmail } from "#/lib/email";
+import VendorNewOrderEmail from "#/lib/emails/vendor-new-order-email";
+import { createOrderNotification } from "#/lib/functions/vendor";
+import { constructWebhookEvent } from "#/lib/stripe/connect";
+import { sendOrderConfirmationEmailForOrderId } from "#/lib/validators/emails/order-confirmation";
 import { createFileRoute } from "@tanstack/react-router";
 import { eq } from "drizzle-orm";
 import type Stripe from "stripe";

@@ -1,20 +1,20 @@
 import { createServerFn } from "@tanstack/react-start";
 import { and, eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
-import { db } from "@/lib/db";
+import { db } from "#/lib/db";
 import {
     productAttributes,
     productImages,
     products,
     productTags,
-} from "@/lib/db/schema/products-schema";
+} from "#/lib/db/schema/products-schema";
 import {
     executeProductQuery,
     fetchProductWithRelations,
-} from "@/lib/helper/products-query-helpers";
-import { requireShopAccess } from "@/lib/helper/vendor";
-import { authMiddleware } from "@/lib/middleware/auth";
-import { generateSlug } from "@/lib/utils/slug";
+} from "#/lib/helper/products-query-helpers";
+import { requireShopAccess } from "#/lib/helper/vendor";
+import { authMiddleware } from "#/lib/middleware/auth";
+import { generateSlug } from "#/lib/utils/slug";
 import {
     createProductSchema,
     deleteProductSchema,
@@ -22,9 +22,9 @@ import {
     updateProductSchema,
     type VendorProductsQuery,
     vendorProductsQuerySchema,
-} from "@/lib/validators/shared/product-query";
-import { createSuccessResponse } from "@/types/api-response";
-import type { ProductListResponse } from "@/types/products";
+} from "#/lib/validators/shared/product-query";
+import { createSuccessResponse } from "#/types/api-response";
+import type { ProductListResponse } from "#/types/products";
 
 // ============================================================================
 // Get Products (List with Pagination)

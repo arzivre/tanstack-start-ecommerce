@@ -1,6 +1,6 @@
-import { VendorNavMenu } from "@/components/base/vendors/vendor-nav-menu";
-import { VendorUserMenu } from "@/components/base/vendors/vendor-user-menu";
-import { Button } from "@/components/ui/button";
+import { VendorNavMenu } from "#/components/base/vendors/vendor-nav-menu";
+import { VendorUserMenu } from "#/components/base/vendors/vendor-user-menu";
+import { Button } from "#/components/ui/button";
 import {
     Sidebar,
     SidebarContent,
@@ -10,13 +10,13 @@ import {
     SidebarGroupLabel,
     SidebarHeader,
     SidebarRail,
-} from "@/components/ui/sidebar";
-import { useSession } from "@/lib/auth/auth-client";
-import type { VendorNavItem } from "@/types/vendor";
+} from "#/components/ui/sidebar";
+import { useSession } from "#/lib/auth/auth-client";
+import type { VendorNavItem } from "#/types/vendor";
 import { Link } from "@tanstack/react-router";
 import { Home, Store } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { useShops } from "@/hooks/vendors/use-shops";
+import { useShops } from "#/hooks/vendors/use-shops";
 
 export function VendorDashboardSidebar() {
     const { data: session } = useSession();

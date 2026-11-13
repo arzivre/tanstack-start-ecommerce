@@ -1,13 +1,13 @@
 import { Star } from "lucide-react";
-import { ColorRadioItem } from "@/components/base/products/color-radio-item";
-import { FilterGroup } from "@/components/base/products/filter-group";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { RadioGroup } from "@/components/ui/radio-group";
-import { Slider } from "@/components/ui/slider";
-import { COLORS, SIZES } from "@/data/products";
-import type { FilterState } from "@/lib/store/product-filters-store";
+import { ColorRadioItem } from "#/components/base/products/color-radio-item";
+import { FilterGroup } from "#/components/base/products/filter-group";
+import { Button } from "#/components/ui/button";
+import { Checkbox } from "#/components/ui/checkbox";
+import { Label } from "#/components/ui/label";
+import { RadioGroup } from "#/components/ui/radio-group";
+import { Slider } from "#/components/ui/slider";
+import { COLORS, SIZES } from "#/data/products";
+import type { FilterState } from "#/lib/store/product-filters-store";
 
 interface FilterSidebarProps {
     filters: FilterState;

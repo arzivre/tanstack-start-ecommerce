@@ -1,18 +1,18 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import { AddCategoryDialog } from "@/components/containers/shared/categories/add-category-dialog";
-import ShopCategoriesTemplate from "@/components/templates/vendor/shop-categories-template";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import { useCategories } from "@/hooks/vendors/use-categories";
-import { shopBySlugQueryOptions } from "@/hooks/vendors/use-shops";
-import { createVendorCategoriesFetcher } from "@/hooks/vendors/use-vendor-entity-fetchers";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import { AddCategoryDialog } from "#/components/containers/shared/categories/add-category-dialog";
+import ShopCategoriesTemplate from "#/components/templates/vendor/shop-categories-template";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import { useCategories } from "#/hooks/vendors/use-categories";
+import { shopBySlugQueryOptions } from "#/hooks/vendors/use-shops";
+import { createVendorCategoriesFetcher } from "#/hooks/vendors/use-vendor-entity-fetchers";
 import type {
     CategoryFormValues,
     NormalizedCategory,
-} from "@/types/category-types";
+} from "#/types/category-types";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/categories")({
     component: CategoriesPage,

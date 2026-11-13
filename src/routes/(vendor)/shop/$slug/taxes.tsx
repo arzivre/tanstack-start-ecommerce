@@ -1,15 +1,15 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import { AddTaxDialog } from "@/components/containers/shared/taxes/add-tax-dialog";
-import { ShopTaxesTemplate } from "@/components/templates/vendor/shop-taxes-template";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import { shopBySlugQueryOptions } from "@/hooks/vendors/use-shops";
-import { useTaxRates } from "@/hooks/vendors/use-tax-rates";
-import { createVendorTaxRatesFetcher } from "@/hooks/vendors/use-vendor-entity-fetchers";
-import type { TaxRateFormValues, TaxRateItem } from "@/types/taxes";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import { AddTaxDialog } from "#/components/containers/shared/taxes/add-tax-dialog";
+import { ShopTaxesTemplate } from "#/components/templates/vendor/shop-taxes-template";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import { shopBySlugQueryOptions } from "#/hooks/vendors/use-shops";
+import { useTaxRates } from "#/hooks/vendors/use-tax-rates";
+import { createVendorTaxRatesFetcher } from "#/hooks/vendors/use-vendor-entity-fetchers";
+import type { TaxRateFormValues, TaxRateItem } from "#/types/taxes";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/taxes")({
     component: TaxesPage,

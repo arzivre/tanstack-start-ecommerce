@@ -1,9 +1,9 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { ShopDashboardSkeleton } from "@/components/base/vendors/skeleton/shop-dashboard-skeleton";
-import ShopDashboardTemplate from "@/components/templates/vendor/shop-dashboard-template";
-import { useShopDashboard } from "@/hooks/vendors/use-shop-dashboard";
-import { shopBySlugQueryOptions } from "@/hooks/vendors/use-shops";
+import { ShopDashboardSkeleton } from "#/components/base/vendors/skeleton/shop-dashboard-skeleton";
+import ShopDashboardTemplate from "#/components/templates/vendor/shop-dashboard-template";
+import { useShopDashboard } from "#/hooks/vendors/use-shop-dashboard";
+import { shopBySlugQueryOptions } from "#/hooks/vendors/use-shops";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/")({
     component: ShopDashboardPage,

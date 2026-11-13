@@ -11,13 +11,13 @@ import {
     getTaxRates,
     toggleTaxRateActive,
     updateTaxRate,
-} from "@/lib/functions/vendor/tax";
+} from "#/lib/functions/vendor/tax";
 import type {
     CreateTaxRateInput,
     UpdateTaxRateInput,
     VendorTaxRatesQuery,
-} from "@/lib/validators/shared/tax-rate-query";
-import type { TaxRateMutationState } from "@/types/taxes";
+} from "#/lib/validators/shared/tax-rate-query";
+import type { TaxRateMutationState } from "#/types/taxes";
 
 export const vendorTaxRatesKeys = {
     all: (shopId: string) => ["vendor", "tax-rates", shopId] as const,

@@ -17,12 +17,12 @@ import {
     getCategories,
     getCategoryById,
     updateCategory,
-} from "@/lib/functions/vendor/categories";
+} from "#/lib/functions/vendor/categories";
 import type {
     CreateCategoryInput,
     UpdateCategoryInput,
-} from "@/lib/validators/category";
-import type { VendorCategoriesQuery } from "@/lib/validators/shared/category-query";
+} from "#/lib/validators/category";
+import type { VendorCategoriesQuery } from "#/lib/validators/shared/category-query";
 
 // ============================================================================
 // Query Options

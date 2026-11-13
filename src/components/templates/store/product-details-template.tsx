@@ -1,8 +1,8 @@
-import { ProductBreadcrumb } from "@/components/base/products/details/product-breadcrum";
-import ProductDetailsTabs from "@/components/containers/store/product-details/details-tabs";
-import ProductMainSection from "@/components/containers/store/product-details/main-section";
-import SimilarProductsSection from "@/components/containers/store/product-details/similar-products-section";
-import type { StoreProduct } from "@/types/store-types";
+import { ProductBreadcrumb } from "#/components/base/products/details/product-breadcrum";
+import ProductDetailsTabs from "#/components/containers/store/product-details/details-tabs";
+import ProductMainSection from "#/components/containers/store/product-details/main-section";
+import SimilarProductsSection from "#/components/containers/store/product-details/similar-products-section";
+import type { StoreProduct } from "#/types/store-types";
 
 interface ProductDetailsTemplateProps {
     product: StoreProduct;

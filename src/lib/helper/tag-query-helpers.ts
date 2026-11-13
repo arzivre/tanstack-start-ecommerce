@@ -16,14 +16,14 @@ import {
     or,
     type SQL,
 } from "drizzle-orm";
-import { shops } from "@/lib/db/schema/shop-schema";
-import { tags } from "@/lib/db/schema/tags-schema";
+import { shops } from "#/lib/db/schema/shop-schema";
+import { tags } from "#/lib/db/schema/tags-schema";
 import type {
     BatchedTagRelations,
     TagItem,
     TagQueryOptions,
     TagQueryResult,
-} from "@/types/tags";
+} from "#/types/tags";
 import { db } from "../db";
 
 /**

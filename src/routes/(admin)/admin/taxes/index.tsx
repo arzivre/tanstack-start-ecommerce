@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
-import AdminTaxesTemplate from '@/components/templates/admin/admin-taxes-template'
+import AdminTaxesTemplate from '#/components/templates/admin/admin-taxes-template'
 
 interface TaxFormValues {
   id: string

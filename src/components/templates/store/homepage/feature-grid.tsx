@@ -1,5 +1,5 @@
 import FeatureGridContainer from '#/components/containers/store/feature-grid-container'
-import Section from '@/components/base/common/section'
+import Section from '#/components/base/common/section'
 
 export function FeatureGrid() {
   return (

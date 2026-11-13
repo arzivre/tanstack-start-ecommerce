@@ -1,8 +1,8 @@
-import { NotFound } from "@/components/base/empty/not-found";
-import CartItem from "@/components/base/store/cart/cart-item";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useCart } from "@/hooks/store/use-cart";
+import { NotFound } from "#/components/base/empty/not-found";
+import CartItem from "#/components/base/store/cart/cart-item";
+import { Button } from "#/components/ui/button";
+import { Skeleton } from "#/components/ui/skeleton";
+import { useCart } from "#/hooks/store/use-cart";
 import { Link } from "@tanstack/react-router";
 import { Loader2, ShoppingCart } from "lucide-react";
 

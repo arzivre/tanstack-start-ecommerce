@@ -1,25 +1,25 @@
 import { createServerFn } from "@tanstack/react-start";
 import { and, count, eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
-import { db } from "@/lib/db";
-import { categories } from "@/lib/db/schema/category-schema";
+import { db } from "#/lib/db";
+import { categories } from "#/lib/db/schema/category-schema";
 import {
     executeCategoryQuery,
     fetchCategoryWithRelations,
-} from "@/lib/helper/category-query-helpers";
-import { requireShopAccess } from "@/lib/helper/vendor";
-import { authMiddleware } from "@/lib/middleware/auth";
-import { generateSlug } from "@/lib/utils/slug";
+} from "#/lib/helper/category-query-helpers";
+import { requireShopAccess } from "#/lib/helper/vendor";
+import { authMiddleware } from "#/lib/middleware/auth";
+import { generateSlug } from "#/lib/utils/slug";
 import {
     createCategorySchema,
     updateCategorySchema,
-} from "@/lib/validators/category";
+} from "#/lib/validators/category";
 import {
     type VendorCategoriesQuery,
     vendorCategoriesQuerySchema,
-} from "@/lib/validators/shared/category-query";
-import { createSuccessResponse } from "@/types/api-response";
-import type { CategoryListResponse } from "@/types/category-types";
+} from "#/lib/validators/shared/category-query";
+import { createSuccessResponse } from "#/types/api-response";
+import type { CategoryListResponse } from "#/types/category-types";
 
 // ============================================================================
 // Get Categories (List with Pagination)

@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Grid3x3, List, Loader2, ShoppingBag } from "lucide-react";
 import { useMemo, useState } from "react";
-import { NotFound } from "@/components/base/empty/not-found";
-import { CategoryGrid } from "@/components/containers/store/category/category-grid";
-import ProductGrid from "@/components/containers/store/product-list/product-grid";
+import { NotFound } from "#/components/base/empty/not-found";
+import { CategoryGrid } from "#/components/containers/store/category/category-grid";
+import ProductGrid from "#/components/containers/store/product-list/product-grid";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -12,16 +12,16 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+} from "#/components/ui/breadcrumb";
+import { Button } from "#/components/ui/button";
+import { Separator } from "#/components/ui/separator";
 import {
     storeCategoryBySlugQueryOptions,
     subcategoriesQueryOptions,
-} from "@/hooks/store/use-store-categories";
-import { storeProductsQueryOptions } from "@/hooks/store/use-store-product";
-import { toDisplayProducts } from "@/lib/helper/products-query-helpers";
-import { toUICategory } from "@/lib/transformers/category-transformers";
+} from "#/hooks/store/use-store-categories";
+import { storeProductsQueryOptions } from "#/hooks/store/use-store-product";
+import { toDisplayProducts } from "#/lib/helper/products-query-helpers";
+import { toUICategory } from "#/lib/transformers/category-transformers";
 
 export default function CategoryDetailTemplate({ slug }: { slug: string }) {
     const [viewMode, setViewMode] = useState<"grid" | "list">("grid");

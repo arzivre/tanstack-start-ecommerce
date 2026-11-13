@@ -4,8 +4,8 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from '@/components/ui/input-group'
-import { cn } from '@/lib/utils'
+} from '#/components/ui/input-group'
+import { cn } from '#/lib/utils'
 
 interface QuantitySelectorProps {
   value: number

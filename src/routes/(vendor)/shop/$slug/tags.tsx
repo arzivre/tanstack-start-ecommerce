@@ -1,15 +1,15 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import { AddTagDialog } from "@/components/containers/shared/tags/add-tag-dialog";
-import { ShopTagsTemplate } from "@/components/templates/vendor/shop-tags-template";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import { shopBySlugQueryOptions } from "@/hooks/vendors/use-shops";
-import { useTags } from "@/hooks/vendors/use-tags";
-import { createVendorTagsFetcher } from "@/hooks/vendors/use-vendor-entity-fetchers";
-import type { TagFormValues, TagItem } from "@/types/tags";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import { AddTagDialog } from "#/components/containers/shared/tags/add-tag-dialog";
+import { ShopTagsTemplate } from "#/components/templates/vendor/shop-tags-template";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import { shopBySlugQueryOptions } from "#/hooks/vendors/use-shops";
+import { useTags } from "#/hooks/vendors/use-tags";
+import { createVendorTagsFetcher } from "#/hooks/vendors/use-vendor-entity-fetchers";
+import type { TagFormValues, TagItem } from "#/types/tags";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/tags")({
     component: TagsPage,

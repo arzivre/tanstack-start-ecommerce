@@ -1,10 +1,10 @@
-import { db } from "@/lib/db";
-import { cartItems, cartSessions } from "@/lib/db/schema/cart-schema";
+import { db } from "#/lib/db";
+import { cartItems, cartSessions } from "#/lib/db/schema/cart-schema";
 import {
     fetchCartWithDetails,
     getOrCreateCartSession,
-} from "@/lib/helper/cart-helpers";
-import { optionalAuthMiddleware } from "@/lib/middleware/optional-auth";
+} from "#/lib/helper/cart-helpers";
+import { optionalAuthMiddleware } from "#/lib/middleware/optional-auth";
 import {
     addToCartSchema,
     clearCartSchema,
@@ -12,12 +12,12 @@ import {
     mergeCartsSchema,
     removeFromCartSchema,
     updateCartItemSchema,
-} from "@/lib/validators/cart";
+} from "#/lib/validators/cart";
 import { createServerFn } from "@tanstack/react-start";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 
-import type { CartResponse } from "@/types/cart";
+import type { CartResponse } from "#/types/cart";
 
 export const getCart = createServerFn({ method: "GET" })
     .middleware([optionalAuthMiddleware])

@@ -1,7 +1,7 @@
-import { db } from "@/lib/db";
-import { emailDeliveries } from "@/lib/db/schema/email-schema";
-import { sendEmail } from "@/lib/email";
-import OrderConfirmationEmail from "@/lib/emails/order-confirmation-email";
+import { db } from "#/lib/db";
+import { emailDeliveries } from "#/lib/db/schema/email-schema";
+import { sendEmail } from "#/lib/email";
+import OrderConfirmationEmail from "#/lib/emails/order-confirmation-email";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 

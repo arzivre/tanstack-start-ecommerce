@@ -1,5 +1,5 @@
 import type { SQL } from "drizzle-orm";
-import type { Brand as BrandSchema } from "@/lib/db/schema/brand-schema";
+import type { Brand as BrandSchema } from "#/lib/db/schema/brand-schema";
 import type { PaginatedResponse } from "./api-response";
 
 // Re-export Brand type from Drizzle schema as the single source of truth

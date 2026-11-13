@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { DataTable } from "@/components/base/data-table/data-table";
+import { DataTable } from "#/components/base/data-table/data-table";
 import {
     type CouponMutationState,
     type CouponTableActions,
@@ -10,8 +10,8 @@ import {
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import type { CouponItem, CouponPermissions } from "@/types/coupons";
+} from "#/components/base/data-table/types";
+import type { CouponItem, CouponPermissions } from "#/types/coupons";
 
 // ============================================================================
 // Constants

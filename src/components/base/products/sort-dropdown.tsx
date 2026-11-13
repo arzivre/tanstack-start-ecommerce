@@ -4,10 +4,10 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
+} from "#/components/ui/select";
 
-import { cn } from "@/lib/utils";
-import type { SortOption } from "@/types/products";
+import { cn } from "#/lib/utils";
+import type { SortOption } from "#/types/products";
 
 interface SortDropdownProps {
     value: SortOption;

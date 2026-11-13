@@ -3,14 +3,14 @@ import { useNavigate } from "@tanstack/react-router";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Form } from "@/components/base/forms/form";
-import { Field } from "@/components/base/forms/form-field";
-import { PhoneInput } from "@/components/base/forms/phone-input";
-import { Button } from "@/components/ui/button";
-import { registerVendor } from "@/lib/functions/vendor";
-import { validateField, validateOptionalField } from "@/lib/helper/validators";
-import type { VendorRegisterInput } from "@/lib/validators/auth";
-import { passwordSchema, vendorRegisterSchema } from "@/lib/validators/auth";
+import { Form } from "#/components/base/forms/form";
+import { Field } from "#/components/base/forms/form-field";
+import { PhoneInput } from "#/components/base/forms/phone-input";
+import { Button } from "#/components/ui/button";
+import { registerVendor } from "#/lib/functions/vendor";
+import { validateField, validateOptionalField } from "#/lib/helper/validators";
+import type { VendorRegisterInput } from "#/lib/validators/auth";
+import { passwordSchema, vendorRegisterSchema } from "#/lib/validators/auth";
 
 interface VendorSignUpFormProps {
     onSuccess: () => void;

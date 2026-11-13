@@ -1,8 +1,8 @@
 import type { ColumnDef } from '@tanstack/react-table'
-import { DataTable } from '@/components/base/data-table/data-table'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import type { Product } from '@/data/products'
+import { DataTable } from '#/components/base/data-table/data-table'
+import { Badge } from '#/components/ui/badge'
+import { Button } from '#/components/ui/button'
+import type { Product } from '#/data/products'
 
 interface AdminProductsTableProps {
   products: Product[]

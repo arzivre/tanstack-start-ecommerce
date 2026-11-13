@@ -6,15 +6,15 @@
  */
 
 import { infiniteQueryOptions, queryOptions } from "@tanstack/react-query";
-import { PRODUCTS_PAGE_SIZE } from "@/lib/constants/store-products";
+import { PRODUCTS_PAGE_SIZE } from "#/lib/constants/store-products";
 import {
     getFeaturedProducts,
     getRelatedProducts,
     getStoreProductById,
     getStoreProductBySlug,
     getStoreProducts,
-} from "@/lib/functions/store/products";
-import type { StoreProductsQuery } from "@/lib/validators/shared/product-query";
+} from "#/lib/functions/store/products";
+import type { StoreProductsQuery } from "#/lib/validators/shared/product-query";
 
 // ============================================================================
 // Query Keys

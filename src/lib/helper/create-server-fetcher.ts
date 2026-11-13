@@ -16,7 +16,7 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
+} from "#/components/base/data-table/types";
 
 // ============================================================================
 // Types

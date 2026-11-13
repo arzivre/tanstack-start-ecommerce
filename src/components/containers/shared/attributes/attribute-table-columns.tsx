@@ -1,8 +1,8 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Loader2, MoreHorizontal } from "lucide-react";
-import type { FilterableColumn } from "@/components/base/data-table/types";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type { FilterableColumn } from "#/components/base/data-table/types";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,15 +10,15 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "#/components/ui/dropdown-menu";
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
-import type { AttributeItem } from "@/types/attributes";
+} from "#/components/ui/tooltip";
+import { cn } from "#/lib/utils";
+import type { AttributeItem } from "#/types/attributes";
 
 export interface AttributeTableActions {
     onEdit?: (attribute: AttributeItem) => void;

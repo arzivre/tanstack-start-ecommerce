@@ -1,8 +1,8 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Loader2, MoreHorizontal } from "lucide-react";
-import type { FilterableColumn } from "@/components/base/data-table/types";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type { FilterableColumn } from "#/components/base/data-table/types";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,9 +10,9 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
-import type { TagItem } from "@/types/tags";
+} from "#/components/ui/dropdown-menu";
+import { cn } from "#/lib/utils";
+import type { TagItem } from "#/types/tags";
 
 export interface TagTableActions {
     onEdit?: (tag: TagItem) => void;

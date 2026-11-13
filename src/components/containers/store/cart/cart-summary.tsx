@@ -1,21 +1,21 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "#/components/ui/button";
 import {
     InputGroup,
     InputGroupAddon,
     InputGroupButton,
     InputGroupInput,
-} from "@/components/ui/input-group";
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useCart } from "@/hooks/store/use-cart";
-import { validateStoreCoupon } from "@/lib/functions/store/coupon";
+} from "#/components/ui/input-group";
+import { Separator } from "#/components/ui/separator";
+import { Skeleton } from "#/components/ui/skeleton";
+import { useCart } from "#/hooks/store/use-cart";
+import { validateStoreCoupon } from "#/lib/functions/store/coupon";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Loader2, Tag, X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
-import type { CartItemResponse } from "@/hooks/store/use-cart";
-import type { ValidateCouponResponse } from "@/types/coupons";
+import type { CartItemResponse } from "#/hooks/store/use-cart";
+import type { ValidateCouponResponse } from "#/types/coupons";
 
 interface AppliedCoupon {
     shopId: string;

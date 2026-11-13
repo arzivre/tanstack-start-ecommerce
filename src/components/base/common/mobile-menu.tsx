@@ -1,12 +1,12 @@
 import { ShoppingBag } from 'lucide-react'
 import type { ReactNode } from 'react'
-import { Button } from '@/components/ui/button'
+import { Button } from '#/components/ui/button'
 import {
   Sheet,
   SheetClose,
   SheetContent,
   SheetTrigger,
-} from '@/components/ui/sheet'
+} from '#/components/ui/sheet'
 import { Navbar } from './navbar'
 
 export interface MobileMenuProps {

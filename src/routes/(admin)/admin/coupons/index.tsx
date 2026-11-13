@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import AdminCouponsTemplate from "@/components/templates/admin/admin-coupons-template";
-import { useAdminCoupons } from "@/hooks/admin/use-admin-coupons";
-import { createAdminCouponsFetcher } from "@/hooks/admin/use-admin-entity-fetchers";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import type { CouponItem } from "@/types/coupons";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import AdminCouponsTemplate from "#/components/templates/admin/admin-coupons-template";
+import { useAdminCoupons } from "#/hooks/admin/use-admin-coupons";
+import { createAdminCouponsFetcher } from "#/hooks/admin/use-admin-entity-fetchers";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import type { CouponItem } from "#/types/coupons";
 
 export const Route = createFileRoute("/(admin)/admin/coupons/")({
     component: AdminCouponsPage,

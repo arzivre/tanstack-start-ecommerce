@@ -1,7 +1,7 @@
-import { DataTable } from '@/components/base/data-table/data-table'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { DataTable } from '#/components/base/data-table/data-table'
+import { Avatar, AvatarFallback, AvatarImage } from '#/components/ui/avatar'
+import { Badge } from '#/components/ui/badge'
+import { Button } from '#/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,8 +9,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import type { Coupon } from '@/types/coupon'
+} from '#/components/ui/dropdown-menu'
+import type { Coupon } from '#/types/coupon'
 import type { ColumnDef } from '@tanstack/react-table'
 import { DollarSign, MoreHorizontal, Percent, Tag, Truck } from 'lucide-react'
 

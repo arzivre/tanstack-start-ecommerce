@@ -10,7 +10,7 @@ import type {
     CategoryTreeNode,
     CategoryWithChildren,
     NormalizedCategory,
-} from "@/types/category-types";
+} from "#/types/category-types";
 
 /**
  * Transform NormalizedCategory (API response) to Category (UI type)

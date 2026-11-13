@@ -7,27 +7,27 @@
 
 import { createServerFn } from "@tanstack/react-start";
 import { count, eq, inArray } from "drizzle-orm";
-import { db } from "@/lib/db";
-import { brands } from "@/lib/db/schema/brand-schema";
-import { products } from "@/lib/db/schema/products-schema";
-import { shops } from "@/lib/db/schema/shop-schema";
+import { db } from "#/lib/db";
+import { brands } from "#/lib/db/schema/brand-schema";
+import { products } from "#/lib/db/schema/products-schema";
+import { shops } from "#/lib/db/schema/shop-schema";
 import {
     executeBrandQuery,
     fetchBrandWithRelations,
-} from "@/lib/helper/brands-query-helpers";
-import { adminMiddleware } from "@/lib/middleware/admin";
+} from "#/lib/helper/brands-query-helpers";
+import { adminMiddleware } from "#/lib/middleware/admin";
 import {
     type AdminBrandsQuery,
     adminBrandsQuerySchema,
     deleteBrandSchema,
     getBrandByIdSchema,
     toggleBrandActiveSchema,
-} from "@/lib/validators/shared/brand-query";
+} from "#/lib/validators/shared/brand-query";
 import {
     createSuccessResponse,
     emptyPaginatedResponse,
-} from "@/types/api-response";
-import type { BrandItem, BrandListResponse } from "@/types/brands";
+} from "#/types/api-response";
+import type { BrandItem, BrandListResponse } from "#/types/brands";
 
 // ============================================================================
 // Get All Brands (Admin)

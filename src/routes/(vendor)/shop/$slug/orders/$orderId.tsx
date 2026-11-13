@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Loader2 } from "lucide-react";
-import ShopOrderDetailsTemplate from "@/components/templates/vendor/shop-order-details-template";
-import { useVendorOrderDetails } from "@/hooks/vendors/use-vendor-orders";
+import ShopOrderDetailsTemplate from "#/components/templates/vendor/shop-order-details-template";
+import { useVendorOrderDetails } from "#/hooks/vendors/use-vendor-orders";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/orders/$orderId")({
     component: OrderDetailsPage,

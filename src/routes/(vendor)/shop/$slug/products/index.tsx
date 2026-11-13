@@ -1,21 +1,21 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import { AddProductDialog } from "@/components/containers/shared/products/add-product-dialog";
-import ShopProductsTemplate from "@/components/templates/vendor/products/shop-products-template";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import { shippingMethodsQueryOptions } from "@/hooks/common/use-shipping";
-import { attributesQueryOptions } from "@/hooks/vendors/use-attributes";
-import { brandsQueryOptions } from "@/hooks/vendors/use-brands";
-import { categoriesQueryOptions } from "@/hooks/vendors/use-categories";
-import { useProducts } from "@/hooks/vendors/use-products";
-import { shopBySlugQueryOptions } from "@/hooks/vendors/use-shops";
-import { tagsQueryOptions } from "@/hooks/vendors/use-tags";
-import { taxRatesQueryOptions } from "@/hooks/vendors/use-tax-rates";
-import { createVendorProductsFetcher } from "@/hooks/vendors/use-vendor-entity-fetchers";
-import type { ProductFormValues, ProductItem } from "@/types/products";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import { AddProductDialog } from "#/components/containers/shared/products/add-product-dialog";
+import ShopProductsTemplate from "#/components/templates/vendor/products/shop-products-template";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import { shippingMethodsQueryOptions } from "#/hooks/common/use-shipping";
+import { attributesQueryOptions } from "#/hooks/vendors/use-attributes";
+import { brandsQueryOptions } from "#/hooks/vendors/use-brands";
+import { categoriesQueryOptions } from "#/hooks/vendors/use-categories";
+import { useProducts } from "#/hooks/vendors/use-products";
+import { shopBySlugQueryOptions } from "#/hooks/vendors/use-shops";
+import { tagsQueryOptions } from "#/hooks/vendors/use-tags";
+import { taxRatesQueryOptions } from "#/hooks/vendors/use-tax-rates";
+import { createVendorProductsFetcher } from "#/hooks/vendors/use-vendor-entity-fetchers";
+import type { ProductFormValues, ProductItem } from "#/types/products";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/products/")({
     component: ProductsPage,

@@ -2,12 +2,12 @@ import { CheckCircle2, Clock, Percent, TrendingUp } from "lucide-react";
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import TransactionHeader from "@/components/containers/shared/transactions/transaction-header";
-import VendorTransactionTable from "@/components/containers/shared/transactions/vendor-transaction-table";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { formatCurrency } from "@/lib/utils";
-import type { VendorTransactionResponse } from "@/types/transaction";
+} from "#/components/base/data-table/types";
+import TransactionHeader from "#/components/containers/shared/transactions/transaction-header";
+import VendorTransactionTable from "#/components/containers/shared/transactions/vendor-transaction-table";
+import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
+import { formatCurrency } from "#/lib/utils";
+import type { VendorTransactionResponse } from "#/types/transaction";
 
 interface VendorTransactionStats {
     totalEarnings: number;

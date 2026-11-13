@@ -1,5 +1,5 @@
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
-import AuthForm from "@/components/containers/auth/auth-form";
+import AuthForm from "#/components/containers/auth/auth-form";
 
 export default function SignInPage() {
     const navigate = useNavigate();

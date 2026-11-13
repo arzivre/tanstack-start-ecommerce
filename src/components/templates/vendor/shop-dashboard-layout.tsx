@@ -1,7 +1,7 @@
 import { VendorHeader } from "#/components/base/vendors/vendor-header";
 import ShopDashboardSidebar from "#/components/containers/vendors/shop/shop-dashboard-sidebar";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
+import { SidebarInset, SidebarProvider } from "#/components/ui/sidebar";
+import { cn } from "#/lib/utils";
 import type { ReactNode } from "react";
 
 interface ShopDashboardLayoutProps {

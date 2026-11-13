@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { PageHeader } from '@/components/base/common/page-header'
-import type { StaffFormValues } from '@/types/staff'
+import { PageHeader } from '#/components/base/common/page-header'
+import type { StaffFormValues } from '#/types/staff'
 import { AddStaffDialog } from './add-staff-dialog'
 
 export interface StaffHeaderProps {

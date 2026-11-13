@@ -1,15 +1,15 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Edit, MoreHorizontal, Trash2 } from "lucide-react";
-import type { FilterableColumn } from "@/components/base/data-table/types";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type { FilterableColumn } from "#/components/base/data-table/types";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import type { ShippingMethodItem } from "@/types/shipping";
+} from "#/components/ui/dropdown-menu";
+import type { ShippingMethodItem } from "#/types/shipping";
 
 // ============================================================================
 // Types

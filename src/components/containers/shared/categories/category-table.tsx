@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/base/data-table/data-table";
+import { DataTable } from "#/components/base/data-table/data-table";
 import { useMemo } from "react";
 import {
     createCategoryColumns,
@@ -8,9 +8,9 @@ import {
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import { VENDOR_STATUS_OPTIONS } from "@/lib/constants";
-import type { NormalizedCategory } from "@/types/category-types";
+} from "#/components/base/data-table/types";
+import { VENDOR_STATUS_OPTIONS } from "#/lib/constants";
+import type { NormalizedCategory } from "#/types/category-types";
 import type {
     CategoryMutationState,
     CategoryTableActions,

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import VendorSignUpForm from "@/components/containers/auth/vendor-signup-form";
+import VendorSignUpForm from "#/components/containers/auth/vendor-signup-form";
 
 export default function VendorSignUpPage() {
     const navigate = useNavigate();

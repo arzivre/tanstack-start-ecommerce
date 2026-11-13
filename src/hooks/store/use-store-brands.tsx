@@ -10,8 +10,8 @@ import {
     getPopularBrands,
     getStoreBrandBySlug,
     getStoreBrands,
-} from "@/lib/functions/store/brands";
-import type { StoreBrandsQuery } from "@/lib/validators/shared/brand-query";
+} from "#/lib/functions/store/brands";
+import type { StoreBrandsQuery } from "#/lib/validators/shared/brand-query";
 
 // ============================================================================
 // Query Keys

@@ -2,14 +2,14 @@ import { format, parseISO } from "date-fns";
 import {
     EntityFormDialog,
     type EntityFormField,
-} from "@/components/base/forms/entity-form-dialog";
-import { DatePicker } from "@/components/ui/date-picker";
-import { Field, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { Textarea } from "@/components/ui/textarea";
-import { couponFormSchema } from "@/lib/validators/coupon";
-import type { CouponFormValues, CouponItem } from "@/types/coupons";
+} from "#/components/base/forms/entity-form-dialog";
+import { DatePicker } from "#/components/ui/date-picker";
+import { Field, FieldLabel } from "#/components/ui/field";
+import { Input } from "#/components/ui/input";
+import { Switch } from "#/components/ui/switch";
+import { Textarea } from "#/components/ui/textarea";
+import { couponFormSchema } from "#/lib/validators/coupon";
+import type { CouponFormValues, CouponItem } from "#/types/coupons";
 
 interface AddCouponDialogProps {
     open: boolean;

@@ -8,16 +8,16 @@
 import { createServerFn } from "@tanstack/react-start";
 import { and, count, eq, inArray } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
-import { db } from "@/lib/db";
-import { attributes, attributeValues } from "@/lib/db/schema/attribute-schema";
-import { productAttributes } from "@/lib/db/schema/products-schema";
-import { shops } from "@/lib/db/schema/shop-schema";
+import { db } from "#/lib/db";
+import { attributes, attributeValues } from "#/lib/db/schema/attribute-schema";
+import { productAttributes } from "#/lib/db/schema/products-schema";
+import { shops } from "#/lib/db/schema/shop-schema";
 import {
     executeAttributeQuery,
     fetchAttributeWithRelations,
-} from "@/lib/helper/attribute-query-helpers";
-import { adminMiddleware } from "@/lib/middleware/admin";
-import { generateSlug } from "@/lib/utils/slug";
+} from "#/lib/helper/attribute-query-helpers";
+import { adminMiddleware } from "#/lib/middleware/admin";
+import { generateSlug } from "#/lib/utils/slug";
 import {
     type AdminAttributesQuery,
     adminAttributesQuerySchema,
@@ -25,12 +25,12 @@ import {
     getAttributeByIdSchema,
     toggleAttributeActiveSchema,
     updateAdminAttributeSchema,
-} from "@/lib/validators/shared/attribute-query";
+} from "#/lib/validators/shared/attribute-query";
 import {
     createSuccessResponse,
     emptyPaginatedResponse,
-} from "@/types/api-response";
-import type { AttributeItem, AttributeListResponse } from "@/types/attributes";
+} from "#/types/api-response";
+import type { AttributeItem, AttributeListResponse } from "#/types/attributes";
 
 // ============================================================================
 // Get All Attributes (Admin)

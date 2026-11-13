@@ -1,11 +1,11 @@
-import { CategoryCard } from '@/components/base/store/category/category-card'
-import { cn } from '@/lib/utils'
-import type { Category } from '@/types/category-types'
+import { CategoryCard } from '#/components/base/store/category/category-card'
+import { cn } from '#/lib/utils'
+import type { Category } from '#/types/category-types'
 import {
   getGridColsClass,
   getResponsiveGridColsClass,
   type GridColumnsConfig,
-} from '@/lib/grid-utils'
+} from '#/lib/grid-utils'
 
 interface CategoryGridProps {
   categories: Category[]

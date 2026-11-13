@@ -1,11 +1,11 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import ProductHeader from "@/components/containers/vendors/products/product-header";
-import { ProductTable } from "@/components/containers/vendors/products/product-table";
-import type { ProductMutationState } from "@/components/containers/vendors/products/product-table-columns";
-import type { ProductItem } from "@/types/products";
+} from "#/components/base/data-table/types";
+import ProductHeader from "#/components/containers/vendors/products/product-header";
+import { ProductTable } from "#/components/containers/vendors/products/product-table";
+import type { ProductMutationState } from "#/components/containers/vendors/products/product-table-columns";
+import type { ProductItem } from "#/types/products";
 
 interface ShopProductsTemplateProps {
     fetcher: (

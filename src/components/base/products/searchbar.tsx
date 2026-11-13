@@ -4,8 +4,8 @@ import {
   InputGroupButton,
   InputGroupInput,
   InputGroupText,
-} from '@/components/ui/input-group'
-import { cn } from '@/lib/utils'
+} from '#/components/ui/input-group'
+import { cn } from '#/lib/utils'
 import { Search, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 

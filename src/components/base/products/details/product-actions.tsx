@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { Button } from '#/components/ui/button'
+import { cn } from '#/lib/utils'
 import { GitCompare, Heart, ShoppingCart } from 'lucide-react'
 
 interface ProductActionsProps {

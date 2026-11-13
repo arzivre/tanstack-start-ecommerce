@@ -2,11 +2,11 @@ import { useMemo } from "react";
 import {
     EntityFormDialog,
     type EntityFormField,
-} from "@/components/base/forms/entity-form-dialog";
-import { FieldLabel } from "@/components/ui/field";
-import { Switch } from "@/components/ui/switch";
-import type { CreateShippingMethodInput } from "@/lib/validators/shipping";
-import { createShippingMethodSchema } from "@/lib/validators/shipping";
+} from "#/components/base/forms/entity-form-dialog";
+import { FieldLabel } from "#/components/ui/field";
+import { Switch } from "#/components/ui/switch";
+import type { CreateShippingMethodInput } from "#/lib/validators/shipping";
+import { createShippingMethodSchema } from "#/lib/validators/shipping";
 
 type ShippingFormValues = Omit<CreateShippingMethodInput, "shopId">;
 

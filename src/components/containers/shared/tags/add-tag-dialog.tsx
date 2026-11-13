@@ -1,9 +1,9 @@
 import {
     EntityFormDialog,
     type EntityFormField,
-} from "@/components/base/forms/entity-form-dialog";
-import { createTagSchema } from "@/lib/validators/shared/tag-query";
-import type { TagFormValues } from "@/types/tags";
+} from "#/components/base/forms/entity-form-dialog";
+import { createTagSchema } from "#/lib/validators/shared/tag-query";
+import type { TagFormValues } from "#/types/tags";
 
 interface AddTagDialogProps {
     open: boolean;

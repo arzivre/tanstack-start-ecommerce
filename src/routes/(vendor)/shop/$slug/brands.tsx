@@ -1,15 +1,15 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import { AddBrandDialog } from "@/components/containers/shared/brands/add-brand-dialog";
-import { ShopBrandsTemplate } from "@/components/templates/vendor/shop-brands-template";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import { useBrands } from "@/hooks/vendors/use-brands";
-import { shopBySlugQueryOptions } from "@/hooks/vendors/use-shops";
-import { createVendorBrandsFetcher } from "@/hooks/vendors/use-vendor-entity-fetchers";
-import type { BrandFormValues, BrandItem } from "@/types/brands";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import { AddBrandDialog } from "#/components/containers/shared/brands/add-brand-dialog";
+import { ShopBrandsTemplate } from "#/components/templates/vendor/shop-brands-template";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import { useBrands } from "#/hooks/vendors/use-brands";
+import { shopBySlugQueryOptions } from "#/hooks/vendors/use-shops";
+import { createVendorBrandsFetcher } from "#/hooks/vendors/use-vendor-entity-fetchers";
+import type { BrandFormValues, BrandItem } from "#/types/brands";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/brands")({
     component: BrandsPage,

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
-import { VendorSettingsTemplate } from "@/components/templates/vendor/shop-settings-template";
+import { VendorSettingsTemplate } from "#/components/templates/vendor/shop-settings-template";
 
 const settingsSearchSchema = z.object({
     tab: z.enum(["general", "payments"]).optional().default("general"),

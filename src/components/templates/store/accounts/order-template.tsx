@@ -1,4 +1,4 @@
-import { AccountLayout } from '@/components/containers/store/accounts/account-layout'
+import { AccountLayout } from '#/components/containers/store/accounts/account-layout'
 import { OrdersTable } from './order-table'
 
 export function OrderTemplate() {

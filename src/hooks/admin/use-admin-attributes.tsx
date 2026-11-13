@@ -19,13 +19,13 @@ import {
     getAdminAttributes,
     toggleAdminAttributeActive,
     updateAdminAttribute,
-} from "@/lib/functions/admin/attribute.ts";
-import type { AdminAttributesQuery } from "@/lib/validators/shared/attribute-query";
+} from "#/lib/functions/admin/attribute.ts";
+import type { AdminAttributesQuery } from "#/lib/validators/shared/attribute-query";
 import type {
     AdminAttributeMutationState,
     ToggleActiveParams,
     UpdateAttributeParams,
-} from "@/types/attributes";
+} from "#/types/attributes";
 
 // ============================================================================
 // Query Keys

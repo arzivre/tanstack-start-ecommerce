@@ -1,9 +1,9 @@
 import { useForm } from '@tanstack/react-form'
 import { ArrowRight } from 'lucide-react'
 import { z } from 'zod'
-import { Button } from '@/components/ui/button'
-import { Field, FieldError } from '@/components/ui/field'
-import { Input } from '@/components/ui/input'
+import { Button } from '#/components/ui/button'
+import { Field, FieldError } from '#/components/ui/field'
+import { Input } from '#/components/ui/input'
 
 const schema = z.object({
   email: z.email('Please enter a valid email address'),

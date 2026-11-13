@@ -15,11 +15,11 @@ import {
     getUserReviews,
     updateReview,
     voteReviewHelpful,
-} from "@/lib/functions/store/review";
+} from "#/lib/functions/store/review";
 import type {
     CreateReviewInput,
     UpdateReviewInput,
-} from "@/lib/validators/review";
+} from "#/lib/validators/review";
 
 // ============================================================================
 // Query Keys

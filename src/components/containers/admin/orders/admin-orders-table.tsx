@@ -1,7 +1,7 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { MoreHorizontal } from 'lucide-react'
-import { DataTable } from '@/components/base/data-table/data-table'
-import { Button } from '@/components/ui/button'
+import { DataTable } from '#/components/base/data-table/data-table'
+import { Button } from '#/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,14 +9,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '#/components/ui/dropdown-menu'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip'
-import type { Order } from '@/types/orders'
+} from '#/components/ui/tooltip'
+import type { Order } from '#/types/orders'
 
 const columns: ColumnDef<Order>[] = [
   {

@@ -5,11 +5,11 @@
  * Uses TanStack Start's createServerFn with authentication middleware.
  */
 
-import { db } from "@/lib/db";
-import { wishlistItems } from "@/lib/db/schema/wishlist-schema";
-import { authMiddleware } from "@/lib/middleware/auth";
-import { optionalAuthMiddleware } from "@/lib/middleware/optional-auth";
-import { toggleWishlistSchema } from "@/lib/validators/wishlist";
+import { db } from "#/lib/db";
+import { wishlistItems } from "#/lib/db/schema/wishlist-schema";
+import { authMiddleware } from "#/lib/middleware/auth";
+import { optionalAuthMiddleware } from "#/lib/middleware/optional-auth";
+import { toggleWishlistSchema } from "#/lib/validators/wishlist";
 import { createServerFn } from "@tanstack/react-start";
 import { and, eq } from "drizzle-orm";
 

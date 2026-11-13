@@ -1,6 +1,6 @@
 import { Download } from 'lucide-react'
-import { PageHeader } from '@/components/base/common/page-header'
-import { Button } from '@/components/ui/button'
+import { PageHeader } from '#/components/base/common/page-header'
+import { Button } from '#/components/ui/button'
 
 interface OrderHeaderProps {
   className?: string

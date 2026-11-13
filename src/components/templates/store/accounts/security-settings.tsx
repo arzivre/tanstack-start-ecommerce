@@ -1,21 +1,21 @@
 import { Info, Shield, ShieldCheck, ShieldOff } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "#/components/ui/button";
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+} from "#/components/ui/card";
+import { Label } from "#/components/ui/label";
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { useSession } from "@/lib/auth/auth-client";
+} from "#/components/ui/tooltip";
+import { useSession } from "#/lib/auth/auth-client";
 import {
     BackupCodesDialog,
     Disable2FADialog,

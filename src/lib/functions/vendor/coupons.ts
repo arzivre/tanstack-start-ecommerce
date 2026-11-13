@@ -5,24 +5,24 @@
  * Uses TanStack Start's createServerFn with Zod validation.
  */
 
-import { db } from "@/lib/db";
+import { db } from "#/lib/db";
 import {
     couponCategories,
     couponProducts,
     coupons,
     couponUsage,
-} from "@/lib/db/schema/coupon-schema";
+} from "#/lib/db/schema/coupon-schema";
 import {
     executeCouponQuery,
     fetchCouponWithRelations,
-} from "@/lib/helper/coupon-query-helpers";
-import { requireShopAccess } from "@/lib/helper/vendor";
+} from "#/lib/helper/coupon-query-helpers";
+import { requireShopAccess } from "#/lib/helper/vendor";
 import { createServerFn } from "@tanstack/react-start";
 import { and, count, eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 
-import { authMiddleware } from "@/lib/middleware/auth";
+import { authMiddleware } from "#/lib/middleware/auth";
 import {
     createCouponSchema,
     deleteCouponSchema,
@@ -32,8 +32,8 @@ import {
     updateCouponSchema,
     validateCouponSchema,
     vendorCouponsQuerySchema,
-} from "@/lib/validators/shared/coupon-query";
-import { createSuccessResponse } from "@/types/api-response";
+} from "#/lib/validators/shared/coupon-query";
+import { createSuccessResponse } from "#/types/api-response";
 import type {
     AvailableCouponsResponse,
     CouponListResponse,
@@ -41,7 +41,7 @@ import type {
     DeleteCouponResponse,
     UpdateCouponResponse,
     ValidateCouponResponse,
-} from "@/types/coupons";
+} from "#/types/coupons";
 
 // ============================================================================
 // Get Coupons (List with Pagination)

@@ -14,7 +14,7 @@ import type {
     BrandItem,
     BrandQueryOptions,
     BrandQueryResult,
-} from "@/types/brands";
+} from "#/types/brands";
 import { db } from "../db";
 import { brands } from "../db/schema/brand-schema";
 import { shops } from "../db/schema/shop-schema";

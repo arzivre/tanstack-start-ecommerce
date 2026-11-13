@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "#/components/ui/skeleton";
 import { DataTableSkeleton } from "../data-table/data-table-skeleton";
 
 export function PageSkeleton() {

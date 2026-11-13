@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
-import AdminSettingsTemplate from '@/components/templates/admin/admin-settings-template'
+import AdminSettingsTemplate from '#/components/templates/admin/admin-settings-template'
 
 interface Setting {
   id: string

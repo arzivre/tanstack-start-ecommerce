@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, ShoppingBag } from "lucide-react";
-import { Navbar } from "@/components/base/common/navbar";
-import CartSheet from "@/components/containers/store/cart/cart-sheet";
-import { Button } from "@/components/ui/button";
-import { useCart } from "@/hooks/store/use-cart";
-import { useSession } from "@/lib/auth/auth-client";
-import { useCartStore } from "@/lib/store/cart-store";
+import { Navbar } from "#/components/base/common/navbar";
+import CartSheet from "#/components/containers/store/cart/cart-sheet";
+import { Button } from "#/components/ui/button";
+import { useCart } from "#/hooks/store/use-cart";
+import { useSession } from "#/lib/auth/auth-client";
+import { useCartStore } from "#/lib/store/cart-store";
 import { ThemeToggle } from "../provider/theme-toggle";
 import { MobileMenu } from "./mobile-menu";
 import UserMenu from "./user-menu";

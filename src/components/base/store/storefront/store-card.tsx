@@ -1,11 +1,11 @@
 import { Link } from '@tanstack/react-router'
 import { CheckCircle2, MapPin, Package, Star, Users } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
-import type { Store } from '@/types/store-types'
+import { Avatar, AvatarFallback, AvatarImage } from '#/components/ui/avatar'
+import { Badge } from '#/components/ui/badge'
+import { Button } from '#/components/ui/button'
+import { Card, CardContent } from '#/components/ui/card'
+import { cn } from '#/lib/utils'
+import type { Store } from '#/types/store-types'
 
 interface StoreCardProps {
   store: Store

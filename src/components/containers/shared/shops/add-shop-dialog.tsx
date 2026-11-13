@@ -1,9 +1,9 @@
 import { useForm } from "@tanstack/react-form";
 import { FileUploaderMinimal } from "@uploadcare/react-uploader";
 import { X } from "lucide-react";
-import { Form } from "@/components/base/forms/form";
-import { Field } from "@/components/base/forms/form-field";
-import { Button } from "@/components/ui/button";
+import { Form } from "#/components/base/forms/form";
+import { Field } from "#/components/base/forms/form-field";
+import { Button } from "#/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -11,15 +11,15 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog";
-import { FieldLabel, Field as UIField } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { Switch } from "@/components/ui/switch";
-import { validateField, validateOptionalField } from "@/lib/helper/validators";
-import { shopSchema } from "@/lib/validators/shop";
-import type { ShopFormValues } from "@/types/shop";
+} from "#/components/ui/dialog";
+import { FieldLabel, Field as UIField } from "#/components/ui/field";
+import { Input } from "#/components/ui/input";
+import { Label } from "#/components/ui/label";
+import { Separator } from "#/components/ui/separator";
+import { Switch } from "#/components/ui/switch";
+import { validateField, validateOptionalField } from "#/lib/helper/validators";
+import { shopSchema } from "#/lib/validators/shop";
+import type { ShopFormValues } from "#/types/shop";
 import "@uploadcare/react-uploader/core.css";
 
 interface AddShopDialogProps {

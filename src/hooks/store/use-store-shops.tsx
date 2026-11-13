@@ -6,7 +6,7 @@
  */
 
 import { infiniteQueryOptions, queryOptions } from "@tanstack/react-query";
-import { getStoreShopBySlug, getStoreShops } from "@/lib/functions/store/shop";
+import { getStoreShopBySlug, getStoreShops } from "#/lib/functions/store/shop";
 
 // ============================================================================
 // Types

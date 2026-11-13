@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import CategoryTemplate from "@/components/templates/store/category/category-template";
+import CategoryTemplate from "#/components/templates/store/category/category-template";
 import {
     categoryTreeQueryOptions,
     featuredCategoriesQueryOptions,
     storeCategoriesQueryOptions,
-} from "@/hooks/store/use-store-categories";
+} from "#/hooks/store/use-store-categories";
 
 export const Route = createFileRoute("/(store)/_layout/category/")({
     loader: async ({ context }) => {

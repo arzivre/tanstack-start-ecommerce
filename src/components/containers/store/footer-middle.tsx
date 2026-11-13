@@ -1,5 +1,5 @@
 import { FooterNav } from '#/components/base/common/footer-nav'
-import { SubscribeForm } from '@/components/base/forms/subscribe-form'
+import { SubscribeForm } from '#/components/base/forms/subscribe-form'
 
 const homeMenu = [
   { label: 'Why Us', to: '/#why-us' },

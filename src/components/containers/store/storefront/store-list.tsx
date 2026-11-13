@@ -1,8 +1,8 @@
-import { NotFound } from "@/components/base/empty/not-found";
-import { StoreCard } from "@/components/base/store/storefront/store-card";
-import { StoreListSkeleton } from "@/components/base/store/storefront/store-card-skeleton";
+import { NotFound } from "#/components/base/empty/not-found";
+import { StoreCard } from "#/components/base/store/storefront/store-card";
+import { StoreListSkeleton } from "#/components/base/store/storefront/store-card-skeleton";
 
-import type { Store } from "@/types/store-types";
+import type { Store } from "#/types/store-types";
 
 interface StoreListProps {
     stores: Store[];

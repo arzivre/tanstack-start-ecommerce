@@ -1,5 +1,5 @@
-import StorePageTemplate from "@/components/templates/store/storefront/store-page-template";
-import { storeShopBySlugQueryOptions } from "@/hooks/store/use-store-shops";
+import StorePageTemplate from "#/components/templates/store/storefront/store-page-template";
+import { storeShopBySlugQueryOptions } from "#/hooks/store/use-store-shops";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/(store)/_layout/store/$slug")({

@@ -1,13 +1,13 @@
-import { DataTable } from '@/components/base/data-table/data-table'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { DataTable } from '#/components/base/data-table/data-table'
+import { Badge } from '#/components/ui/badge'
+import { Button } from '#/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import type { ShippingMethod } from '@/types/shipping'
+} from '#/components/ui/dropdown-menu'
+import type { ShippingMethod } from '#/types/shipping'
 import type { ColumnDef } from '@tanstack/react-table'
 import { Edit, MoreHorizontal, Trash2 } from 'lucide-react'
 

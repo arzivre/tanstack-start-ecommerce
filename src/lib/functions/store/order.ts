@@ -1,19 +1,19 @@
-import { db } from "@/lib/db";
-import { cartItems } from "@/lib/db/schema/cart-schema";
-import { orderItems, orders, payments } from "@/lib/db/schema/order-schema";
-import { products } from "@/lib/db/schema/products-schema";
-import { shippingMethods } from "@/lib/db/schema/shipping-schema";
-import { shops } from "@/lib/db/schema/shop-schema";
-import { generateOrderNumber } from "@/lib/helper/order-helpers";
-import { authMiddleware } from "@/lib/middleware/auth";
-import { optionalAuthMiddleware } from "@/lib/middleware/optional-auth";
+import { db } from "#/lib/db";
+import { cartItems } from "#/lib/db/schema/cart-schema";
+import { orderItems, orders, payments } from "#/lib/db/schema/order-schema";
+import { products } from "#/lib/db/schema/products-schema";
+import { shippingMethods } from "#/lib/db/schema/shipping-schema";
+import { shops } from "#/lib/db/schema/shop-schema";
+import { generateOrderNumber } from "#/lib/helper/order-helpers";
+import { authMiddleware } from "#/lib/middleware/auth";
+import { optionalAuthMiddleware } from "#/lib/middleware/optional-auth";
 import {
     createPaymentIntent,
     dollarsToCents,
     getPaymentIntent,
-} from "@/lib/stripe";
-import { createDestinationCharge } from "@/lib/stripe/connect";
-import { sendOrderConfirmationEmailForOrderId } from "@/lib/validators/emails/order-confirmation";
+} from "#/lib/stripe";
+import { createDestinationCharge } from "#/lib/stripe/connect";
+import { sendOrderConfirmationEmailForOrderId } from "#/lib/validators/emails/order-confirmation";
 import {
     cancelOrderSchema,
     confirmPaymentSchema,
@@ -21,8 +21,8 @@ import {
     getOrderByIdSchema,
     getOrdersByIdsSchema,
     getOrdersSchema,
-} from "@/lib/validators/order";
-import type { CheckoutResult } from "@/types/orders";
+} from "#/lib/validators/order";
+import type { CheckoutResult } from "#/types/orders";
 import { createServerFn } from "@tanstack/react-start";
 import { eq, inArray } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
@@ -83,7 +83,7 @@ export const createCheckoutSession = createServerFn({ method: "POST" })
         }
 
         const { productImages } =
-            await import("@/lib/db/schema/products-schema");
+            await import("#/lib/db/schema/products-schema");
         const productIds = cartItemsWithProducts.map((item) => item.productId);
         const images = await db
             .select({

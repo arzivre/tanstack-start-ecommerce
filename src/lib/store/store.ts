@@ -1,5 +1,5 @@
-import { mockStores } from '@/data/store'
-import type { Store, StoreFilters } from '@/types/store-types'
+import { mockStores } from '#/data/store'
+import type { Store, StoreFilters } from '#/types/store-types'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 

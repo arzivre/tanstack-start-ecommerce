@@ -1,11 +1,11 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import CategoryHeader from "@/components/containers/shared/categories/category-header";
-import { AdminCategoryTable } from "@/components/containers/shared/categories/category-table";
-import type { AdminCategoryMutationState } from "@/hooks/admin/use-admin-categories";
-import type { NormalizedCategory } from "@/types/category-types";
+} from "#/components/base/data-table/types";
+import CategoryHeader from "#/components/containers/shared/categories/category-header";
+import { AdminCategoryTable } from "#/components/containers/shared/categories/category-table";
+import type { AdminCategoryMutationState } from "#/hooks/admin/use-admin-categories";
+import type { NormalizedCategory } from "#/types/category-types";
 
 interface AdminCategoriesTemplateProps {
     fetcher: (

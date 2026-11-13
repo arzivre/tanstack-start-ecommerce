@@ -8,7 +8,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
-import type { AdminUser, ListUsersResponse, UserRole } from "@/types/users";
+import type { AdminUser, ListUsersResponse, UserRole } from "#/types/users";
 import { auth } from "../auth";
 import { db } from "../db";
 import { user as userTable } from "../db/schema/auth-schema";

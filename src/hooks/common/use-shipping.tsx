@@ -18,12 +18,12 @@ import {
     getShippingMethodById,
     getShippingMethods,
     updateShippingMethod,
-} from "@/lib/functions/shipping";
+} from "#/lib/functions/shipping";
 import type {
     CreateShippingMethodInput,
     UpdateShippingMethodInput,
-} from "@/lib/validators/shipping";
-import type { ListShippingMethodsQuery } from "@/types/shipping";
+} from "#/lib/validators/shipping";
+import type { ListShippingMethodsQuery } from "#/types/shipping";
 
 // ============================================================================
 // Query Keys

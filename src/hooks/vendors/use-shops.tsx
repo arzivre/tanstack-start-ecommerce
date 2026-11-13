@@ -12,8 +12,8 @@ import {
     getShopBySlug,
     getVendorShops,
     updateShop,
-} from "@/lib/functions/shops";
-import type { CreateShopInput, UpdateShopInput } from "@/lib/validators/shop";
+} from "#/lib/functions/shops";
+import type { CreateShopInput, UpdateShopInput } from "#/lib/validators/shop";
 
 export const vendorShopsQueryOptions = () =>
     queryOptions({

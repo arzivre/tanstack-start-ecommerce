@@ -1,10 +1,10 @@
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import { AddTaxDialog } from "@/components/containers/shared/taxes/add-tax-dialog";
-import TaxHeader from "@/components/containers/shared/taxes/tax-header";
-import { Button } from "@/components/ui/button";
-import { ADMIN_TAX_PERMISSIONS } from "@/lib/config/tax-permissions";
-import type { TaxRate } from "@/lib/db/schema/tax-schema";
+import { AddTaxDialog } from "#/components/containers/shared/taxes/add-tax-dialog";
+import TaxHeader from "#/components/containers/shared/taxes/tax-header";
+import { Button } from "#/components/ui/button";
+import { ADMIN_TAX_PERMISSIONS } from "#/lib/config/tax-permissions";
+import type { TaxRate } from "#/lib/db/schema/tax-schema";
 
 interface AdminTaxesTemplateProps {
     taxes: TaxRate[];

@@ -5,21 +5,21 @@
  * Uses TanStack Start's createServerFn with Zod validation.
  */
 
-import { db } from "@/lib/db";
-import { tags } from "@/lib/db/schema/tags-schema";
+import { db } from "#/lib/db";
+import { tags } from "#/lib/db/schema/tags-schema";
 import {
     executeTagQuery,
     fetchTagWithRelations,
-} from "@/lib/helper/tag-query-helpers";
-import { requireShopAccess } from "@/lib/helper/vendor";
-import { authMiddleware } from "@/lib/middleware/auth";
-import { generateSlug } from "@/lib/utils/slug";
+} from "#/lib/helper/tag-query-helpers";
+import { requireShopAccess } from "#/lib/helper/vendor";
+import { authMiddleware } from "#/lib/middleware/auth";
+import { generateSlug } from "#/lib/utils/slug";
 import {
     createTagSchema,
     updateTagSchema,
     vendorTagsQuerySchema,
-} from "@/lib/validators/shared/tag-query";
-import type { TagListResponse } from "@/types/tags";
+} from "#/lib/validators/shared/tag-query";
+import type { TagListResponse } from "#/types/tags";
 import { createServerFn } from "@tanstack/react-start";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";

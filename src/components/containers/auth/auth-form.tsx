@@ -1,18 +1,18 @@
 import { useForm } from "@tanstack/react-form";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Form } from "@/components/base/forms/form";
-import { Field } from "@/components/base/forms/form-field";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { authClient, signIn, signUp, twoFactor } from "@/lib/auth/auth-client";
-import { validateField, validateOptionalField } from "@/lib/helper/validators";
+import { Form } from "#/components/base/forms/form";
+import { Field } from "#/components/base/forms/form-field";
+import { Button } from "#/components/ui/button";
+import { Checkbox } from "#/components/ui/checkbox";
+import { Label } from "#/components/ui/label";
+import { authClient, signIn, signUp, twoFactor } from "#/lib/auth/auth-client";
+import { validateField, validateOptionalField } from "#/lib/helper/validators";
 import {
     loginSchema,
     passwordSchema,
     registerSchema,
-} from "@/lib/validators/auth";
+} from "#/lib/validators/auth";
 import { TwoFactorForm } from "./two-factor-form";
 
 interface AuthFormProps {

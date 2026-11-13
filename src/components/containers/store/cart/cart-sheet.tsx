@@ -1,16 +1,16 @@
-import CartItem from "@/components/base/store/cart/cart-item";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
+import CartItem from "#/components/base/store/cart/cart-item";
+import { Button } from "#/components/ui/button";
+import { ScrollArea } from "#/components/ui/scroll-area";
+import { Separator } from "#/components/ui/separator";
 import {
     Sheet,
     SheetContent,
     SheetHeader,
     SheetTitle,
-} from "@/components/ui/sheet";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useCart } from "@/hooks/store/use-cart";
-import { useCartStore } from "@/lib/store/cart-store";
+} from "#/components/ui/sheet";
+import { Skeleton } from "#/components/ui/skeleton";
+import { useCart } from "#/hooks/store/use-cart";
+import { useCartStore } from "#/lib/store/cart-store";
 import { Link } from "@tanstack/react-router";
 import { Loader2, ShoppingBag } from "lucide-react";
 

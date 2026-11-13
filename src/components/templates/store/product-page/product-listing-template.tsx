@@ -1,8 +1,8 @@
-import { ActiveFilterChips } from "@/components/base/products/active-filter-chips";
-import { SearchBar } from "@/components/base/products/searchbar";
-import SortDropdown from "@/components/base/products/sort-dropdown";
-import ProductGrid from "@/components/containers/store/product-list/product-grid";
-import { useProductFilters } from "@/hooks/store/use-product-filters";
+import { ActiveFilterChips } from "#/components/base/products/active-filter-chips";
+import { SearchBar } from "#/components/base/products/searchbar";
+import SortDropdown from "#/components/base/products/sort-dropdown";
+import ProductGrid from "#/components/containers/store/product-list/product-grid";
+import { useProductFilters } from "#/hooks/store/use-product-filters";
 import FilterSidebar from "./filter-sidebar";
 import MobileFilterDrawer from "./mobile-filter-drawer";
 

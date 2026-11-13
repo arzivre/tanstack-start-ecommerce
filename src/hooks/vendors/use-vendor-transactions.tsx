@@ -5,7 +5,7 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-import { getVendorTransactionStats } from "@/lib/functions/vendor/transactions";
+import { getVendorTransactionStats } from "#/lib/functions/vendor/transactions";
 
 // ============================================================================
 // Query Keys

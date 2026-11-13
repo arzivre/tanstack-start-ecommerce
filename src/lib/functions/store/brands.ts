@@ -9,23 +9,23 @@
 import { createServerFn } from "@tanstack/react-start";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
-import { db } from "@/lib/db";
-import { brands } from "@/lib/db/schema/brand-schema";
+import { db } from "#/lib/db";
+import { brands } from "#/lib/db/schema/brand-schema";
 import {
     executeBrandQuery,
     fetchBrandWithRelations,
-} from "@/lib/helper/brands-query-helpers";
+} from "#/lib/helper/brands-query-helpers";
 import {
     getBrandByIdSchema,
     getBrandBySlugSchema,
     type StoreBrandsQuery,
     storeBrandsQuerySchema,
-} from "@/lib/validators/shared/brand-query";
+} from "#/lib/validators/shared/brand-query";
 import {
     createPaginatedResponse,
     emptyPaginatedResponse,
-} from "@/types/api-response";
-import type { BrandItem, BrandListResponse } from "@/types/brands";
+} from "#/types/api-response";
+import type { BrandItem, BrandListResponse } from "#/types/brands";
 
 // ============================================================================
 // Get Brands (Store Front - Public)
@@ -59,7 +59,7 @@ export const getStoreBrands = createServerFn({ method: "GET" })
 
         // If shopSlug is provided, look up the shop first
         if (shopSlug && !shopId) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)
@@ -110,7 +110,7 @@ export const getStoreBrandBySlug = createServerFn({ method: "GET" })
 
         // If shopSlug is provided, scope to that shop
         if (shopSlug) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)
@@ -197,7 +197,7 @@ export const getPopularBrands = createServerFn({ method: "GET" })
 
         // If shopSlug is provided, scope to that shop
         if (shopSlug) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)

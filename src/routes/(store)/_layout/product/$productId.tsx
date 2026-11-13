@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import ProductDetailsTemplate from "@/components/templates/store/product-details-template";
-import { getStoreProductById } from "@/lib/functions/store/products";
+import ProductDetailsTemplate from "#/components/templates/store/product-details-template";
+import { getStoreProductById } from "#/lib/functions/store/products";
 export const Route = createFileRoute("/(store)/_layout/product/$productId")({
     loader: async ({ params }) => {
         try {

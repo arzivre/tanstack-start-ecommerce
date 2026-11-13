@@ -1,14 +1,14 @@
-import OrderHeader from "@/components/containers/shared/orders/order-header";
-import VendorOrderTable from "@/components/containers/shared/orders/vendor-order-table";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { formatCurrency } from "@/lib/utils";
+import OrderHeader from "#/components/containers/shared/orders/order-header";
+import VendorOrderTable from "#/components/containers/shared/orders/vendor-order-table";
+import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
+import { formatCurrency } from "#/lib/utils";
 import { CheckCircle2, Clock, Package, Truck } from "lucide-react";
 
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import type { VendorOrderResponse } from "@/types/orders";
+} from "#/components/base/data-table/types";
+import type { VendorOrderResponse } from "#/types/orders";
 
 interface VendorOrderStats {
     totalOrders: number;

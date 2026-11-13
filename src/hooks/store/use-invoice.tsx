@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { getInvoiceUrl } from "@/lib/functions/store/invoice";
+import { getInvoiceUrl } from "#/lib/functions/store/invoice";
 
 export const useDownloadInvoice = () => {
     const mutation = useMutation({

@@ -6,8 +6,8 @@
  */
 
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { getShopDashboardData } from "@/lib/functions/vendor/dashboard";
-import type { ShopDashboardData } from "@/types/shop-dashboard";
+import { getShopDashboardData } from "#/lib/functions/vendor/dashboard";
+import type { ShopDashboardData } from "#/types/shop-dashboard";
 
 // ============================================================================
 // Query Keys

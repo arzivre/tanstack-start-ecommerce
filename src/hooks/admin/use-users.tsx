@@ -12,9 +12,9 @@ import {
     useQueryClient,
 } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { admin } from "@/lib/auth/auth-client";
-import { getUsers } from "@/lib/functions/users";
-import type { UserRole } from "@/types/users";
+import { admin } from "#/lib/auth/auth-client";
+import { getUsers } from "#/lib/functions/users";
+import type { UserRole } from "#/types/users";
 
 // ============================================================================
 // Query Options

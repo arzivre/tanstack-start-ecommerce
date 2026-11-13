@@ -4,7 +4,7 @@ import { db } from "../db";
 import { cartItems, cartSessions } from "../db/schema/cart-schema";
 import { productImages, products } from "../db/schema/products-schema";
 
-import type { CartItemResponse, CartResponse } from "@/types/cart";
+import type { CartItemResponse, CartResponse } from "#/types/cart";
 
 export async function fetchCartWithDetails(
     cartSessionId: string,

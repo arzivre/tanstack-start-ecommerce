@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import z from "zod";
-import SignInPage from "@/components/templates/auth/sign-in-page";
+import SignInPage from "#/components/templates/auth/sign-in-page";
 
 const signInSearchSchema = z.object({
     redirectTo: z.string().optional(),

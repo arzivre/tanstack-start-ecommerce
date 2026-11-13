@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import AdminBrandsTemplate from "@/components/templates/admin/admin-brands-template";
-import { useAdminBrands } from "@/hooks/admin/use-admin-brands";
-import { createAdminBrandsFetcher } from "@/hooks/admin/use-admin-entity-fetchers";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import type { BrandItem } from "@/types/brands";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import AdminBrandsTemplate from "#/components/templates/admin/admin-brands-template";
+import { useAdminBrands } from "#/hooks/admin/use-admin-brands";
+import { createAdminBrandsFetcher } from "#/hooks/admin/use-admin-entity-fetchers";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import type { BrandItem } from "#/types/brands";
 
 export const Route = createFileRoute("/(admin)/admin/brands/")({
     component: AdminBrandsPage,

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { DataTable } from "@/components/base/data-table/data-table";
+import { DataTable } from "#/components/base/data-table/data-table";
 import {
     createOrderColumns,
     getSharedOrderFilters,
@@ -9,8 +9,8 @@ import {
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import type { VendorOrderResponse } from "@/types/orders";
+} from "#/components/base/data-table/types";
+import type { VendorOrderResponse } from "#/types/orders";
 
 interface VendorOrderTableProps {
     fetcher: (

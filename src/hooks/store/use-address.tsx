@@ -11,7 +11,7 @@ import {
     getUserAddresses,
     setDefaultAddress,
     updateAddress,
-} from "@/lib/functions/store/address";
+} from "#/lib/functions/store/address";
 import {
     queryOptions,
     useMutation,
@@ -23,7 +23,7 @@ import type {
     CreateAddressInput,
     DeleteAddressInput,
     UpdateAddressInput,
-} from "@/lib/validators/address";
+} from "#/lib/validators/address";
 
 // ============================================================================
 // Query Keys

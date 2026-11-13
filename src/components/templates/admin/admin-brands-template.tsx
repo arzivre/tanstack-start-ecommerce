@@ -1,11 +1,11 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import AdminBrandsTable from "@/components/containers/admin/brands/admin-brands-table";
-import BrandHeader from "@/components/containers/shared/brands/brand-header";
-import type { AdminBrandMutationState } from "@/hooks/admin/use-admin-brands";
-import type { BrandItem } from "@/types/brands";
+} from "#/components/base/data-table/types";
+import AdminBrandsTable from "#/components/containers/admin/brands/admin-brands-table";
+import BrandHeader from "#/components/containers/shared/brands/brand-header";
+import type { AdminBrandMutationState } from "#/hooks/admin/use-admin-brands";
+import type { BrandItem } from "#/types/brands";
 
 interface AdminBrandsTemplateProps {
     fetcher: (

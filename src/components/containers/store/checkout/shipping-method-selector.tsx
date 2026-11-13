@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useEffect } from "react";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useCart } from "@/hooks/store/use-cart";
-import { getAvailableShippingMethods } from "@/lib/functions/store/shipping";
-import { useCartStore } from "@/lib/store/cart-store";
-import { cn } from "@/lib/utils";
+import { Label } from "#/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "#/components/ui/radio-group";
+import { useCart } from "#/hooks/store/use-cart";
+import { getAvailableShippingMethods } from "#/lib/functions/store/shipping";
+import { useCartStore } from "#/lib/store/cart-store";
+import { cn } from "#/lib/utils";
 
 export default function ShippingMethodSelector() {
     const { items } = useCart();

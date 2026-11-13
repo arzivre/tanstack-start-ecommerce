@@ -1,5 +1,5 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button, buttonVariants } from "#/components/ui/button";
+import { cn } from "#/lib/utils";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Heart, LogOut, Package, User } from "lucide-react";
 

@@ -19,15 +19,15 @@ import {
     getCoupons,
     updateCoupon,
     validateCoupon,
-} from "@/lib/functions/vendor/coupons";
+} from "#/lib/functions/vendor/coupons";
 import type {
     CreateCouponInput,
     GetAvailableCouponsForUserInput,
     UpdateCouponInput,
     ValidateCouponInput,
     VendorCouponsQuery,
-} from "@/lib/validators/shared/coupon-query";
-import type { CouponMutationState } from "@/types/coupons";
+} from "#/lib/validators/shared/coupon-query";
+import type { CouponMutationState } from "#/types/coupons";
 
 // ============================================================================
 // Query Keys

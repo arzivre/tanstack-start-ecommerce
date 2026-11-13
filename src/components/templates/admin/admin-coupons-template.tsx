@@ -1,12 +1,12 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import CouponHeader from "@/components/containers/shared/coupons/coupon-header";
-import { AdminCouponTable } from "@/components/containers/shared/coupons/coupon-table";
-import type { AdminCouponMutationState } from "@/hooks/admin/use-admin-coupons";
-import { ADMIN_COUPON_PERMISSIONS } from "@/lib/config/coupon-permissions";
-import type { CouponItem } from "@/types/coupons";
+} from "#/components/base/data-table/types";
+import CouponHeader from "#/components/containers/shared/coupons/coupon-header";
+import { AdminCouponTable } from "#/components/containers/shared/coupons/coupon-table";
+import type { AdminCouponMutationState } from "#/hooks/admin/use-admin-coupons";
+import { ADMIN_COUPON_PERMISSIONS } from "#/lib/config/coupon-permissions";
+import type { CouponItem } from "#/types/coupons";
 
 interface AdminCouponsTemplateProps {
     fetcher: (

@@ -16,8 +16,8 @@ import {
     getAdminCouponById,
     getAdminCoupons,
     toggleAdminCouponActive,
-} from "@/lib/functions/admin/coupon";
-import type { AdminCouponsQuery } from "@/lib/validators/shared/coupon-query";
+} from "#/lib/functions/admin/coupon";
+import type { AdminCouponsQuery } from "#/lib/validators/shared/coupon-query";
 
 // ============================================================================
 // Query Keys

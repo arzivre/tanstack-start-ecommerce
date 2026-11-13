@@ -1,10 +1,10 @@
 import { useMemo } from "react";
-import { DataTable } from "@/components/base/data-table/data-table";
+import { DataTable } from "#/components/base/data-table/data-table";
 import type {
     CouponItem,
     CouponMutationState,
     CouponPermissions,
-} from "@/types/coupons";
+} from "#/types/coupons";
 import { ATTRIBUTE_TYPE_OPTIONS } from "../../shared/attributes/attribute-table-columns";
 import {
     type CouponTableActions,

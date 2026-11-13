@@ -9,24 +9,24 @@ import {
 import {
     EntityFormDialog,
     type EntityFormField,
-} from "@/components/base/forms/entity-form-dialog";
-import { Button } from "@/components/ui/button";
+} from "#/components/base/forms/entity-form-dialog";
+import { Button } from "#/components/ui/button";
 import {
     Field,
     FieldDescription,
     FieldError,
     FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-import getFieldErrors from "@/lib/helper/field-errors";
-import { validateField } from "@/lib/helper/validators";
-import { cn } from "@/lib/utils";
+} from "#/components/ui/field";
+import { Input } from "#/components/ui/input";
+import { Separator } from "#/components/ui/separator";
+import getFieldErrors from "#/lib/helper/field-errors";
+import { validateField } from "#/lib/helper/validators";
+import { cn } from "#/lib/utils";
 import {
     attributeValueInputSchema,
     createAttributeSchema,
-} from "@/lib/validators/shared/attribute-query";
-import type { AttributeFormValues, AttributeValue } from "@/types/attributes";
+} from "#/lib/validators/shared/attribute-query";
+import type { AttributeFormValues, AttributeValue } from "#/types/attributes";
 
 interface AddAttributeDialogProps {
     open: boolean;

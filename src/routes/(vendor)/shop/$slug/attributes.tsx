@@ -1,15 +1,15 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import { AddAttributeDialog } from "@/components/containers/shared/attributes/add-attribute-dialog";
-import { ShopAttributesTemplate } from "@/components/templates/vendor/shop-attributes-template";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import { useAttributes } from "@/hooks/vendors/use-attributes";
-import { shopBySlugQueryOptions } from "@/hooks/vendors/use-shops";
-import { createVendorAttributesFetcher } from "@/hooks/vendors/use-vendor-entity-fetchers";
-import type { AttributeFormValues, AttributeItem } from "@/types/attributes";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import { AddAttributeDialog } from "#/components/containers/shared/attributes/add-attribute-dialog";
+import { ShopAttributesTemplate } from "#/components/templates/vendor/shop-attributes-template";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import { useAttributes } from "#/hooks/vendors/use-attributes";
+import { shopBySlugQueryOptions } from "#/hooks/vendors/use-shops";
+import { createVendorAttributesFetcher } from "#/hooks/vendors/use-vendor-entity-fetchers";
+import type { AttributeFormValues, AttributeItem } from "#/types/attributes";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/attributes")({
     component: AttributesPage,

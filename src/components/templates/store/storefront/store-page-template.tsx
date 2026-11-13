@@ -1,21 +1,21 @@
-import { BreadcrumbNav } from "@/components/base/common/breadcrumb-nav";
-import { NotFound } from "@/components/base/empty/not-found";
-import { StoreHeaderSkeleton } from "@/components/base/store/storefront/store-header-skeleton";
-import { StoreProductsSkeleton } from "@/components/base/store/storefront/store-products-skeleton";
-import { StoreAbout } from "@/components/containers/store/storefront/store-about";
-import { StoreHeader } from "@/components/containers/store/storefront/store-header";
-import StoreProducts from "@/components/containers/store/storefront/store-product";
-import { StoreReviews } from "@/components/containers/store/storefront/store-reviews";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { storeShopBySlugQueryOptions } from "@/hooks/store/use-store-shops";
+import { BreadcrumbNav } from "#/components/base/common/breadcrumb-nav";
+import { NotFound } from "#/components/base/empty/not-found";
+import { StoreHeaderSkeleton } from "#/components/base/store/storefront/store-header-skeleton";
+import { StoreProductsSkeleton } from "#/components/base/store/storefront/store-products-skeleton";
+import { StoreAbout } from "#/components/containers/store/storefront/store-about";
+import { StoreHeader } from "#/components/containers/store/storefront/store-header";
+import StoreProducts from "#/components/containers/store/storefront/store-product";
+import { StoreReviews } from "#/components/containers/store/storefront/store-reviews";
+import { Button } from "#/components/ui/button";
+import { Skeleton } from "#/components/ui/skeleton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
+import { storeShopBySlugQueryOptions } from "#/hooks/store/use-store-shops";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { Store as StoreIcon } from "lucide-react";
 import { useMemo } from "react";
 
-import type { Store } from "@/types/store-types";
+import type { Store } from "#/types/store-types";
 
 interface StorePageTemplateProps {
     slug: string;

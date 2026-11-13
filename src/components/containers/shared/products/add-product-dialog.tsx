@@ -3,9 +3,9 @@ import { useMemo } from "react";
 import {
     EntityFormDialog,
     type EntityFormField,
-} from "@/components/base/forms/entity-form-dialog";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+} from "#/components/base/forms/entity-form-dialog";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
 import {
     Command,
     CommandEmpty,
@@ -13,21 +13,21 @@ import {
     CommandInput,
     CommandItem,
     CommandList,
-} from "@/components/ui/command";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+} from "#/components/ui/command";
+import { Field, FieldError, FieldLabel } from "#/components/ui/field";
+import { Input } from "#/components/ui/input";
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from "@/components/ui/popover";
-import { Separator } from "@/components/ui/separator";
-import { Switch } from "@/components/ui/switch";
-import getFieldErrors from "@/lib/helper/field-errors";
-import { validateField, validateOptionalField } from "@/lib/helper/validators";
-import { cn } from "@/lib/utils";
-import { productFormSchema } from "@/lib/validators/shared/product-query";
-import type { ProductFormValues } from "@/types/products";
+} from "#/components/ui/popover";
+import { Separator } from "#/components/ui/separator";
+import { Switch } from "#/components/ui/switch";
+import getFieldErrors from "#/lib/helper/field-errors";
+import { validateField, validateOptionalField } from "#/lib/helper/validators";
+import { cn } from "#/lib/utils";
+import { productFormSchema } from "#/lib/validators/shared/product-query";
+import type { ProductFormValues } from "#/types/products";
 
 interface AddProductDialogProps {
     open: boolean;

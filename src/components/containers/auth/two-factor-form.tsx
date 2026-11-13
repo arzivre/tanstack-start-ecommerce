@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "#/components/ui/button";
+import { Checkbox } from "#/components/ui/checkbox";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { Label } from "@/components/ui/label";
-import { twoFactor } from "@/lib/auth/auth-client";
+} from "#/components/ui/input-otp";
+import { Label } from "#/components/ui/label";
+import { twoFactor } from "#/lib/auth/auth-client";
 
 type TwoFactorFormProps = {
   onSuccess?: () => void;

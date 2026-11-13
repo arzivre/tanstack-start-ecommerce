@@ -10,12 +10,12 @@ import {
     getAttributeById,
     getAttributes,
     updateAttribute,
-} from "@/lib/functions/vendor/attribute";
+} from "#/lib/functions/vendor/attribute";
 import type {
     CreateAttributeInput,
     UpdateAttributeInput,
-} from "@/lib/validators/shared/attribute-query";
-import type { ListAttributesQuery } from "@/types/attributes";
+} from "#/lib/validators/shared/attribute-query";
+import type { ListAttributesQuery } from "#/types/attributes";
 
 export const vendorAttributesKeys = {
     all: (shopId: string) => ["vendor", "attributes", shopId] as const,

@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import { AddAttributeDialog } from "@/components/containers/shared/attributes/add-attribute-dialog";
-import AdminAttributesTemplate from "@/components/templates/admin/admin-attributes-template";
-import { useAdminAttributes } from "@/hooks/admin/use-admin-attributes";
-import { createAdminAttributesFetcher } from "@/hooks/admin/use-admin-entity-fetchers";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import type { AttributeFormValues, AttributeItem } from "@/types/attributes";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import { AddAttributeDialog } from "#/components/containers/shared/attributes/add-attribute-dialog";
+import AdminAttributesTemplate from "#/components/templates/admin/admin-attributes-template";
+import { useAdminAttributes } from "#/hooks/admin/use-admin-attributes";
+import { createAdminAttributesFetcher } from "#/hooks/admin/use-admin-entity-fetchers";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import type { AttributeFormValues, AttributeItem } from "#/types/attributes";
 
 export const Route = createFileRoute("/(admin)/admin/attributes/")({
     component: AdminAttributesPage,

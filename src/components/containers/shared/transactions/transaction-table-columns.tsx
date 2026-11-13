@@ -1,8 +1,8 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Eye, MoreHorizontal } from "lucide-react";
-import type { FilterableColumn } from "@/components/base/data-table/types";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type { FilterableColumn } from "#/components/base/data-table/types";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,9 +10,9 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { formatCurrency } from "@/lib/utils";
-import type { VendorTransactionResponse } from "@/types/transaction";
+} from "#/components/ui/dropdown-menu";
+import { formatCurrency } from "#/lib/utils";
+import type { VendorTransactionResponse } from "#/types/transaction";
 
 // ============================================================================
 // Types

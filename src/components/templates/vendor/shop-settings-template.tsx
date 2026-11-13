@@ -15,30 +15,30 @@ import {
     Loader2,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "#/components/ui/alert";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
+} from "#/components/ui/card";
 import {
     Dialog,
     DialogContent,
     DialogDescription,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "#/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
 import {
     useDisconnectStripe,
     useGetStripeDashboard,
     useStartStripeOnboarding,
     vendorStripeStatusQueryOptions,
-} from "@/hooks/vendors/use-vendor-stripe-connect";
+} from "#/hooks/vendors/use-vendor-stripe-connect";
 
 // ============================================================================
 // Types

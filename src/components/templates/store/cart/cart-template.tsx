@@ -1,10 +1,10 @@
-import { BreadcrumbNav } from "@/components/base/common/breadcrumb-nav";
-import { NotFound } from "@/components/base/empty/not-found";
-import CartItemsList from "@/components/containers/store/cart/cart-items-list";
-import CartSummary from "@/components/containers/store/cart/cart-summary";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useCart } from "@/hooks/store/use-cart";
+import { BreadcrumbNav } from "#/components/base/common/breadcrumb-nav";
+import { NotFound } from "#/components/base/empty/not-found";
+import CartItemsList from "#/components/containers/store/cart/cart-items-list";
+import CartSummary from "#/components/containers/store/cart/cart-summary";
+import { Button } from "#/components/ui/button";
+import { Skeleton } from "#/components/ui/skeleton";
+import { useCart } from "#/hooks/store/use-cart";
 import { Link } from "@tanstack/react-router";
 import { ShoppingBag } from "lucide-react";
 

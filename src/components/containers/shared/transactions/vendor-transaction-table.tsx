@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { DataTable } from "@/components/base/data-table/data-table";
+import { DataTable } from "#/components/base/data-table/data-table";
 import {
     createTransactionColumns,
     getSharedTransactionFilters,
@@ -11,8 +11,8 @@ import {
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import type { VendorTransactionResponse } from "@/types/transaction";
+} from "#/components/base/data-table/types";
+import type { VendorTransactionResponse } from "#/types/transaction";
 
 interface VendorTransactionTableProps extends TransactionTableActions {
     fetcher: (

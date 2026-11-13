@@ -1,14 +1,14 @@
 import { useNavigate } from "@tanstack/react-router";
 import { Loader2 } from "lucide-react";
-import { HelpSection } from "@/components/base/store/order/help-section";
-import { OrderDetailsCard } from "@/components/base/store/order/order-details-card";
-import { OrderSuccessHeader } from "@/components/base/store/order/order-success-header";
-import { OrderInfoSection } from "@/components/containers/store/order/order-info-section";
-import { OrderItemsList } from "@/components/containers/store/order/order-items-list";
-import { OrderSummary } from "@/components/containers/store/order/order-summary";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { useOrdersByIds } from "@/hooks/store/use-checkout";
+import { HelpSection } from "#/components/base/store/order/help-section";
+import { OrderDetailsCard } from "#/components/base/store/order/order-details-card";
+import { OrderSuccessHeader } from "#/components/base/store/order/order-success-header";
+import { OrderInfoSection } from "#/components/containers/store/order/order-info-section";
+import { OrderItemsList } from "#/components/containers/store/order/order-items-list";
+import { OrderSummary } from "#/components/containers/store/order/order-summary";
+import { Button } from "#/components/ui/button";
+import { Separator } from "#/components/ui/separator";
+import { useOrdersByIds } from "#/hooks/store/use-checkout";
 
 interface OrderConfirmationTemplateProps {
     orderIds: string[];

@@ -1,16 +1,16 @@
 import { useMemo } from "react";
-import { DataTable } from "@/components/base/data-table/data-table";
+import { DataTable } from "#/components/base/data-table/data-table";
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
+} from "#/components/base/data-table/types";
 import {
     type BrandMutationState,
     type BrandTableActions,
     createBrandColumns,
     getSharedBrandFilters,
-} from "@/components/containers/shared/brands/brand-table-columns";
-import type { BrandItem } from "@/types/brands";
+} from "#/components/containers/shared/brands/brand-table-columns";
+import type { BrandItem } from "#/types/brands";
 
 interface AdminBrandsTableProps extends BrandTableActions {
     fetcher: (

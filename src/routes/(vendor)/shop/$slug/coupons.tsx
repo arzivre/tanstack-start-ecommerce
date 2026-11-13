@@ -1,16 +1,16 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import { AddCouponDialog } from "@/components/containers/shared/coupons/add-coupon-dialog";
-import ShopCouponsTemplate from "@/components/templates/vendor/shop-coupons-template";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import { useCoupons } from "@/hooks/vendors/use-coupons";
-import { shopBySlugQueryOptions } from "@/hooks/vendors/use-shops";
-import { createVendorCouponsFetcher } from "@/hooks/vendors/use-vendor-entity-fetchers";
-import type { CouponFormValues } from "@/lib/validators/shared/coupon-query";
-import type { CouponItem } from "@/types/coupons";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import { AddCouponDialog } from "#/components/containers/shared/coupons/add-coupon-dialog";
+import ShopCouponsTemplate from "#/components/templates/vendor/shop-coupons-template";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import { useCoupons } from "#/hooks/vendors/use-coupons";
+import { shopBySlugQueryOptions } from "#/hooks/vendors/use-shops";
+import { createVendorCouponsFetcher } from "#/hooks/vendors/use-vendor-entity-fetchers";
+import type { CouponFormValues } from "#/lib/validators/shared/coupon-query";
+import type { CouponItem } from "#/types/coupons";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/coupons")({
     component: CouponsPage,

@@ -1,9 +1,9 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { ExternalLink, Loader2, MoreHorizontal } from "lucide-react";
-import type { FilterableColumn } from "@/components/base/data-table/types";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type { FilterableColumn } from "#/components/base/data-table/types";
+import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/avatar";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -11,9 +11,9 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
-import type { BrandItem } from "@/types/brands";
+} from "#/components/ui/dropdown-menu";
+import { cn } from "#/lib/utils";
+import type { BrandItem } from "#/types/brands";
 
 export interface BrandTableActions {
     onEdit?: (brand: BrandItem) => void;

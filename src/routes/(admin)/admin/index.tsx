@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Building2, DollarSign, ShoppingBag, Users } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card'
 
 export const Route = createFileRoute('/(admin)/admin/')({
   component: AdminDashboardPage,

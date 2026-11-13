@@ -1,7 +1,7 @@
 import ProductListingTemplate from "#/components/templates/store/product-page/product-listing-template";
-import { storeBrandsQueryOptions } from "@/hooks/store/use-store-brands";
-import { storeCategoriesQueryOptions } from "@/hooks/store/use-store-categories";
-import { storeProductsInfiniteQueryOptions } from "@/hooks/store/use-store-product";
+import { storeBrandsQueryOptions } from "#/hooks/store/use-store-brands";
+import { storeCategoriesQueryOptions } from "#/hooks/store/use-store-categories";
+import { storeProductsInfiniteQueryOptions } from "#/hooks/store/use-store-product";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/(store)/_layout/product/")({

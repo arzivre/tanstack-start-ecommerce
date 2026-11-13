@@ -1,21 +1,21 @@
 import { MessageSquare, Star } from "lucide-react";
 import { useState } from "react";
-import { RatingSummary } from "@/components/base/products/details/review/rating-summary";
-import ReviewCard from "@/components/base/products/details/review/review-card";
-import ReviewFormCta from "@/components/base/products/details/review/review-form-cta";
+import { RatingSummary } from "#/components/base/products/details/review/rating-summary";
+import ReviewCard from "#/components/base/products/details/review/review-card";
+import ReviewFormCta from "#/components/base/products/details/review/review-form-cta";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
+} from "#/components/ui/select";
 import {
     useProductReviews,
     useReviewEligibility,
     useReviewMutations,
-} from "@/hooks/store/use-reviews";
-import type { StoreReviewResponse } from "@/lib/helper/review-query-helpers";
+} from "#/hooks/store/use-reviews";
+import type { StoreReviewResponse } from "#/lib/helper/review-query-helpers";
 import { ReviewFormDialog } from "./review-form-dialog";
 
 interface ProductReviewsTabProps {

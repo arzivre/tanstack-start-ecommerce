@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+import { cn } from '#/lib/utils'
 import { ShippingInfoItem } from './shipping-info-item'
 import { Clock, RotateCcw, Truck } from 'lucide-react'
 

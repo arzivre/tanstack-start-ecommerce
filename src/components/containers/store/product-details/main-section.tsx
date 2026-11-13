@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import { ProductActions } from "@/components/base/products/details/product-actions";
-import { ProductHeader } from "@/components/base/products/details/product-header";
-import ProductImageGallery from "@/components/base/products/details/product-image-gallery";
-import { ProductPrice } from "@/components/base/products/details/product-price";
-import { QuantitySelector } from "@/components/base/products/details/quantity-selector";
-import { ShippingInfoSection } from "@/components/base/products/details/shipping-info-section";
-import StoreInfoCard from "@/components/base/products/details/store-info-card";
-import { useCartStore } from "@/lib/store/cart-store";
-import type { StoreProduct } from "@/types/store-types";
+import { ProductActions } from "#/components/base/products/details/product-actions";
+import { ProductHeader } from "#/components/base/products/details/product-header";
+import ProductImageGallery from "#/components/base/products/details/product-image-gallery";
+import { ProductPrice } from "#/components/base/products/details/product-price";
+import { QuantitySelector } from "#/components/base/products/details/quantity-selector";
+import { ShippingInfoSection } from "#/components/base/products/details/shipping-info-section";
+import StoreInfoCard from "#/components/base/products/details/store-info-card";
+import { useCartStore } from "#/lib/store/cart-store";
+import type { StoreProduct } from "#/types/store-types";
 
 interface ProductMainSectionProps {
     product: StoreProduct;

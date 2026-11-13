@@ -1,5 +1,5 @@
-import { AccountLayout } from "@/components/containers/store/accounts/account-layout";
-import MyReviewsList from "@/components/containers/store/accounts/my-reviews/my-reviews-list";
+import { AccountLayout } from "#/components/containers/store/accounts/account-layout";
+import MyReviewsList from "#/components/containers/store/accounts/my-reviews/my-reviews-list";
 
 export default function MyReviewsTemplate() {
     return (

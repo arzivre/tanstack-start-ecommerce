@@ -4,7 +4,7 @@
  * Shared utilities for mapping sort options to API parameters.
  */
 
-import type { SortOption } from "@/types/products";
+import type { SortOption } from "#/types/products";
 
 /**
  * Maps frontend sort options to API sort parameters

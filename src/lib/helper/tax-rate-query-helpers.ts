@@ -16,7 +16,7 @@ import {
     or,
     type SQL,
 } from "drizzle-orm";
-import type { TaxRateItem } from "@/types/taxes";
+import type { TaxRateItem } from "#/types/taxes";
 import { db } from "../db";
 import { shops } from "../db/schema/shop-schema";
 import { taxRates } from "../db/schema/tax-schema";

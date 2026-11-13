@@ -10,21 +10,21 @@
  * - Computes productCount dynamically from productAttributes table for accuracy
  */
 
-import { db } from "@/lib/db";
-import { attributes, attributeValues } from "@/lib/db/schema/attribute-schema";
+import { db } from "#/lib/db";
+import { attributes, attributeValues } from "#/lib/db/schema/attribute-schema";
 import {
     executeAttributeQuery,
     fetchAttributeWithRelations,
-} from "@/lib/helper/attribute-query-helpers";
-import { requireShopAccess } from "@/lib/helper/vendor";
-import { authMiddleware } from "@/lib/middleware/auth";
-import { generateSlug } from "@/lib/utils/slug";
+} from "#/lib/helper/attribute-query-helpers";
+import { requireShopAccess } from "#/lib/helper/vendor";
+import { authMiddleware } from "#/lib/middleware/auth";
+import { generateSlug } from "#/lib/utils/slug";
 import {
     createAttributeSchema,
     updateAttributeSchema,
     vendorAttributesQuerySchema,
-} from "@/lib/validators/shared/attribute-query";
-import type { AttributeListResponse } from "@/types/attributes";
+} from "#/lib/validators/shared/attribute-query";
+import type { AttributeListResponse } from "#/types/attributes";
 import { createServerFn } from "@tanstack/react-start";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";

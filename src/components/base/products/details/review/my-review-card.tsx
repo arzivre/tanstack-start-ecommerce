@@ -1,13 +1,13 @@
 import { format } from "date-fns";
 import { Pencil, Star, Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "#/components/ui/button";
 import {
     Card,
     CardContent,
     CardFooter,
     CardHeader,
-} from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+} from "#/components/ui/card";
+import { cn } from "#/lib/utils";
 
 interface MyReviewCardProps {
     id: string;

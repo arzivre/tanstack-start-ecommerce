@@ -1,5 +1,5 @@
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '#/components/ui/badge'
+import { Button } from '#/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,8 +7,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import type { AdminTenantDetailsProps } from '@/types/tenant'
+} from '#/components/ui/dropdown-menu'
+import type { AdminTenantDetailsProps } from '#/types/tenant'
 import { Link } from '@tanstack/react-router'
 import { format } from 'date-fns'
 import { ArrowLeft, MoreHorizontal } from 'lucide-react'

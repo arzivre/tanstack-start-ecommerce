@@ -1,10 +1,10 @@
 import { useMemo } from "react";
-import { DataTable } from "@/components/base/data-table/data-table";
+import { DataTable } from "#/components/base/data-table/data-table";
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import type { ShippingMethodItem } from "@/types/shipping";
+} from "#/components/base/data-table/types";
+import type { ShippingMethodItem } from "#/types/shipping";
 import {
     createShippingColumns,
     getSharedShippingFilters,

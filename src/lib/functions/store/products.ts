@@ -1,11 +1,11 @@
 import { createServerFn } from "@tanstack/react-start";
 import { and, eq } from "drizzle-orm";
-import { db } from "@/lib/db";
-import { products } from "@/lib/db/schema/products-schema";
+import { db } from "#/lib/db";
+import { products } from "#/lib/db/schema/products-schema";
 import {
     executeProductQuery,
     fetchProductWithRelations,
-} from "@/lib/helper/products-query-helpers";
+} from "#/lib/helper/products-query-helpers";
 import {
     getFeaturedProductsSchema,
     getProductByIdSchema,
@@ -13,16 +13,16 @@ import {
     getRelatedProductsSchema,
     type StoreProductsQuery,
     storeProductsQuerySchema,
-} from "@/lib/validators/shared/product-query";
+} from "#/lib/validators/shared/product-query";
 import {
     createPaginatedResponse,
     emptyPaginatedResponse,
-} from "@/types/api-response";
-import type { NormalizedProduct } from "@/types/products";
+} from "#/types/api-response";
+import type { NormalizedProduct } from "#/types/products";
 import type {
     StoreProduct,
     StoreProductListResponse,
-} from "@/types/store-types";
+} from "#/types/store-types";
 
 /**
  * Transform NormalizedProduct to StoreProduct by removing sensitive fields
@@ -71,7 +71,7 @@ export const getStoreProducts = createServerFn({ method: "GET" })
 
         // If shopSlug is provided, look up the shop first
         if (shopSlug && !shopId) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)
@@ -133,7 +133,7 @@ export const getStoreProductBySlug = createServerFn({ method: "GET" })
 
         // If shopSlug is provided, scope to that shop
         if (shopSlug) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)

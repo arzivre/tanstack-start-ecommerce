@@ -1,4 +1,4 @@
-import { createEntityHeader } from "@/components/base/common/entity-header";
+import { createEntityHeader } from "#/components/base/common/entity-header";
 
 export const ShippingHeader = createEntityHeader({
     entityName: "Shipping Method",
@@ -9,4 +9,4 @@ export const ShippingHeader = createEntityHeader({
 });
 
 export default ShippingHeader;
-export type { EntityHeaderProps as ShippingHeaderProps } from "@/components/base/common/entity-header";
+export type { EntityHeaderProps as ShippingHeaderProps } from "#/components/base/common/entity-header";

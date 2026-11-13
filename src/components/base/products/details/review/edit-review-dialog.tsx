@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "#/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -7,11 +7,11 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { useReviewMutations } from "@/hooks/store/use-reviews";
-import { cn } from "@/lib/utils";
+} from "#/components/ui/dialog";
+import { Label } from "#/components/ui/label";
+import { Textarea } from "#/components/ui/textarea";
+import { useReviewMutations } from "#/hooks/store/use-reviews";
+import { cn } from "#/lib/utils";
 import { Star } from "lucide-react";
 
 interface EditReviewDialogProps {

@@ -1,4 +1,4 @@
-import type { Category } from '@/types/category-types'
+import type { Category } from '#/types/category-types'
 
 export const mockCategories: Category[] = [
   // Level 0 Categories (Main Categories)

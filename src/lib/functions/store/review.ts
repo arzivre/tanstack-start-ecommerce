@@ -7,14 +7,14 @@
 import { createServerFn } from "@tanstack/react-start";
 import { and, desc, eq, inArray, sql } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
-import { db } from "@/lib/db";
-import { user } from "@/lib/db/schema/auth-schema";
-import { orderItems, orders } from "@/lib/db/schema/order-schema";
-import { productImages, products } from "@/lib/db/schema/products-schema";
+import { db } from "#/lib/db";
+import { user } from "#/lib/db/schema/auth-schema";
+import { orderItems, orders } from "#/lib/db/schema/order-schema";
+import { productImages, products } from "#/lib/db/schema/products-schema";
 import {
     productReviews,
     reviewHelpfulVotes,
-} from "@/lib/db/schema/review-schema";
+} from "#/lib/db/schema/review-schema";
 import {
     formatReviewDates,
     getProductRatingStats,
@@ -23,9 +23,9 @@ import {
     type StoreReviewResponse,
     updateProductRating,
     verifyReviewOwnership,
-} from "@/lib/helper/review-query-helpers";
-import { authMiddleware } from "@/lib/middleware/auth";
-import { optionalAuthMiddleware } from "@/lib/middleware/optional-auth";
+} from "#/lib/helper/review-query-helpers";
+import { authMiddleware } from "#/lib/middleware/auth";
+import { optionalAuthMiddleware } from "#/lib/middleware/optional-auth";
 import {
     checkReviewEligibilitySchema,
     createReviewSchema,
@@ -34,9 +34,9 @@ import {
     getShopReviewsSchema,
     updateReviewSchema,
     voteHelpfulSchema,
-} from "@/lib/validators/review";
+} from "#/lib/validators/review";
 
-import type { ReviewEligibility } from "@/types/review";
+import type { ReviewEligibility } from "#/types/review";
 
 // ============================================================================
 // Check Review Eligibility

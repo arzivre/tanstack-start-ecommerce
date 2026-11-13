@@ -5,14 +5,14 @@ import {
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
+} from "#/components/ui/card";
 import {
     type ChartConfig,
     ChartContainer,
     ChartTooltip,
     ChartTooltipContent,
-} from "@/components/ui/chart";
-import type { DashboardMonthlySales } from "@/types/shop-dashboard";
+} from "#/components/ui/chart";
+import type { DashboardMonthlySales } from "#/types/shop-dashboard";
 
 const chartConfig = {
     revenue: {

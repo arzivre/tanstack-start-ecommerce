@@ -6,7 +6,7 @@
  */
 
 import { and, asc, count, desc, eq, inArray, type SQL, sql } from "drizzle-orm";
-import type { PaginatedResponse } from "@/types/api-response";
+import type { PaginatedResponse } from "#/types/api-response";
 import { db } from "../db";
 import { user } from "../db/schema/auth-schema";
 import { productImages, products } from "../db/schema/products-schema";

@@ -1,5 +1,5 @@
 import { Calendar, Package, Star, Users } from 'lucide-react'
-import type { StoreStats as StoreStatsType } from '@/types/store-types'
+import type { StoreStats as StoreStatsType } from '#/types/store-types'
 import { format } from 'date-fns'
 
 interface StoreStatsProps {

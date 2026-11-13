@@ -1,19 +1,19 @@
-import { getAdminBrands } from "@/lib/functions/admin/brand";
-import { getAdminCategories } from "@/lib/functions/admin/category";
+import { getAdminBrands } from "#/lib/functions/admin/brand";
+import { getAdminCategories } from "#/lib/functions/admin/category";
 import {
     booleanFilterTransform,
     createServerFetcher,
-} from "@/lib/helper/create-server-fetcher";
+} from "#/lib/helper/create-server-fetcher";
 import { getAdminAttributes } from "#/lib/functions/admin/attribute";
 import { getAdminCoupons } from "#/lib/functions/admin/coupon";
 
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import type { BrandItem } from "@/types/brands";
-import type { NormalizedCategory } from "@/types/category-types";
-import type { AttributeItem } from "@/types/attributes";
+} from "#/components/base/data-table/types";
+import type { BrandItem } from "#/types/brands";
+import type { NormalizedCategory } from "#/types/category-types";
+import type { AttributeItem } from "#/types/attributes";
 import type { CouponItem } from "#/types/coupons";
 
 export const ADMIN_STATUS_OPTIONS = [

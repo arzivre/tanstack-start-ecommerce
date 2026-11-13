@@ -8,14 +8,14 @@
 import { createServerFn } from "@tanstack/react-start";
 import { and, eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
-import { db } from "@/lib/db";
-import { customerAddresses } from "@/lib/db/schema/address-schema";
-import { authMiddleware } from "@/lib/middleware/auth";
+import { db } from "#/lib/db";
+import { customerAddresses } from "#/lib/db/schema/address-schema";
+import { authMiddleware } from "#/lib/middleware/auth";
 import {
     createAddressSchema,
     deleteAddressSchema,
     updateAddressSchema,
-} from "@/lib/validators/address";
+} from "#/lib/validators/address";
 
 // ============================================================================
 // Get User's Addresses

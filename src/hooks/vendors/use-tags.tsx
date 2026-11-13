@@ -10,12 +10,12 @@ import {
     getTagById,
     getTags,
     updateTag,
-} from "@/lib/functions/vendor/tags";
+} from "#/lib/functions/vendor/tags";
 import type {
     CreateTagInput,
     UpdateTagInput,
-} from "@/lib/validators/shared/tag-query";
-import type { ListTagsQuery } from "@/types/tags";
+} from "#/lib/validators/shared/tag-query";
+import type { ListTagsQuery } from "#/types/tags";
 
 export const vendorTagsKeys = {
     all: (shopId: string) => ["vendor", "tags", shopId] as const,

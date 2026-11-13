@@ -3,7 +3,7 @@ import { FileUploaderMinimal } from "@uploadcare/react-uploader";
 import "@uploadcare/react-uploader/core.css";
 import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
+import { Button } from "#/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -11,7 +11,7 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog";
+} from "#/components/ui/dialog";
 import {
     Form,
     FormControl,
@@ -19,11 +19,11 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import type { Shop } from "@/lib/db/schema/shop-schema";
-import { type UpdateShopInput, updateShopSchema } from "@/lib/validators/shop";
+} from "#/components/ui/form";
+import { Input } from "#/components/ui/input";
+import { Textarea } from "#/components/ui/textarea";
+import type { Shop } from "#/lib/db/schema/shop-schema";
+import { type UpdateShopInput, updateShopSchema } from "#/lib/validators/shop";
 
 interface EditShopDialogProps {
     open: boolean;

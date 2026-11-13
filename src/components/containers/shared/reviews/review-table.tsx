@@ -1,9 +1,9 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { MoreHorizontal, Plus, Star } from 'lucide-react'
-import { DataTable } from '@/components/base/data-table/data-table'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { DataTable } from '#/components/base/data-table/data-table'
+import { Avatar, AvatarFallback, AvatarImage } from '#/components/ui/avatar'
+import { Badge } from '#/components/ui/badge'
+import { Button } from '#/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,8 +11,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import type { Review, ReviewPermissions } from '@/types/review'
+} from '#/components/ui/dropdown-menu'
+import type { Review, ReviewPermissions } from '#/types/review'
 
 interface ReviewTableProps {
   reviews: Review[]

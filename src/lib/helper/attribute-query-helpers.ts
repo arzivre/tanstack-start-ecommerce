@@ -22,7 +22,7 @@ import type {
     AttributeQueryResult,
     AttributeValueItem,
     BatchedAttributeRelations,
-} from "@/types/attributes";
+} from "#/types/attributes";
 import { db } from "../db";
 import { attributes, attributeValues } from "../db/schema/attribute-schema";
 import { shops } from "../db/schema/shop-schema";

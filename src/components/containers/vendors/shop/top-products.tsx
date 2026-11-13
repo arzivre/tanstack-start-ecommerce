@@ -1,14 +1,14 @@
 import { ImageIcon, Package } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/avatar";
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import { formatCurrency } from "@/lib/utils/dashboard";
-import type { DashboardTopProduct } from "@/types/shop-dashboard";
+} from "#/components/ui/card";
+import { formatCurrency } from "#/lib/utils/dashboard";
+import type { DashboardTopProduct } from "#/types/shop-dashboard";
 
 interface TopProductsProps {
     products: DashboardTopProduct[];

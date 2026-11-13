@@ -4,8 +4,8 @@ import {
     getVendorOrderStats,
     getVendorOrders,
     updateVendorOrderStatus,
-} from "@/lib/functions/vendor/order";
-import type { OrderStatus } from "@/types/orders";
+} from "#/lib/functions/vendor/order";
+import type { OrderStatus } from "#/types/orders";
 
 export const vendorOrderKeys = {
     all: ["vendor-orders"] as const,

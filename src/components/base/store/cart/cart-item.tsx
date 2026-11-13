@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "#/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { Loader2, Trash2 } from "lucide-react";
 import { QuantitySelector } from "../../products/details/quantity-selector";
 
-import type { CartItemResponse } from "@/types/cart";
+import type { CartItemResponse } from "#/types/cart";
 
 interface CartItemProps {
     item: CartItemResponse;

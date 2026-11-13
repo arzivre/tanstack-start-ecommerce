@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import AdminTagsTemplate from "@/components/templates/admin/admin-tags-template";
-import { mockTags } from "@/data/tags";
-import type { TagFormValues, TagItem } from "@/types/tags";
+import AdminTagsTemplate from "#/components/templates/admin/admin-tags-template";
+import { mockTags } from "#/data/tags";
+import type { TagFormValues, TagItem } from "#/types/tags";
 
 export const Route = createFileRoute("/(admin)/admin/tags/")({
     component: AdminTagsPage,

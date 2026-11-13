@@ -1,20 +1,20 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback } from "#/components/ui/avatar";
+import { Badge } from "#/components/ui/badge";
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
+} from "#/components/ui/card";
 import {
     formatCurrency,
     formatRelativeTime,
     getStatusColor,
-} from "@/lib/utils/dashboard";
+} from "#/lib/utils/dashboard";
 import { ShoppingBag } from "lucide-react";
 
-import type { DashboardRecentOrder } from "@/types/shop-dashboard";
+import type { DashboardRecentOrder } from "#/types/shop-dashboard";
 
 interface RecentOrdersProps {
     orders: DashboardRecentOrder[];

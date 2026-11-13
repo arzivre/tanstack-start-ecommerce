@@ -1,9 +1,9 @@
 import {
     EntityFormDialog,
     type EntityFormField,
-} from "@/components/base/forms/entity-form-dialog";
-import { createTaxRateSchema } from "@/lib/validators/shared/tax-rate-query";
-import type { TaxRateFormValues } from "@/types/taxes";
+} from "#/components/base/forms/entity-form-dialog";
+import { createTaxRateSchema } from "#/lib/validators/shared/tax-rate-query";
+import type { TaxRateFormValues } from "#/types/taxes";
 
 interface AddTaxDialogProps {
     open: boolean;

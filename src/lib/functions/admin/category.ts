@@ -7,14 +7,14 @@
 
 import { createServerFn } from "@tanstack/react-start";
 import { eq, inArray } from "drizzle-orm";
-import { db } from "@/lib/db";
-import { categories } from "@/lib/db/schema/category-schema";
-import { shops } from "@/lib/db/schema/shop-schema";
+import { db } from "#/lib/db";
+import { categories } from "#/lib/db/schema/category-schema";
+import { shops } from "#/lib/db/schema/shop-schema";
 import {
     executeCategoryQuery,
     fetchCategoryWithRelations,
-} from "@/lib/helper/category-query-helpers";
-import { adminMiddleware } from "@/lib/middleware/admin";
+} from "#/lib/helper/category-query-helpers";
+import { adminMiddleware } from "#/lib/middleware/admin";
 import {
     type AdminCategoriesQuery,
     adminCategoriesQuerySchema,
@@ -22,15 +22,15 @@ import {
     getCategoryByIdSchema,
     toggleCategoryActiveSchema,
     toggleCategoryFeaturedSchema,
-} from "@/lib/validators/shared/category-query";
+} from "#/lib/validators/shared/category-query";
 import {
     createSuccessResponse,
     emptyPaginatedResponse,
-} from "@/types/api-response";
+} from "#/types/api-response";
 import type {
     CategoryListResponse,
     NormalizedCategory,
-} from "@/types/category-types";
+} from "#/types/category-types";
 
 // ============================================================================
 // Get All Categories (Admin)
@@ -232,7 +232,7 @@ export const deleteAdminCategory = createServerFn({ method: "POST" })
         }
 
         // Check for products
-        const { products } = await import("@/lib/db/schema/products-schema");
+        const { products } = await import("#/lib/db/schema/products-schema");
         const [productCount] = await db
             .select({ count: db.$count(products) })
             .from(products)

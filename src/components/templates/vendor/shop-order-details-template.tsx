@@ -1,12 +1,12 @@
-import OrderActions from "@/components/containers/vendors/order-details/order-actions";
-import { OrderItemsList } from "@/components/containers/vendors/order-details/order-items-list";
-import { OrderSummary } from "@/components/containers/vendors/order-details/order-summary";
-import { OrderTimeline } from "@/components/containers/vendors/order-details/order-timeline";
-import { Button } from "@/components/ui/button";
+import OrderActions from "#/components/containers/vendors/order-details/order-actions";
+import { OrderItemsList } from "#/components/containers/vendors/order-details/order-items-list";
+import { OrderSummary } from "#/components/containers/vendors/order-details/order-summary";
+import { OrderTimeline } from "#/components/containers/vendors/order-details/order-timeline";
+import { Button } from "#/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 
-import type { OrderItemResponse, OrderStatus } from "@/types/orders";
+import type { OrderItemResponse, OrderStatus } from "#/types/orders";
 
 interface VendorOrderDetailResponse {
     id: string;

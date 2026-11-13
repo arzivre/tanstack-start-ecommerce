@@ -1,11 +1,11 @@
 import { AlertCircle, Package } from "lucide-react";
-import { OrderSearchForm } from "@/components/base/store/order/order-search-form";
-import { OrderStatusTimeline } from "@/components/base/store/order/order-status-timeline";
-import { OrderTrackingSummary } from "@/components/containers/store/order/order-tracking-summary";
-import { ShippingUpdatesList } from "@/components/containers/store/order/shipping-updates-list";
-import { TrackingDetailsCard } from "@/components/containers/store/order/tracking-details-card";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import type { TrackingData } from "@/types/tracking-order";
+import { OrderSearchForm } from "#/components/base/store/order/order-search-form";
+import { OrderStatusTimeline } from "#/components/base/store/order/order-status-timeline";
+import { OrderTrackingSummary } from "#/components/containers/store/order/order-tracking-summary";
+import { ShippingUpdatesList } from "#/components/containers/store/order/shipping-updates-list";
+import { TrackingDetailsCard } from "#/components/containers/store/order/tracking-details-card";
+import { Alert, AlertDescription, AlertTitle } from "#/components/ui/alert";
+import type { TrackingData } from "#/types/tracking-order";
 
 interface OrderTrackingTemplateProps {
     onSearch: (orderId: string) => void;

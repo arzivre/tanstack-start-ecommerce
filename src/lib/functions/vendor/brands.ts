@@ -1,19 +1,19 @@
-import { db } from "@/lib/db";
-import { brands } from "@/lib/db/schema/brand-schema";
+import { db } from "#/lib/db";
+import { brands } from "#/lib/db/schema/brand-schema";
 import {
     executeBrandQuery,
     fetchBrandWithRelations,
-} from "@/lib/helper/brands-query-helpers";
-import { requireShopAccess } from "@/lib/helper/vendor";
-import { authMiddleware } from "@/lib/middleware/auth";
-import { generateSlug } from "@/lib/utils/slug";
-import { createBrandSchema, updateBrandSchema } from "@/lib/validators/brands";
+} from "#/lib/helper/brands-query-helpers";
+import { requireShopAccess } from "#/lib/helper/vendor";
+import { authMiddleware } from "#/lib/middleware/auth";
+import { generateSlug } from "#/lib/utils/slug";
+import { createBrandSchema, updateBrandSchema } from "#/lib/validators/brands";
 import {
     type VendorBrandsQuery,
     vendorBrandsQuerySchema,
-} from "@/lib/validators/shared/brand-query";
-import { createSuccessResponse } from "@/types/api-response";
-import type { BrandListResponse } from "@/types/brands";
+} from "#/lib/validators/shared/brand-query";
+import { createSuccessResponse } from "#/types/api-response";
+import type { BrandListResponse } from "#/types/brands";
 import { createServerFn } from "@tanstack/react-start";
 import { and, eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";

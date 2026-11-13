@@ -1,11 +1,11 @@
 import { Plus } from 'lucide-react'
 import { useState } from 'react'
-import { AddOrderDialog } from '@/components/containers/shared/orders/add-order-dialog'
-import OrderHeader from '@/components/containers/shared/orders/order-header'
-import OrderTable from '@/components/containers/shared/orders/order-table'
-import { Button } from '@/components/ui/button'
-import { ADMIN_ORDER_PERMISSIONS } from '@/lib/config/order-permissions'
-import type { Order } from '@/types/orders'
+import { AddOrderDialog } from '#/components/containers/shared/orders/add-order-dialog'
+import OrderHeader from '#/components/containers/shared/orders/order-header'
+import OrderTable from '#/components/containers/shared/orders/order-table'
+import { Button } from '#/components/ui/button'
+import { ADMIN_ORDER_PERMISSIONS } from '#/lib/config/order-permissions'
+import type { Order } from '#/types/orders'
 
 interface AdminOrdersTemplateProps {
   orders: Order[]

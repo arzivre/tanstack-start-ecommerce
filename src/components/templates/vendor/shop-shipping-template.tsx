@@ -1,11 +1,11 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import ShippingHeader from "@/components/containers/shared/shipping/shipping-header";
-import ShippingTable from "@/components/containers/shared/shipping/shipping-table";
-import type { ShippingMutationState } from "@/components/containers/shared/shipping/shipping-table-columns";
-import type { ShippingMethodItem } from "@/types/shipping";
+} from "#/components/base/data-table/types";
+import ShippingHeader from "#/components/containers/shared/shipping/shipping-header";
+import ShippingTable from "#/components/containers/shared/shipping/shipping-table";
+import type { ShippingMutationState } from "#/components/containers/shared/shipping/shipping-table-columns";
+import type { ShippingMethodItem } from "#/types/shipping";
 
 interface ShopShippingTemplateProps {
     fetcher: (

@@ -1,28 +1,28 @@
 import { createServerFn } from "@tanstack/react-start";
 import { and, eq } from "drizzle-orm";
 import z from "zod";
-import { db } from "@/lib/db";
-import { categories } from "@/lib/db/schema/category-schema";
+import { db } from "#/lib/db";
+import { categories } from "#/lib/db/schema/category-schema";
 import {
     buildCategoryTree,
     executeCategoryQuery,
     fetchCategoryWithRelations,
-} from "@/lib/helper/category-query-helpers";
+} from "#/lib/helper/category-query-helpers";
 import {
     getCategoryByIdSchema,
     getCategoryBySlugSchema,
     type StoreCategoriesQuery,
     storeCategoriesQuerySchema,
-} from "@/lib/validators/shared/category-query";
+} from "#/lib/validators/shared/category-query";
 import {
     createPaginatedResponse,
     emptyPaginatedResponse,
-} from "@/types/api-response";
+} from "#/types/api-response";
 import type {
     CategoryListResponse,
     CategoryTreeNode,
     NormalizedCategory,
-} from "@/types/category-types";
+} from "#/types/category-types";
 
 /**
  * Get categories for the public storefront
@@ -54,7 +54,7 @@ export const getStoreCategories = createServerFn({ method: "GET" })
 
         // If shopSlug is provided, look up the shop first
         if (shopSlug && !shopId) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)
@@ -109,7 +109,7 @@ export const getStoreCategoryBySlug = createServerFn({ method: "GET" })
 
         // If shopSlug is provided, scope to that shop
         if (shopSlug) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)
@@ -187,7 +187,7 @@ export const getFeaturedCategories = createServerFn({ method: "GET" })
 
         // If shopSlug is provided, scope to that shop
         if (shopSlug) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)
@@ -232,7 +232,7 @@ export const getCategoryTree = createServerFn({ method: "GET" })
         if (shopId) {
             baseConditions.push(eq(categories.shopId, shopId));
         } else if (shopSlug) {
-            const { shops } = await import("@/lib/db/schema/shop-schema");
+            const { shops } = await import("#/lib/db/schema/shop-schema");
             const [shop] = await db
                 .select({ id: shops.id })
                 .from(shops)

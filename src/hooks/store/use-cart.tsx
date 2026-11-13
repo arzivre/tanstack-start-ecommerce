@@ -20,17 +20,17 @@ import {
     mergeCarts,
     removeFromCart,
     updateCartItem,
-} from "@/lib/functions/store/cart";
+} from "#/lib/functions/store/cart";
 import {
     clearGuestSessionId,
     getGuestSessionId,
     setGuestSessionId,
-} from "@/lib/helper/cart-helpers";
+} from "#/lib/helper/cart-helpers";
 import type {
     AddToCartInput,
     UpdateCartItemInput,
-} from "@/lib/validators/cart";
-import type { CartItemResponse, CartResponse } from "@/types/cart";
+} from "#/lib/validators/cart";
+import type { CartItemResponse, CartResponse } from "#/types/cart";
 
 // ============================================================================
 // Query Keys

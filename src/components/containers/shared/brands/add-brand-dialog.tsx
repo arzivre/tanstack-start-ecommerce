@@ -1,9 +1,9 @@
 import {
     EntityFormDialog,
     type EntityFormField,
-} from "@/components/base/forms/entity-form-dialog";
-import { createBrandSchema } from "@/lib/validators/brands";
-import type { BrandFormValues } from "@/types/brands";
+} from "#/components/base/forms/entity-form-dialog";
+import { createBrandSchema } from "#/lib/validators/brands";
+import type { BrandFormValues } from "#/types/brands";
 
 interface AddBrandDialogProps {
     open: boolean;

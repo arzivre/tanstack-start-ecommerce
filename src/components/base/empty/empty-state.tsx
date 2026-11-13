@@ -5,8 +5,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from '@/components/ui/empty'
-import { cn } from '@/lib/utils'
+} from '#/components/ui/empty'
+import { cn } from '#/lib/utils'
 
 interface EmptyStateProps {
   icon?: React.ReactNode

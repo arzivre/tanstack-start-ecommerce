@@ -1,16 +1,16 @@
-import { EntityFormDialog } from "@/components/base/forms/entity-form-dialog";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
+import { EntityFormDialog } from "#/components/base/forms/entity-form-dialog";
+import { Checkbox } from "#/components/ui/checkbox";
+import { Label } from "#/components/ui/label";
 import {
     createAddressSchema,
     updateAddressSchema,
-} from "@/lib/validators/address";
+} from "#/lib/validators/address";
 
-import type { EntityFormField } from "@/components/base/forms/entity-form-dialog";
+import type { EntityFormField } from "#/components/base/forms/entity-form-dialog";
 import type {
     CreateAddressInput,
     UpdateAddressInput,
-} from "@/lib/validators/address";
+} from "#/lib/validators/address";
 
 interface AddressDialogProps {
     open: boolean;

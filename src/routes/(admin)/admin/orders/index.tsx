@@ -1,8 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
-import AdminOrdersTemplate from '@/components/templates/admin/admin-orders-template'
-import { mockOrders } from '@/data/orders'
-import type { Order } from '@/types/orders'
+import AdminOrdersTemplate from '#/components/templates/admin/admin-orders-template'
+import { mockOrders } from '#/data/orders'
+import type { Order } from '#/types/orders'
 
 export const Route = createFileRoute('/(admin)/admin/orders/')({
   component: AdminOrdersPage,

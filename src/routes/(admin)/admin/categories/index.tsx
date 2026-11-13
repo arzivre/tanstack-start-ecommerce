@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import AdminCategoriesTemplate from "@/components/templates/admin/admin-categories-template";
-import { useAdminCategories } from "@/hooks/admin/use-admin-categories";
-import { createAdminCategoriesFetcher } from "@/hooks/admin/use-admin-entity-fetchers";
-import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import type { NormalizedCategory } from "@/types/category-types";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import AdminCategoriesTemplate from "#/components/templates/admin/admin-categories-template";
+import { useAdminCategories } from "#/hooks/admin/use-admin-categories";
+import { createAdminCategoriesFetcher } from "#/hooks/admin/use-admin-entity-fetchers";
+import { useEntityCRUD } from "#/hooks/common/use-entity-crud";
+import type { NormalizedCategory } from "#/types/category-types";
 
 export const Route = createFileRoute("/(admin)/admin/categories/")({
     component: AdminCategoriesPage,

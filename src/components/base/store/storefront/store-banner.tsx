@@ -1,8 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
-import { useStoreFront } from '@/lib/store/store'
-import { cn } from '@/lib/utils'
-import type { Store } from '@/types/store-types'
+import { Avatar, AvatarFallback, AvatarImage } from '#/components/ui/avatar'
+import { Button } from '#/components/ui/button'
+import { useStoreFront } from '#/lib/store/store'
+import { cn } from '#/lib/utils'
+import type { Store } from '#/types/store-types'
 import { CheckCircle2, Heart, Star } from 'lucide-react'
 
 interface StoreBannerProps {

@@ -1,13 +1,13 @@
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
-} from "@/components/base/data-table/types";
-import AttributeHeader from "@/components/containers/shared/attributes/attribute-header";
-import AttributeTable from "@/components/containers/shared/attributes/attribute-table";
+} from "#/components/base/data-table/types";
+import AttributeHeader from "#/components/containers/shared/attributes/attribute-header";
+import AttributeTable from "#/components/containers/shared/attributes/attribute-table";
 import type {
     AdminAttributeMutationState,
     AttributeItem,
-} from "@/types/attributes";
+} from "#/types/attributes";
 
 interface AdminAttributesTemplateProps {
     fetcher: (

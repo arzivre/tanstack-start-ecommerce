@@ -1,4 +1,4 @@
-import type { VendorNavItem } from '@/types/vendor'
+import type { VendorNavItem } from '#/types/vendor'
 import {
   Award,
   Building2,

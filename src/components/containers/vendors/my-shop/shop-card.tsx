@@ -1,7 +1,7 @@
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
+import { Badge } from '#/components/ui/badge'
+import { Button } from '#/components/ui/button'
+import { Card, CardContent, CardFooter, CardHeader } from '#/components/ui/card'
+import { cn } from '#/lib/utils'
 import { Link } from '@tanstack/react-router'
 import { BarChart3, MapPin, Package, Star } from 'lucide-react'
 

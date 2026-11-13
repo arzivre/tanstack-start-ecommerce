@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useMemo } from "react";
-import { CategoryTree } from "@/components/base/store/category/category-tree";
-import { CategoryGrid } from "@/components/containers/store/category/category-grid";
+import { CategoryTree } from "#/components/base/store/category/category-tree";
+import { CategoryGrid } from "#/components/containers/store/category/category-grid";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -10,20 +10,20 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "#/components/ui/breadcrumb";
+import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
+import { Separator } from "#/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
 import {
     categoryTreeQueryOptions,
     featuredCategoriesQueryOptions,
     storeCategoriesQueryOptions,
-} from "@/hooks/store/use-store-categories";
+} from "#/hooks/store/use-store-categories";
 import {
     filterRootCategories,
     toUICategory,
     toUICategoryTree,
-} from "@/lib/transformers/category-transformers";
+} from "#/lib/transformers/category-transformers";
 
 export default function CategoryTemplate() {
     const {

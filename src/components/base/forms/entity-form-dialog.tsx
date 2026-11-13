@@ -1,6 +1,6 @@
-import { Form } from "@/components/base/forms/form";
-import { Field } from "@/components/base/forms/form-field";
-import { Button } from "@/components/ui/button";
+import { Form } from "#/components/base/forms/form";
+import { Field } from "#/components/base/forms/form-field";
+import { Button } from "#/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -8,22 +8,22 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog";
+} from "#/components/ui/dialog";
 import {
     FieldDescription,
     FieldLabel,
     Field as UIField,
-} from "@/components/ui/field";
-import { ScrollArea } from "@/components/ui/scroll-area";
+} from "#/components/ui/field";
+import { ScrollArea } from "#/components/ui/scroll-area";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
-import { validateField, validateOptionalField } from "@/lib/helper/validators";
-import { cn } from "@/lib/utils";
+} from "#/components/ui/select";
+import { validateField, validateOptionalField } from "#/lib/helper/validators";
+import { cn } from "#/lib/utils";
 import { useForm } from "@tanstack/react-form";
 import { FileUploaderRegular } from "@uploadcare/react-uploader";
 import { X } from "lucide-react";

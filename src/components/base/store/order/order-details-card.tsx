@@ -1,8 +1,8 @@
 import { useNavigate } from "@tanstack/react-router";
 import { Download, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { useDownloadInvoice } from "@/hooks/store/use-invoice";
+import { Button } from "#/components/ui/button";
+import { useDownloadInvoice } from "#/hooks/store/use-invoice";
 
 interface OrderDetailsCardProps {
     orderId: string;

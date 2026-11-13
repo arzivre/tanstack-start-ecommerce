@@ -1,15 +1,15 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { Eye, MoreHorizontal, RefreshCcw, Trash2 } from 'lucide-react'
-import { DataTable } from '@/components/base/data-table/data-table'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { DataTable } from '#/components/base/data-table/data-table'
+import { Badge } from '#/components/ui/badge'
+import { Button } from '#/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import type { Transaction, TransactionPermissions } from '@/types/transaction'
+} from '#/components/ui/dropdown-menu'
+import type { Transaction, TransactionPermissions } from '#/types/transaction'
 
 interface TransactionsTableProps {
   transactions: Transaction[]

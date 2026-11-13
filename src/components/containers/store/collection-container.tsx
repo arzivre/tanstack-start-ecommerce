@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { toast } from "sonner";
-import CollectionItem from "@/components/base/common/collection-item";
-import CollectionSkeleton from "@/components/base/skeleton/category-skeleton";
-import { useCartStore } from "@/lib/store/cart-store";
-import { gridCellBorderClasses } from "@/lib/utils";
-import type { DisplayProduct } from "@/types/store-types";
+import CollectionItem from "#/components/base/common/collection-item";
+import CollectionSkeleton from "#/components/base/skeleton/category-skeleton";
+import { useCartStore } from "#/lib/store/cart-store";
+import { gridCellBorderClasses } from "#/lib/utils";
+import type { DisplayProduct } from "#/types/store-types";
 
 export default function CollectionContainer({
     products,

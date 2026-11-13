@@ -1,13 +1,13 @@
 import { CheckCircle2, XCircle } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/avatar";
+import { Button } from "#/components/ui/button";
 import {
     InputGroup,
     InputGroupAddon,
     InputGroupInput,
-} from "@/components/ui/input-group";
-import { Label } from "@/components/ui/label";
-import { useSession } from "@/lib/auth/auth-client";
+} from "#/components/ui/input-group";
+import { Label } from "#/components/ui/label";
+import { useSession } from "#/lib/auth/auth-client";
 import { AddressBook } from "./address-book";
 
 export default function ProfileForm() {

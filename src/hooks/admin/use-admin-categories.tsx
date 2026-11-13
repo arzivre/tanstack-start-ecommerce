@@ -17,8 +17,8 @@ import {
     getAdminCategoryById,
     toggleAdminCategoryActive,
     toggleAdminCategoryFeatured,
-} from "@/lib/functions/admin/category";
-import type { AdminCategoriesQuery } from "@/lib/validators/shared/category-query";
+} from "#/lib/functions/admin/category";
+import type { AdminCategoriesQuery } from "#/lib/validators/shared/category-query";
 
 // ============================================================================
 // Query Keys

@@ -1,13 +1,13 @@
 import { type ErrorComponentProps, Link } from "@tanstack/react-router";
 import { AlertCircle, Home, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "#/components/ui/button";
 import {
     Card,
     CardContent,
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
+} from "#/components/ui/card";
 import { DefaultErrorComponent } from "./default-error-component";
 
 export function AdminAccessDenied() {

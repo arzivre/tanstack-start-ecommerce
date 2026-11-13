@@ -1,6 +1,6 @@
 import { CtaContainer } from '#/components/containers/store/cta-container'
-import Section from '@/components/base/common/section'
-import BallCircleIcon from '@/components/ui/icons/ball-circle'
+import Section from '#/components/base/common/section'
+import BallCircleIcon from '#/components/ui/icons/ball-circle'
 
 export function CtaBanner() {
   return (

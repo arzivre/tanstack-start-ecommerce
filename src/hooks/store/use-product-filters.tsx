@@ -7,12 +7,12 @@
 
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
-import { storeBrandsQueryOptions } from "@/hooks/store/use-store-brands";
-import { storeCategoriesQueryOptions } from "@/hooks/store/use-store-categories";
-import { storeProductsInfiniteQueryOptions } from "@/hooks/store/use-store-product";
-import { toDisplayProducts } from "@/lib/helper/products-query-helpers";
-import type { FilterState } from "@/lib/store/product-filters-store";
-import { getSortParams } from "@/lib/utils/product-sort";
+import { storeBrandsQueryOptions } from "#/hooks/store/use-store-brands";
+import { storeCategoriesQueryOptions } from "#/hooks/store/use-store-categories";
+import { storeProductsInfiniteQueryOptions } from "#/hooks/store/use-store-product";
+import { toDisplayProducts } from "#/lib/helper/products-query-helpers";
+import type { FilterState } from "#/lib/store/product-filters-store";
+import { getSortParams } from "#/lib/utils/product-sort";
 
 /**
  * Type for the updateFilter function

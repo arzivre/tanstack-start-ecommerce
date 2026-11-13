@@ -15,8 +15,8 @@ import {
     getStripeDashboardLink,
     getVendorStripeStatus,
     startStripeOnboarding,
-} from "@/lib/functions/vendor/vendor-connect";
-import type { StripeConnectStatus } from "@/types/orders";
+} from "#/lib/functions/vendor/vendor-connect";
+import type { StripeConnectStatus } from "#/types/orders";
 
 // ============================================================================
 // Query Keys
@@ -122,7 +122,7 @@ export function useDisconnectStripe(
     return useMutation({
         mutationFn: async () => {
             const { disconnectStripeAccount } =
-                await import("@/lib/functions/vendor/vendor-connect");
+                await import("#/lib/functions/vendor/vendor-connect");
             const result = await disconnectStripeAccount();
             return result;
         },

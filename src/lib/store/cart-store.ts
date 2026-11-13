@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { ShippingAddressInput } from "@/lib/validators/shipping-address";
+import type { ShippingAddressInput } from "#/lib/validators/shipping-address";
 
 export interface CartItem {
     id: string;

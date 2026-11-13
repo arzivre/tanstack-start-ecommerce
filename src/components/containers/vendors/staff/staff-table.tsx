@@ -1,14 +1,14 @@
-import { DataTable } from '@/components/base/data-table/data-table'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { DataTable } from '#/components/base/data-table/data-table'
+import { Avatar, AvatarFallback, AvatarImage } from '#/components/ui/avatar'
+import { Badge } from '#/components/ui/badge'
+import { Button } from '#/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import type { Staff } from '@/types/staff'
+} from '#/components/ui/dropdown-menu'
+import type { Staff } from '#/types/staff'
 import type { ColumnDef } from '@tanstack/react-table'
 import { Edit, MoreHorizontal, Trash2 } from 'lucide-react'
 import { format } from 'date-fns'

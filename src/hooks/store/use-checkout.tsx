@@ -14,7 +14,7 @@ import {
     getOrderById,
     getOrderPaymentSession,
     getOrdersByIds,
-} from "@/lib/functions/store/order";
+} from "#/lib/functions/store/order";
 import type {
     CancelOrderInput,
     ConfirmPaymentInput,
@@ -22,8 +22,8 @@ import type {
     GetOrderByIdInput,
     GetOrdersByIdsInput,
     GetOrdersInput,
-} from "@/lib/validators/order";
-import type { CheckoutSessionData } from "@/types/orders";
+} from "#/lib/validators/order";
+import type { CheckoutSessionData } from "#/types/orders";
 
 // ============================================================================
 // Query Keys

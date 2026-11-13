@@ -1,11 +1,11 @@
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
+import { Skeleton } from "#/components/ui/skeleton";
 import {
     addressesQueryOptions,
     useAddressMutations,
-} from "@/hooks/store/use-address";
+} from "#/hooks/store/use-address";
 import { useQuery } from "@tanstack/react-query";
 import { MapPin, Pencil, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
@@ -14,7 +14,7 @@ import { AddressDialog } from "./address-dialog";
 import type {
     CreateAddressInput,
     UpdateAddressInput,
-} from "@/lib/validators/address";
+} from "#/lib/validators/address";
 
 export function AddressBook() {
     const { data, isLoading } = useQuery(addressesQueryOptions());

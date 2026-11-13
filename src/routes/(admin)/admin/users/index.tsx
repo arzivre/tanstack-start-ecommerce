@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
-import { PageSkeleton } from "@/components/base/common/page-skeleton";
-import { AddUserDialog } from "@/components/containers/shared/users/add-user-dialog";
-import AdminUsersTemplate from "@/components/templates/admin/admin-users-template";
-import { useUsers } from "@/hooks/admin/use-users";
-import type { AdminUser, AdminUserFormValues, UserRole } from "@/types/users";
+import { ConfirmDeleteDialog } from "#/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "#/components/base/common/page-skeleton";
+import { AddUserDialog } from "#/components/containers/shared/users/add-user-dialog";
+import AdminUsersTemplate from "#/components/templates/admin/admin-users-template";
+import { useUsers } from "#/hooks/admin/use-users";
+import type { AdminUser, AdminUserFormValues, UserRole } from "#/types/users";
 
 export const Route = createFileRoute("/(admin)/admin/users/")({
     component: AdminUsersPage,

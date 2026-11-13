@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Building2 } from "lucide-react";
-import { VendorNavMenu } from "@/components/base/vendors/vendor-nav-menu";
-import { VendorUserMenu } from "@/components/base/vendors/vendor-user-menu";
-import { Button } from "@/components/ui/button";
+import { VendorNavMenu } from "#/components/base/vendors/vendor-nav-menu";
+import { VendorUserMenu } from "#/components/base/vendors/vendor-user-menu";
+import { Button } from "#/components/ui/button";
 import {
     Sidebar,
     SidebarContent,
@@ -12,9 +12,9 @@ import {
     SidebarGroupLabel,
     SidebarHeader,
     SidebarRail,
-} from "@/components/ui/sidebar";
-import { useSession } from "@/lib/auth/auth-client";
-import { adminNavItems } from "@/lib/constants/admin.routes";
+} from "#/components/ui/sidebar";
+import { useSession } from "#/lib/auth/auth-client";
+import { adminNavItems } from "#/lib/constants/admin.routes";
 
 export default function AdminDashboardSidebar() {
     const { data: session } = useSession();

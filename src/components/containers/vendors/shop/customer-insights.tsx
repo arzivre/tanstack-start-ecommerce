@@ -1,15 +1,15 @@
 import { Users } from "lucide-react";
 import { useMemo } from "react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "#/components/ui/avatar";
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import { formatCurrency } from "@/lib/utils/dashboard";
-import type { DashboardRecentOrder } from "@/types/shop-dashboard";
+} from "#/components/ui/card";
+import { formatCurrency } from "#/lib/utils/dashboard";
+import type { DashboardRecentOrder } from "#/types/shop-dashboard";
 
 interface CustomerInsightsProps {
     orders: DashboardRecentOrder[];

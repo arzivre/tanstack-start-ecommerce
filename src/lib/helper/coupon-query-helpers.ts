@@ -1,10 +1,10 @@
-import { db } from "@/lib/db";
+import { db } from "#/lib/db";
 import type {
     BatchedCouponRelations,
     CouponListResponse,
     CouponQueryOptions,
     NormalizedCoupon,
-} from "@/types/coupons";
+} from "#/types/coupons";
 import {
     and,
     asc,

@@ -1,11 +1,11 @@
 import { DollarSign, Package, ShoppingBag, TrendingUp } from "lucide-react";
-import { StatsCard } from "@/components/base/vendors/stats-card";
-import CustomerInsights from "@/components/containers/vendors/shop/customer-insights";
-import RecentOrders from "@/components/containers/vendors/shop/recent-orders";
-import SalesOverview from "@/components/containers/vendors/shop/sales-overview";
-import TopProducts from "@/components/containers/vendors/shop/top-products";
-import { formatCurrency, formatPercentChange } from "@/lib/utils/dashboard";
-import type { ShopDashboardData } from "@/types/shop-dashboard";
+import { StatsCard } from "#/components/base/vendors/stats-card";
+import CustomerInsights from "#/components/containers/vendors/shop/customer-insights";
+import RecentOrders from "#/components/containers/vendors/shop/recent-orders";
+import SalesOverview from "#/components/containers/vendors/shop/sales-overview";
+import TopProducts from "#/components/containers/vendors/shop/top-products";
+import { formatCurrency, formatPercentChange } from "#/lib/utils/dashboard";
+import type { ShopDashboardData } from "#/types/shop-dashboard";
 
 interface ShopDashboardTemplateProps {
     shopName: string;

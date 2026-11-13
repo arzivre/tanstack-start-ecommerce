@@ -2,11 +2,11 @@ import { Link } from "@tanstack/react-router";
 import { Eye, Loader2, ShoppingCart, Star } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { useCartStore } from "@/lib/store/cart-store";
-import { cn } from "@/lib/utils";
-import type { DisplayProduct } from "@/types/store-types";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
+import { useCartStore } from "#/lib/store/cart-store";
+import { cn } from "#/lib/utils";
+import type { DisplayProduct } from "#/types/store-types";
 import { ColorSwatch } from "./color-radio-item";
 import { PriceTag } from "./price-tag";
 
