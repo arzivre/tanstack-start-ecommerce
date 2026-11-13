@@ -27,7 +27,7 @@ export interface TaxMutationState {
 }
 
 export interface TaxColumnConfig {
-    mode: "vendor" | "customer";
+    mode: "vendor" | "customer" | "admin";
     actions: TaxTableActions;
     mutationState?: TaxMutationState;
     isMutating?: (id: string) => boolean;
@@ -174,7 +174,7 @@ export const createTaxTableColumns = ({
                                     </DropdownMenuItem>
                                 )}
 
-                                {mode === "vendor" &&
+                                {(mode === "vendor" || mode === "admin") &&
                                     actions.onToggleActive && (
                                         <DropdownMenuItem
                                             onClick={() =>
