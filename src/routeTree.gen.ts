@@ -38,6 +38,7 @@ import { Route as adminAdminBrandsIndexRouteImport } from './routes/(admin)/admi
 import { Route as adminAdminCategoriesIndexRouteImport } from './routes/(admin)/admin/categories/index'
 import { Route as adminAdminCouponsIndexRouteImport } from './routes/(admin)/admin/coupons/index'
 import { Route as adminAdminOrdersIndexRouteImport } from './routes/(admin)/admin/orders/index'
+import { Route as adminAdminOrdersOrderIdRouteImport } from './routes/(admin)/admin/orders/$orderId'
 import { Route as adminAdminProductsIndexRouteImport } from './routes/(admin)/admin/products/index'
 import { Route as adminAdminReviewsIndexRouteImport } from './routes/(admin)/admin/reviews/index'
 import { Route as adminAdminSettingsIndexRouteImport } from './routes/(admin)/admin/settings/index'
@@ -215,6 +216,11 @@ const adminAdminCouponsIndexRoute = adminAdminCouponsIndexRouteImport.update({
 const adminAdminOrdersIndexRoute = adminAdminOrdersIndexRouteImport.update({
   id: '/orders/',
   path: '/orders/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminOrdersOrderIdRoute = adminAdminOrdersOrderIdRouteImport.update({
+  id: '/orders/$orderId',
+  path: '/orders/$orderId',
   getParentRoute: () => adminAdminRoute,
 } as any)
 const adminAdminProductsIndexRoute = adminAdminProductsIndexRouteImport.update({
@@ -406,6 +412,7 @@ export interface FileRoutesByFullPath {
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/webhooks/stripe': typeof ApiWebhooksStripeRoute
   '/admin/': typeof adminAdminIndexRoute
+  '/admin/orders/$orderId': typeof adminAdminOrdersOrderIdRoute
   '/admin/tenants/$tenantId': typeof adminAdminTenantsTenantIdRoute
   '/category/$slug': typeof storeLayoutCategorySlugRoute
   '/product/$productId': typeof storeLayoutProductProductIdRoute
@@ -464,6 +471,7 @@ export interface FileRoutesByTo {
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/webhooks/stripe': typeof ApiWebhooksStripeRoute
   '/admin': typeof adminAdminIndexRoute
+  '/admin/orders/$orderId': typeof adminAdminOrdersOrderIdRoute
   '/admin/tenants/$tenantId': typeof adminAdminTenantsTenantIdRoute
   '/category/$slug': typeof storeLayoutCategorySlugRoute
   '/product/$productId': typeof storeLayoutProductProductIdRoute
@@ -527,6 +535,7 @@ export interface FileRoutesById {
   '/api/webhooks/stripe': typeof ApiWebhooksStripeRoute
   '/(admin)/admin/': typeof adminAdminIndexRoute
   '/(store)/_layout/': typeof storeLayoutIndexRoute
+  '/(admin)/admin/orders/$orderId': typeof adminAdminOrdersOrderIdRoute
   '/(admin)/admin/tenants/$tenantId': typeof adminAdminTenantsTenantIdRoute
   '/(store)/_layout/category/$slug': typeof storeLayoutCategorySlugRoute
   '/(store)/_layout/product/$productId': typeof storeLayoutProductProductIdRoute
@@ -589,6 +598,7 @@ export interface FileRouteTypes {
     | '/api/auth/$'
     | '/api/webhooks/stripe'
     | '/admin/'
+    | '/admin/orders/$orderId'
     | '/admin/tenants/$tenantId'
     | '/category/$slug'
     | '/product/$productId'
@@ -647,6 +657,7 @@ export interface FileRouteTypes {
     | '/api/auth/$'
     | '/api/webhooks/stripe'
     | '/admin'
+    | '/admin/orders/$orderId'
     | '/admin/tenants/$tenantId'
     | '/category/$slug'
     | '/product/$productId'
@@ -709,6 +720,7 @@ export interface FileRouteTypes {
     | '/api/webhooks/stripe'
     | '/(admin)/admin/'
     | '/(store)/_layout/'
+    | '/(admin)/admin/orders/$orderId'
     | '/(admin)/admin/tenants/$tenantId'
     | '/(store)/_layout/category/$slug'
     | '/(store)/_layout/product/$productId'
@@ -965,6 +977,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof adminAdminOrdersIndexRouteImport
       parentRoute: typeof adminAdminRoute
     }
+    '/(admin)/admin/orders/$orderId': {
+      id: '/(admin)/admin/orders/$orderId'
+      path: '/orders/$orderId'
+      fullPath: '/admin/orders/$orderId'
+      preLoaderRoute: typeof adminAdminOrdersOrderIdRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
     '/(admin)/admin/products/': {
       id: '/(admin)/admin/products/'
       path: '/products'
@@ -1188,6 +1207,7 @@ declare module '@tanstack/react-router' {
 interface adminAdminRouteChildren {
   adminAdminMyStoreRoute: typeof adminAdminMyStoreRoute
   adminAdminIndexRoute: typeof adminAdminIndexRoute
+  adminAdminOrdersOrderIdRoute: typeof adminAdminOrdersOrderIdRoute
   adminAdminTenantsTenantIdRoute: typeof adminAdminTenantsTenantIdRoute
   adminAdminAttributesIndexRoute: typeof adminAdminAttributesIndexRoute
   adminAdminBrandsIndexRoute: typeof adminAdminBrandsIndexRoute
@@ -1208,6 +1228,7 @@ interface adminAdminRouteChildren {
 const adminAdminRouteChildren: adminAdminRouteChildren = {
   adminAdminMyStoreRoute: adminAdminMyStoreRoute,
   adminAdminIndexRoute: adminAdminIndexRoute,
+  adminAdminOrdersOrderIdRoute: adminAdminOrdersOrderIdRoute,
   adminAdminTenantsTenantIdRoute: adminAdminTenantsTenantIdRoute,
   adminAdminAttributesIndexRoute: adminAdminAttributesIndexRoute,
   adminAdminBrandsIndexRoute: adminAdminBrandsIndexRoute,

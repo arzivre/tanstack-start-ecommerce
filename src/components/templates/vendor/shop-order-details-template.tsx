@@ -1,11 +1,10 @@
+import { Link } from "@tanstack/react-router";
+import { ArrowLeft } from "lucide-react";
 import OrderActions from "#/components/containers/vendors/order-details/order-actions";
 import { OrderItemsList } from "#/components/containers/vendors/order-details/order-items-list";
 import { OrderSummary } from "#/components/containers/vendors/order-details/order-summary";
 import { OrderTimeline } from "#/components/containers/vendors/order-details/order-timeline";
 import { Button } from "#/components/ui/button";
-import { Link } from "@tanstack/react-router";
-import { ArrowLeft } from "lucide-react";
-
 import type { OrderItemResponse, OrderStatus } from "#/types/orders";
 
 interface VendorOrderDetailResponse {
@@ -46,13 +45,21 @@ interface VendorOrderDetailResponse {
 }
 
 interface ShopOrderDetailsTemplateProps {
-    shopSlug: string;
+    shopSlug?: string;
     order: VendorOrderDetailResponse;
+    mode?: "vendor" | "admin";
+    backLink?: {
+        to: string;
+        params?: Record<string, string>;
+        label?: string;
+    };
 }
 
 export default function ShopOrderDetailsTemplate({
     shopSlug,
     order,
+    mode = "vendor",
+    backLink,
 }: ShopOrderDetailsTemplateProps) {
     // Transform order items for display
     const items = order.items.map((item) => ({
@@ -125,13 +132,22 @@ export default function ShopOrderDetailsTemplate({
     const paymentMethod =
         order.payments?.[0]?.method ?? order.shippingMethod ?? "N/A";
 
+    const resolvedBackLink = backLink ?? {
+        to: "/shop/$slug/orders",
+        params: { slug: shopSlug ?? "" },
+        label: "Back to Orders",
+    };
+
     return (
         <div className="space-y-6">
             <div className="flex items-center gap-4">
                 <Button variant="ghost" size="sm" asChild>
-                    <Link to="/shop/$slug/orders" params={{ slug: shopSlug }}>
+                    <Link
+                        to={resolvedBackLink.to}
+                        params={resolvedBackLink.params}
+                    >
                         <ArrowLeft className="mr-2 size-4" />
-                        Back to Orders
+                        {resolvedBackLink.label ?? "Back to Orders"}
                     </Link>
                 </Button>
                 <h1 className="font-bold text-2xl tracking-tight">
@@ -149,6 +165,7 @@ export default function ShopOrderDetailsTemplate({
                         orderId={order.id}
                         currentStatus={order.status}
                         paymentStatus={order.paymentStatus}
+                        mode={mode}
                     />
                     <OrderSummary
                         orderId={order.orderNumber}

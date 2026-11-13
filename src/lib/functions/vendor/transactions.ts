@@ -50,7 +50,7 @@ async function getShopIdsForTransactionQuery(
     if (shopSlug) {
         // If shopSlug is provided, find that specific shop
         const shop = await db.query.shops.findFirst({
-            where: eq(shops.slug, shopSlug),
+            where: { slug: shopSlug },
         });
 
         if (!shop) {
@@ -98,7 +98,7 @@ async function getShopIdsForTransactionQuery(
 
 export const getVendorTransactions = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(getVendorTransactionsSchema)
+    .validator(getVendorTransactionsSchema)
     .handler(
         async ({
             context,
@@ -206,7 +206,7 @@ export const getVendorTransactions = createServerFn({ method: "GET" })
 
 export const getVendorTransactionStats = createServerFn({ method: "GET" })
     .middleware([authMiddleware])
-    .inputValidator(getVendorTransactionStatsSchema)
+    .validator(getVendorTransactionStatsSchema)
     .handler(async ({ context, data }): Promise<VendorTransactionStats> => {
         const userId = context.session?.user?.id;
         if (!userId) {

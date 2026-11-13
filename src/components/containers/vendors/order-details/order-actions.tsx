@@ -19,15 +19,16 @@ import {
 } from "#/components/ui/select";
 import { Separator } from "#/components/ui/separator";
 import { Textarea } from "#/components/ui/textarea";
+import { useUpdateAdminOrderStatus } from "#/hooks/admin/use-admin-orders";
 import { useDownloadInvoice } from "#/hooks/store/use-invoice";
 import { useUpdateVendorOrderStatus } from "#/hooks/vendors/use-vendor-orders";
-
 import type { OrderStatus } from "#/types/orders";
 
 interface OrderActionsProps {
     orderId: string;
     currentStatus: OrderStatus;
     paymentStatus: string;
+    mode?: "vendor" | "admin";
 }
 
 const STATUS_OPTIONS: { value: OrderStatus; label: string }[] = [
@@ -43,11 +44,15 @@ export default function OrderActions({
     orderId,
     currentStatus,
     paymentStatus,
+    mode = "vendor",
 }: OrderActionsProps) {
     const [selectedStatus, setSelectedStatus] =
         useState<OrderStatus>(currentStatus);
     const [internalNotes, setInternalNotes] = useState("");
-    const updateStatus = useUpdateVendorOrderStatus();
+    const vendorUpdateStatus = useUpdateVendorOrderStatus();
+    const adminUpdateStatus = useUpdateAdminOrderStatus();
+    const updateStatus =
+        mode === "admin" ? adminUpdateStatus : vendorUpdateStatus;
     const downloadInvoice = useDownloadInvoice();
 
     const handleUpdateStatus = async () => {
