@@ -1,16 +1,19 @@
-import { useMemo } from "react";
 import { DataTable } from "@/components/base/data-table/data-table";
+import { useMemo } from "react";
+import {
+    createCategoryColumns,
+    getSharedCategoryFilters,
+} from "./category-table-columns";
+
 import type {
     DataTableFetchParams,
     DataTableFetchResult,
 } from "@/components/base/data-table/types";
-import { VENDOR_STATUS_OPTIONS } from "@/hooks/vendors/use-vendor-entity-fetchers";
+import { VENDOR_STATUS_OPTIONS } from "@/lib/constants";
 import type { NormalizedCategory } from "@/types/category-types";
-import {
-    type CategoryMutationState,
-    type CategoryTableActions,
-    createCategoryColumns,
-    getSharedCategoryFilters,
+import type {
+    CategoryMutationState,
+    CategoryTableActions,
 } from "./category-table-columns";
 
 interface VendorCategoryTableProps extends CategoryTableActions {
@@ -66,14 +69,16 @@ export function VendorCategoryTable({
 }
 
 interface AdminCategoryTableProps extends CategoryTableActions {
-    categories: NormalizedCategory[];
+    fetcher: (
+        params: DataTableFetchParams,
+    ) => Promise<DataTableFetchResult<NormalizedCategory>>;
     className?: string;
     mutationState?: CategoryMutationState;
     isCategoryMutating?: (id: string) => boolean;
 }
 
 export function AdminCategoryTable({
-    categories,
+    fetcher,
     className,
     onEdit,
     onDelete,
@@ -116,7 +121,8 @@ export function AdminCategoryTable({
     return (
         <DataTable
             columns={columns}
-            data={categories}
+            server={{ fetcher }}
+            context="admin"
             initialPageSize={10}
             filterableColumns={filterableColumns}
             globalFilterPlaceholder="Search categories..."
