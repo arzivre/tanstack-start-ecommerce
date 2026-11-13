@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { toast } from "sonner";
 import { ProductActions } from "#/components/base/products/details/product-actions";
 import { ProductHeader } from "#/components/base/products/details/product-header";
 import ProductImageGallery from "#/components/base/products/details/product-image-gallery";
@@ -7,7 +5,16 @@ import { ProductPrice } from "#/components/base/products/details/product-price";
 import { QuantitySelector } from "#/components/base/products/details/quantity-selector";
 import { ShippingInfoSection } from "#/components/base/products/details/shipping-info-section";
 import StoreInfoCard from "#/components/base/products/details/store-info-card";
+import { useCart } from "#/hooks/store/use-cart";
+import {
+    useWishlistMutations,
+    wishlistStatusQueryOptions,
+} from "#/hooks/store/use-wishlist";
 import { useCartStore } from "#/lib/store/cart-store";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { toast } from "sonner";
+
 import type { StoreProduct } from "#/types/store-types";
 
 interface ProductMainSectionProps {
@@ -17,25 +24,36 @@ export default function ProductMainSection({
     product,
 }: ProductMainSectionProps) {
     const [quantity, setQuantity] = useState(1);
-    const [isWishlisted, setIsWishlisted] = useState(false);
     const [isCompareListed, setIsCompareListed] = useState(false);
 
-    const { addItem } = useCartStore();
+    const { addItem } = useCart();
+    const { setIsOpen } = useCartStore();
+    const { toggleWishlist, isToggling } = useWishlistMutations();
+    const { data: wishlistStatus } = useQuery(
+        wishlistStatusQueryOptions(product.id),
+    );
+    const isWishlisted = wishlistStatus?.isInWishlist ?? false;
 
-    const handleAddToCart = () => {
-        addItem({
-            productId: product.id,
-            name: product.name,
-            price: parseFloat(product.sellingPrice),
-            image: product.images[0]?.url || "",
-            quantity,
-            maxQuantity: product.stock,
-        });
-        toast.success("Added to cart");
+    const handleAddToCart = async () => {
+        try {
+            await addItem({
+                productId: product.id,
+                quantity,
+            });
+            setIsOpen(true); // Open cart sheet after successful addition
+            toast.success("Added to cart");
+        } catch (error) {
+            console.error("Failed to add to cart:", error);
+            toast.error("Failed to add to cart");
+        }
     };
 
     const handleBuyNow = () => {
         console.log("Buy now:", product.id, quantity);
+    };
+
+    const handleToggleWishlist = async () => {
+        await toggleWishlist({ productId: product.id });
     };
 
     const regularPrice = parseFloat(product.regularPrice || "0");
@@ -113,14 +131,13 @@ export default function ProductMainSection({
                         <ProductActions
                             onAddToCart={handleAddToCart}
                             onBuyNow={handleBuyNow}
-                            onToggleWishlist={() =>
-                                setIsWishlisted(!isWishlisted)
-                            }
+                            onToggleWishlist={handleToggleWishlist}
                             onToggleCompare={() =>
                                 setIsCompareListed(!isCompareListed)
                             }
                             isWishlisted={isWishlisted}
                             isCompareListed={isCompareListed}
+                            isLoading={isToggling}
                             disabled={product.stock <= 0}
                         />
                     </div>
