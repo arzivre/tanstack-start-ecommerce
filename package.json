@@ -19,7 +19,7 @@
     "db:push": "drizzle-kit push",
     "db:pull": "drizzle-kit pull",
     "db:studio": "drizzle-kit studio",
-    "db:seed": " npx tsx src/lib/db/seed-products.ts"
+    "db:seed": "npx tsx src/lib/db/seeding.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^10.6.0",
