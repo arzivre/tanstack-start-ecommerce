@@ -1,5 +1,3 @@
-import { type ErrorComponentProps, Link } from "@tanstack/react-router";
-import { AlertCircle, Home, RotateCcw } from "lucide-react";
 import { Button } from "#/components/ui/button";
 import {
     Card,
@@ -8,7 +6,11 @@ import {
     CardHeader,
     CardTitle,
 } from "#/components/ui/card";
+import { Link } from "@tanstack/react-router";
+import { AlertCircle, Home, RotateCcw } from "lucide-react";
 import { DefaultErrorComponent } from "./default-error-component";
+
+import type { ErrorComponentProps } from "@tanstack/react-router";
 
 export function AdminAccessDenied() {
     return (
@@ -59,7 +61,10 @@ export default function AdminErrorComponent({
     reset,
     info,
 }: ErrorComponentProps) {
-    if (error.message.includes("Admin access required")) {
+    if (
+        error instanceof Error &&
+        error.message.includes("Admin access required")
+    ) {
         return <AdminAccessDenied />;
     }
 

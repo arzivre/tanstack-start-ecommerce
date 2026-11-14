@@ -10,8 +10,8 @@ import {
   getDefaultClassNames,
   type DayButton,
 } from 'react-day-picker'
-
 import { Button, buttonVariants } from '#/components/ui/button.tsx'
+
 function Calendar({
   className,
   classNames,

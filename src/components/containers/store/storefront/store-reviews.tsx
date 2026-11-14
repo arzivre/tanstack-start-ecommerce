@@ -1,10 +1,11 @@
-import { MessageSquare, Star, ThumbsUp } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/avatar";
 import { Button } from "#/components/ui/button";
 import { Card, CardContent } from "#/components/ui/card";
 import { Progress } from "#/components/ui/progress";
 import { useReviewMutations, useShopReviews } from "#/hooks/store/use-reviews";
-import type { StoreReviewResponse } from "#/lib/helper/review-query-helpers";
+import { MessageSquare, Star, ThumbsUp } from "lucide-react";
+
+import type { StoreReviewResponse } from "#/types/review";
 
 interface StoreReviewsProps {
     shopId: string;

@@ -1,6 +1,7 @@
 import type { CouponPermissions } from "#/types/coupon";
 
 export const ADMIN_COUPON_PERMISSIONS: CouponPermissions = {
+    canCreate: true,
     canDelete: true,
     canEdit: true,
     canView: true,
@@ -8,6 +9,7 @@ export const ADMIN_COUPON_PERMISSIONS: CouponPermissions = {
 };
 
 export const VENDOR_COUPON_PERMISSIONS: CouponPermissions = {
+    canCreate: true,
     canDelete: false,
     canEdit: true,
     canView: true,

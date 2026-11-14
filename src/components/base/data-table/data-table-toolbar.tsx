@@ -1,5 +1,3 @@
-import { RefreshCw } from "lucide-react";
-import type { FilterableColumn } from "#/components/base/data-table/types";
 import { Button } from "#/components/ui/button";
 import {
     DropdownMenu,
@@ -16,6 +14,9 @@ import {
     SelectValue,
 } from "#/components/ui/select";
 import { cn } from "#/lib/utils";
+import { RefreshCw } from "lucide-react";
+
+import type { FilterableColumn } from "#/components/base/data-table/types";
 
 type ToolbarProps<TData> = {
     title?: string;

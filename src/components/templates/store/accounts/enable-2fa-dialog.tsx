@@ -44,7 +44,7 @@ export function Enable2FADialog({
                 return;
             }
 
-            if (data?.backupCodes) {
+            if (data && "backupCodes" in data) {
                 toast.success("Two-factor authentication enabled!");
                 onSuccess?.(data.backupCodes);
                 onOpenChange(false);

@@ -1,20 +1,35 @@
-import { StaffHeader } from '#/components/containers/vendors/staff/staff-header'
-import { StaffTable } from '#/components/containers/vendors/staff/staff-table'
-import type { Staff } from '#/types/staff'
+import StaffHeader from "#/components/containers/shared/staff/staff-header";
+import StaffTable from "#/components/containers/shared/staff/staff-table";
+import { VENDOR_STAFF_PERMISSIONS } from "#/lib/config/staff-permissions";
+
+import type { Staff } from "#/types/staff";
 
 interface ShopStaffTemplateProps {
-  staff: Staff[]
-  onAddStaff: () => void
+    staff: Staff[];
+    onAddStaff?: (data: any) => void;
+    onEditStaff?: (staffId: string) => void;
+    onDeleteStaff?: (staffId: string) => void;
 }
 
-export function ShopStaffTemplate({
-  staff,
-  onAddStaff,
+export default function ShopStaffTemplate({
+    staff,
+    onAddStaff,
+    onEditStaff,
+    onDeleteStaff,
 }: ShopStaffTemplateProps) {
-  return (
-    <div className="space-y-6">
-      <StaffHeader onAddStaff={onAddStaff} />
-      <StaffTable staff={staff} />
-    </div>
-  )
+    return (
+        <div className="space-y-6">
+            <StaffHeader
+                role="vendor"
+                onAddStaff={onAddStaff}
+                showAddButton={!!onAddStaff}
+            />
+            <StaffTable
+                staff={staff}
+                permissions={VENDOR_STAFF_PERMISSIONS}
+                onEditStaff={onEditStaff}
+                onDeleteStaff={onDeleteStaff}
+            />
+        </div>
+    );
 }
