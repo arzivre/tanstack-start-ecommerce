@@ -33,6 +33,7 @@
     "@stripe/stripe-js": "^10.2.1",
     "@tailwindcss/vite": "^4.3.5",
     "@tanstack/match-sorter-utils": "^8.19.4",
+    "@tanstack/nitro-v2-vite-plugin": "^1.155.2",
     "@tanstack/react-devtools": "^0.7.11",
     "@tanstack/react-form": "^1.33.5",
     "@tanstack/react-query": "^5.107.1",
