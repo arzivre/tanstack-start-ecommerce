@@ -5,14 +5,15 @@
  * Uses real API data via React Query with infinite scrolling pagination.
  */
 
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
 import { storeBrandsQueryOptions } from "#/hooks/store/use-store-brands";
 import { storeCategoriesQueryOptions } from "#/hooks/store/use-store-categories";
 import { storeProductsInfiniteQueryOptions } from "#/hooks/store/use-store-product";
 import { toDisplayProducts } from "#/lib/helper/products-query-helpers";
-import type { FilterState } from "#/lib/store/product-filters-store";
 import { getSortParams } from "#/lib/utils/product-sort";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useMemo, useState } from "react";
+
+import type { FilterState } from "#/lib/store/product-filters-store";
 
 /**
  * Type for the updateFilter function
@@ -57,6 +58,7 @@ export const useProductFilters = () => {
             inStock: filters.availability.includes("In Stock")
                 ? true
                 : undefined,
+            minRating: filters.rating ?? undefined,
             sortBy: sortParams.sortBy,
             sortDirection: sortParams.sortDirection,
         };
@@ -65,6 +67,7 @@ export const useProductFilters = () => {
         filters.priceRange,
         filters.availability,
         filters.sort,
+        filters.rating,
     ]);
 
     // Infinite query for products with server-side pagination using shared options
