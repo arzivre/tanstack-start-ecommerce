@@ -1,8 +1,9 @@
-import type React from "react";
-import { VendorHeader } from "#/components/base/vendors/vendor-header";
+import VendorHeader from "#/components/base/vendors/vendor-header";
 import AdminDashboardSidebar from "#/components/containers/admin/admin-dashboard-sidebar";
 import { SidebarInset, SidebarProvider } from "#/components/ui/sidebar";
 import { cn } from "#/lib/utils";
+
+import type React from "react";
 
 interface AdminDashboardLayoutProps {
     children: React.ReactNode;
