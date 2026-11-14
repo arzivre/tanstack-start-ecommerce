@@ -1,14 +1,9 @@
-import {
-    and,
-    asc,
-    count,
-    desc,
-    eq,
-    ilike,
-    inArray,
-    or,
-    type SQL,
-} from "drizzle-orm";
+import { and, asc, count, desc, eq, ilike, inArray, or } from "drizzle-orm";
+import { db } from "../db";
+import { categories } from "../db/schema/category-schema";
+import { products } from "../db/schema/products-schema";
+import { shops } from "../db/schema/shop-schema";
+
 import type {
     BatchedCategoryRelations,
     CategoryQueryOptions,
@@ -16,9 +11,7 @@ import type {
     CategoryTreeNode,
     NormalizedCategory,
 } from "#/types/category-types";
-import { db } from "../db";
-import { categories } from "../db/schema/category-schema";
-import { shops } from "../db/schema/shop-schema";
+import type { SQL } from "drizzle-orm";
 
 /**
  * Build SQL WHERE conditions from filter parameters
@@ -91,27 +84,46 @@ export async function batchFetchCategoryRelations(
     ] as string[];
     const shopIds = [...new Set(categoryList.map((c) => c.shopId))];
 
-    const parentRecords =
-        parentIds.length > 0
-            ? await db
-                  .select({ id: categories.id, name: categories.name })
-                  .from(categories)
-                  .where(inArray(categories.id, parentIds))
-            : [];
+    const [parentRecords, shopRecords, productCountRecords] = await Promise.all(
+        [
+            // Fetch parent names
+            parentIds.length > 0
+                ? db
+                      .select({ id: categories.id, name: categories.name })
+                      .from(categories)
+                      .where(inArray(categories.id, parentIds))
+                : Promise.resolve([]),
 
-    const shopRecords =
-        options.includeShopInfo && shopIds.length > 0
-            ? await db
-                  .select({
-                      id: shops.id,
-                      name: shops.name,
-                      slug: shops.slug,
-                  })
-                  .from(shops)
-                  .where(inArray(shops.id, shopIds))
-            : [];
+            // Fetch shop info
+            options.includeShopInfo && shopIds.length > 0
+                ? db
+                      .select({
+                          id: shops.id,
+                          name: shops.name,
+                          slug: shops.slug,
+                      })
+                      .from(shops)
+                      .where(inArray(shops.id, shopIds))
+                : Promise.resolve([]),
+
+            // Count products per category
+            db
+                .select({
+                    categoryId: products.categoryId,
+                    count: count(),
+                })
+                .from(products)
+                .where(inArray(products.categoryId, categoryIds))
+                .groupBy(products.categoryId),
+        ],
+    );
 
     const productCountsMap = new Map<string, number>();
+    for (const record of productCountRecords) {
+        if (record.categoryId) {
+            productCountsMap.set(record.categoryId, record.count);
+        }
+    }
 
     const parentNamesMap = new Map<string, string>();
     for (const parent of parentRecords) {

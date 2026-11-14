@@ -11,12 +11,28 @@ import {
     getShopBySlugSchema,
     updateShopSchema,
 } from "../validators/shop";
+import { getProductCountsForShops } from "../helper/shop-helper";
 
-// TODO: Implement Helper Functions
 async function getShopStates(shopIds: string[]) {
     if (shopIds.length === 0) return new Map();
 
-    // const productCountMap = await getProductCountsForShops(shopIds);
+    const productCountMap = await getProductCountsForShops(shopIds);
+
+    // Build state map with product counts
+    const stateMap = new Map<
+        string,
+        { productCount: number; orderCount: number; revenue: number }
+    >();
+
+    for (const shopId of shopIds) {
+        stateMap.set(shopId, {
+            productCount: productCountMap.get(shopId) ?? 0,
+            orderCount: 0,
+            revenue: 0,
+        });
+    }
+
+    return stateMap;
 }
 
 // ============================================================================

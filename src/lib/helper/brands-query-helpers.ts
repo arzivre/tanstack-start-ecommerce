@@ -7,7 +7,6 @@ import {
     ilike,
     inArray,
     or,
-    type SQL,
 } from "drizzle-orm";
 import type {
     BatchedBrandRelations,
@@ -17,7 +16,9 @@ import type {
 } from "#/types/brands";
 import { db } from "../db";
 import { brands } from "../db/schema/brand-schema";
+import { products } from "../db/schema/products-schema";
 import { shops } from "../db/schema/shop-schema";
+import type { SQL } from "drizzle-orm";
 
 /**
  * Batch fetch all related data for a list of brands
@@ -39,9 +40,10 @@ export async function batchFetchBrandRelations(
 
     const shopIds = [...new Set(brandList.map((b) => b.shopId))];
 
-    const shopRecords =
+    const [shopRecords, productCountRecords] = await Promise.all([
+        // Fetch shop info
         options.includeShopInfo && shopIds.length > 0
-            ? await db
+            ? db
                   .select({
                       id: shops.id,
                       name: shops.name,
@@ -49,9 +51,25 @@ export async function batchFetchBrandRelations(
                   })
                   .from(shops)
                   .where(inArray(shops.id, shopIds))
-            : [];
+            : Promise.resolve([]),
+
+        // Count products per brand
+        db
+            .select({
+                brandId: products.brandId,
+                count: count(),
+            })
+            .from(products)
+            .where(inArray(products.brandId, brandIds))
+            .groupBy(products.brandId),
+    ]);
 
     const productCountsMap = new Map<string, number>();
+    for (const record of productCountRecords) {
+        if (record.brandId) {
+            productCountsMap.set(record.brandId, record.count);
+        }
+    }
 
     const shopsMap = new Map<
         string,

@@ -5,17 +5,7 @@
  * Centralizes batch fetching, normalization, and query building logic.
  */
 
-import {
-    and,
-    asc,
-    count,
-    desc,
-    eq,
-    ilike,
-    inArray,
-    or,
-    type SQL,
-} from "drizzle-orm";
+import { and, asc, count, desc, eq, ilike, inArray, or } from "drizzle-orm";
 import type {
     AttributeItem,
     AttributeQueryOptions,
@@ -25,7 +15,9 @@ import type {
 } from "#/types/attributes";
 import { db } from "../db";
 import { attributes, attributeValues } from "../db/schema/attribute-schema";
+import { productAttributes } from "../db/schema/products-schema";
 import { shops } from "../db/schema/shop-schema";
+import type { SQL } from "drizzle-orm";
 
 /**
  * Batch fetch all related data for a list of attributes
@@ -51,18 +43,19 @@ export async function batchFetchAttributeRelations(
     const shopIds = [...new Set(attributeList.map((a) => a.shopId))];
 
     // Build parallel queries
-    const valueRecords =
+    const [valueRecords, shopRecords, productCountRecords] = await Promise.all([
+        // Fetch attribute values
         options.includeValues !== false
-            ? await db
+            ? db
                   .select()
                   .from(attributeValues)
                   .where(inArray(attributeValues.attributeId, attributeIds))
                   .orderBy(asc(attributeValues.sortOrder))
-            : [];
+            : Promise.resolve([]),
 
-    const shopRecords =
+        // Fetch shop info
         options.includeShopInfo && shopIds.length > 0
-            ? await db
+            ? db
                   .select({
                       id: shops.id,
                       name: shops.name,
@@ -70,10 +63,24 @@ export async function batchFetchAttributeRelations(
                   })
                   .from(shops)
                   .where(inArray(shops.id, shopIds))
-            : [];
+            : Promise.resolve([]),
+
+        // Count products per attribute
+        db
+            .select({
+                attributeId: productAttributes.attributeId,
+                count: count(),
+            })
+            .from(productAttributes)
+            .where(inArray(productAttributes.attributeId, attributeIds))
+            .groupBy(productAttributes.attributeId),
+    ]);
 
     // Build lookup maps
     const productCountsMap = new Map<string, number>();
+    for (const record of productCountRecords) {
+        productCountsMap.set(record.attributeId, record.count);
+    }
 
     const valuesMap = new Map<string, AttributeValueItem[]>();
     for (const value of valueRecords) {
